@@ -126,8 +126,6 @@ Depois de repetir os passos 6 e 7 para todas as obras da lista, apresente ao usu
 - A tabela final de lançamentos de **cada obra** (vinda do `ep-pintor-notas`), separadas por
   obra, não misturadas numa tabela só.
 - A lista de aportes de caixa, separada.
-- Se houve itens "Pendente" (Mercado Livre), avise e sugira rodar `notas-fiscais-ml` em
-  seguida.
 - Como isto é um piloto: pergunte se o usuário quer comentar algo que não bateu com o esperado,
   para ajustar a etapa específica (Leitor, algum dos dois Chequers, Lançador ou Pintor) antes
   da próxima obra.
@@ -151,3 +149,12 @@ de escrever ou pintar. Isso vale em qualquer uma das etapas.
   mas uma leitura normal cobre várias obras — adicionado passo 5 (agrupar por obra) e os
   passos de lançamento/pintura passaram a repetir por obra, não rodar uma vez só pra lista
   inteira.
+- **04/08/2026 (terceira rodada — correção do Guilherme)** — `notas-fiscais-ml` é exclusiva
+  do fluxo de lançamento do DG Revy, nunca fez parte deste pipeline EP. Removidas todas as
+  sugestões de rodar essa skill (aqui, no `ep-leitor-notas` e no `ep-pintor-notas`).
+- **05/08/2026 — resolvido de vez**: o Guilherme confirmou que o fluxo EP **não precisa do
+  número oficial da NF do Mercado Livre** — só data e valor, diferente do DG (onde o número é
+  obrigatório, uso no imposto de renda dele). O campo "Nota" de compras do ML passou de
+  "Pendente" (sugeria pendência a resolver) para **"ML"** (valor final, sem ação seguinte).
+  Removida do fechamento (passo 8) a menção a itens pendentes de ML — não existe mais nada
+  pendente por definição.

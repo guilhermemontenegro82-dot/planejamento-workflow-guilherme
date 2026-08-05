@@ -134,13 +134,18 @@ como certeza.
 ### 8. Compras do Mercado Livre — nunca deixar de fora
 
 Compra no Mercado Livre normalmente aparece como comprovante de Pix (não nota fiscal de loja
-física). A numeração oficial da NF é buscada depois pela skill `notas-fiscais-ml`. Isso **não**
-significa deixar o gasto de fora da lista:
+física). Isso **não** significa deixar o gasto de fora da lista:
 
 - Inclua o item na lista **normalmente**, com os dados do comprovante de Pix (valor,
   descrição, obra, quem gastou).
-- Campo "Nota" = **"Pendente"**.
-- Nunca omita um item só porque a NF oficial ainda não foi buscada.
+- Campo "Nota" = **"ML"**.
+- Nunca omita um item só porque não tem número de nota fiscal.
+
+**Resolvido 05/08/2026**: no fluxo EP, o número oficial da NF do Mercado Livre **não é
+necessário** — só data e valor importam. Isso é diferente do fluxo DG Revy, onde o número da
+nota é obrigatório (uso no imposto de renda dele) e é buscado pela skill `notas-fiscais-ml`
+— exclusiva daquele fluxo, não roda aqui. Por isso o campo "Nota" aqui não usa mais "Pendente"
+(que sugeria um número a buscar depois): "ML" já é o valor final, não uma etapa intermediária.
 
 ### 9. Convenções fixas por técnico
 
@@ -216,7 +221,7 @@ identificou? Pergunte.
 
 Número da nota fiscal (sem zeros à esquerda). Sem número de nota → número do recibo/documento.
 Sem número nenhum: compra de material → **SN**; comprovante de pagamento → **NA**; compra do
-Mercado Livre ainda sem NF → **Pendente** (ver item 8).
+Mercado Livre → **ML** (ver item 8 — não precisa do número oficial da NF neste fluxo).
 
 ### 14. Obras pequenas "penduradas" em outra planilha
 
@@ -248,7 +253,7 @@ Para cada item de lançamento:
 
 | Obra | Descrição | Fornecedor | Nota | Data | Valor | Quem gastou | REEMB | Confirmado? |
 |---|---|---|---|---|---|---|---|---|
-| MC-Ipanema | Rotuladora Brother | Mercado Livre | Pendente | 14/07 | R$ 283,24 | $ Jonathan | não | sim |
+| MC-Ipanema | Rotuladora Brother | Mercado Livre | ML | 14/07 | R$ 283,24 | $ Jonathan | não | sim |
 
 Mais duas listas separadas:
 

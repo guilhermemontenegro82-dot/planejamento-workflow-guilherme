@@ -61,7 +61,7 @@ repita esse erro.
 
 Para cada item da lista confirmada, na próxima linha vazia:
 
-- **C** = Descrição. **D** = Fornecedor. **E** = Nota/Recibo (número, SN, NA ou Pendente).
+- **C** = Descrição. **D** = Fornecedor. **E** = Nota/Recibo (número, SN, NA ou ML).
   **F** = Data — como data de verdade (datetime), nunca como texto, mantendo o formato de
   exibição da planilha (dd/mm/aaaa). **G** = Valor — número puro, o formato R$ vem do estilo
   copiado. **H** = deixar em branco. **I** = Quem gastou, grafia exata da coluna M.

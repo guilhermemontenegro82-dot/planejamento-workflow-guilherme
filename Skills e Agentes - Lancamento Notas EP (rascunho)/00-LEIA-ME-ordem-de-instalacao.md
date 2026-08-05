@@ -13,11 +13,15 @@ revisado nesta pasta antes de qualquer coisa voltar pro Cowork.
 - `skill-ep-pintor-notas.md` — Etapa 3: pinta linhas, confere, devolve a planilha, uma
   obra por vez. Sem alteração de conteúdo nesta revisão, só trazida pra cá como
   referência.
-- `skill-notas-fiscais-ml.md` — skill irmã, chamada depois do lançamento pra buscar
-  NF-e de itens "Pendente" do Mercado Livre. Extraída nesta revisão de um documento
-  maior ("Fluxo Completo de Notas Fiscais de Obra") que também continha a lógica
-  antiga de lançamento físico (essa parte foi descartada por já estar coberta pelo
-  pipeline novo).
+
+**Removida desta pasta**: `notas-fiscais-ml` é exclusiva do fluxo de lançamento do
+DG Revy — nunca fez parte do pipeline EP. Tinha sido extraída aqui por engano numa
+revisão anterior (de um documento maior, "Fluxo Completo de Notas Fiscais de Obra",
+que misturava as duas coisas); movida pra fora desta pasta em 05/08/2026, a pedido do
+Guilherme. O motivo de fundo: o fluxo EP **não precisa do número oficial da NF do
+Mercado Livre** (só data e valor) — diferente do DG, onde o número é obrigatório
+(imposto de renda). Itens de compra do ML no `ep-leitor-notas` usam o campo Nota =
+"ML" (valor final, não uma pendência) — não "Pendente" como antes.
 
 **Verificação (rodam em paralelo, entre a Etapa 1 e o checkpoint com o usuário)**
 - `agente-chequer-leitura.md` — confere **cobertura**: alguma mensagem com sinal
@@ -58,12 +62,19 @@ revisado nesta pasta antes de qualquer coisa voltar pro Cowork.
    mecânica (soma, formatação). Mesmo tipo de buraco já corrigido em Orçamentos com
    o Chequer de Conteúdo. Pipeline passou de 4 para 5 etapas (a nova Etapa 1.6 roda
    em paralelo com a 1.5).
-7. **Roteamento por obra**: `ep-lancador-notas` e `notas-fiscais-ml` estavam escritos
-   como se sempre existisse uma única planilha na conversa — mas uma leitura normal
-   do WhatsApp cobre várias obras ao mesmo tempo. Supervisor ganhou um passo de
-   agrupamento por obra, e o lançamento/pintura agora repete uma vez por grupo.
-8. `skill-notas-fiscais-ml.md` adicionada ao mapa desta pasta (já existia da revisão
-   anterior, só não estava listada aqui ainda).
+7. **Roteamento por obra**: `ep-lancador-notas` estava escrita como se sempre
+   existisse uma única planilha na conversa — mas uma leitura normal do WhatsApp
+   cobre várias obras ao mesmo tempo. Supervisor ganhou um passo de agrupamento por
+   obra, e o lançamento/pintura agora repete uma vez por grupo.
+
+**Quarta rodada (correção do Guilherme sobre escopo):**
+8. `notas-fiscais-ml` **removida deste pipeline** — é exclusiva do fluxo DG Revy.
+   Todas as sugestões de rodá-la (aqui, no `ep-leitor-notas`, no `ep-pintor-notas`)
+   foram retiradas. O arquivo saiu desta pasta.
+9. **Resolvido de vez**: confirmado que o fluxo EP não precisa do número oficial da
+   NF do Mercado Livre — só data e valor (o DG precisa, uso no imposto de renda
+   dele). Campo Nota de compras do ML passou de "Pendente" para **"ML"** (final, sem
+   pendência). Removida do fechamento do Supervisor a menção a itens pendentes.
 
 ## Ordem de instalação sugerida
 
@@ -73,11 +84,13 @@ revisado nesta pasta antes de qualquer coisa voltar pro Cowork.
    editar por cima.
 3. Atualizar `skill-ep-leitor-notas.md`.
 4. Atualizar `skill-ep-lancador-notas.md` (nota de escopo "uma obra por vez").
-5. Atualizar `skill-notas-fiscais-ml.md` (mesma nota de escopo), se ainda não
-   instalada.
+5. Atualizar `skill-ep-pintor-notas.md` (removida a sugestão de rodar
+   `notas-fiscais-ml`).
 6. Atualizar `skill-supervisor-lancamento-ep.md` por último — ele referencia os dois
    Chequers e o agrupamento por obra.
-7. `ep-pintor-notas` não precisa reinstalação — sem mudança de conteúdo.
+7. **Se `notas-fiscais-ml` estiver instalada no Cowork como parte deste fluxo EP**
+   (por causa da revisão anterior), remover essa associação — a skill em si continua
+   existindo e ativa, só não deve mais ser chamada a partir daqui, só do fluxo DG.
 
 ## Ainda em aberto
 

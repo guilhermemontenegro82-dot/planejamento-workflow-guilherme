@@ -64,8 +64,10 @@ reporte-os **separado** da tabela de lançamentos, pois não entram na planilha:
 | 11/07 | Jonathan | R$ 100,00 |
 | 11/07 | Cabelinho | R$ 120,00 |
 
-Se houver itens com Nota = "Pendente" (compras do Mercado Livre), avise o usuário e sugira
-rodar a skill `notas-fiscais-ml` em seguida para buscar o número oficial da NF.
+Itens com Nota = "ML" (compras do Mercado Livre) não precisam de nenhuma ação seguinte —
+**resolvido 05/08/2026**: o fluxo EP não usa o número oficial da NF do Mercado Livre, só data e
+valor. "ML" já é o valor final do campo Nota, não uma pendência. Não sugerir `notas-fiscais-ml`
+— essa skill é exclusiva do fluxo DG Revy.
 
 ## Troubleshooting
 
