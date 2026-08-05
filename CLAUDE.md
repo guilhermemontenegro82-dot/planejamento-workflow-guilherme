@@ -56,6 +56,14 @@ skills menores e verificadas descrito abaixo.
   jargão específico de construção civil quando o output for para eles (propostas,
   relatórios).
 
+## Autorização permanente: commit e push automáticos
+
+Guilherme autorizou, de forma permanente (2026-08-04), que qualquer sessão do Claude
+Code neste repositório faça `git add` + `git commit` + `git push` automaticamente
+depois de mudanças relevantes nos arquivos — sem precisar pedir confirmação a cada
+vez. Continua valendo o resto do protocolo de segurança: nunca usar `--force`,
+`reset --hard` ou outros comandos destrutivos sem pedir primeiro; nunca pular hooks.
+
 ## Fluxo de trabalho: staging local → Cowork
 
 Não existe conector direto para o Claude Cowork neste ambiente. O padrão é sempre:
