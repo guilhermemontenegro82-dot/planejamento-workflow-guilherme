@@ -56,6 +56,36 @@ skills menores e verificadas descrito abaixo.
   jargão específico de construção civil quando o output for para eles (propostas,
   relatórios).
 
+## Environment
+
+- OS: Windows. Prefira sintaxe PowerShell para comandos de shell; evite idiomas
+  exclusivos de bash.
+- Sempre verifique se uma CLI existe antes de sugeri-la (`Get-Command <ferramenta>`
+  / `where.exe <ferramenta>`). Se não estiver no PATH, forneça o caminho completo do
+  executável (ex.: `C:\Program Files\Git\mingw64\bin\git.exe`).
+
+## Skills & Agents
+
+- Skills escritas aqui precisam funcionar TANTO no Claude Code quanto no Claude
+  Cowork. Depois de escrever/atualizar `.claude/skills/<nome>/SKILL.md`, também
+  produza o conteúdo bruto completo do SKILL.md num bloco de código para poder ser
+  colado no Cowork.
+- Toda skill que produz planilhas/relatórios precisa incluir uma checklist de
+  autoverificação (colunas esperadas, formatos de linha, faixa de sanidade do total)
+  e o Claude deve rodar essa checagem numa amostra de saída antes de declarar
+  concluído.
+
+## Working Style
+
+- Antes de fazer mudanças de configuração em várias etapas (temas, configurações,
+  conversões de arquivo), apresente o plano e pergunte qual opção eu quero em vez de
+  escolher um padrão. Para temas do VS Code, use 'Dark+ (default dark)' como padrão,
+  a menos que eu peça explicitamente alto contraste.
+- Para conversões de formato de arquivo, primeiro verifique se existe uma CLI local
+  (ex.: ODA File Converter para DWG). Não gaste a sessão operando uma interface web
+  — se não houver ferramenta local, avise imediatamente e ofereça instruções de
+  instalação.
+
 ## Autorização permanente: commit e push automáticos
 
 Guilherme autorizou, de forma permanente (2026-08-04), que qualquer sessão do Claude
@@ -63,6 +93,8 @@ Code neste repositório faça `git add` + `git commit` + `git push` automaticame
 depois de mudanças relevantes nos arquivos — sem precisar pedir confirmação a cada
 vez. Continua valendo o resto do protocolo de segurança: nunca usar `--force`,
 `reset --hard` ou outros comandos destrutivos sem pedir primeiro; nunca pular hooks.
+Use mensagens de commit claras em português/inglês descrevendo o documento ou skill
+alterado, e sempre rode `git push` depois de commitar.
 
 ## Fluxo de trabalho: staging local → Cowork
 
