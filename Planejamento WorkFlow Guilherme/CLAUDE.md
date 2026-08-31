@@ -99,14 +99,40 @@ alterado, e sempre rode `git push` depois de commitar.
 ## Fluxo de trabalho: staging local → Cowork
 
 Não existe conector direto para o Claude Cowork neste ambiente. O padrão é sempre:
-1. Construir/revisar tudo localmente aqui (Claude Code), numa pasta de rascunho
-   dedicada por pipeline.
+1. Construir/revisar tudo localmente aqui (Claude Code), na pasta `Skills/` do tema
+   correspondente (ver "Estrutura do repositório").
 2. Guilherme revisa e só então copia e cola manualmente no Cowork.
 3. Se algo quebrar depois de instalado no Cowork, o erro volta para *este mesmo*
    projeto Claude Code para ser corrigido — nunca é remendado direto no Cowork. Os
    arquivos locais são sempre a fonte da verdade.
 4. Cada skill/agente gerado mantém um "Log de mudanças" / changelog no próprio
    arquivo.
+
+### Regra crítica: nunca editar direto no Cowork
+
+A partir do momento em que uma skill tem cópia local em `<Tema>/Skills/`, ela **só
+pode ser editada aqui**. Editar direto no Cowork faz a cópia local envelhecer sem
+ninguém perceber — e aí uma sessão futura lê a versão local achando que é a atual e
+trabalha em cima de algo velho. Se por algum motivo alguém editar no Cowork, o texto
+tem que voltar para cá na mesma hora.
+
+Esse risco não é teórico: em 04/08/2026 uma rubrica do chequer descrevia "fill bege"
+no SUB TOTAL porque foi escrita a partir de uma leitura antiga; o modelo real nunca
+teve isso, e o erro sobreviveu meses porque ninguém comparou com o arquivo de verdade.
+
+### Skills que vêm empacotadas (.skill)
+
+Skill exportada do Cowork vem como arquivo `.skill`, que é um **ZIP** contendo
+`<nome-da-skill>/SKILL.md`. O Git não mostra diferença dentro de um ZIP — versionar só
+o pacote deixaria o histórico inútil ("arquivo mudou", sem dizer o quê). Por isso:
+
+- Extrair o `SKILL.md` de dentro do pacote para um `.md` ao lado, com o nome da skill.
+- O `.md` é a **fonte de trabalho** — é ele que o Claude edita e de onde sai o texto
+  para colar no Cowork.
+- O pacote original vai para `_pacotes-originais-cowork/`, como snapshot autêntico do
+  que estava instalado naquela data.
+- Se precisar reempacotar (`.md` → `.skill`), basta zipar o arquivo dentro de uma
+  pasta com o nome da skill: `<nome>/SKILL.md`.
 
 ## Estrutura do repositório
 
