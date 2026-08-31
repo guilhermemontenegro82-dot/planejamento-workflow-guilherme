@@ -110,22 +110,43 @@ Não existe conector direto para o Claude Cowork neste ambiente. O padrão é se
 
 ## Estrutura do repositório
 
-- `Mapa mental/` — mapas mentais (imagens + pptx) do ecossistema de trabalho
-  completo: Agente Central → linhas EP Engenharia, DG Revy, GAM Soluções, Pessoal.
-- `Skills e Agentes - Orcamentos EP (rascunho)/` — pipeline de orçamentos da EP
-  Engenharia, desmembrado de 3 skills monolíticas do Cowork
-  (`orcamento-obra`, `proposta-comercial-obra`, `referencia-orcamento`) em 6 skills
-  de execução + 2 agentes chequer (Técnico e Conteúdo) + 1 agente orquestrador.
-  Ver `00-LEIA-ME-ordem-de-instalacao.md` nessa pasta para a ordem de instalação e
-  detalhes de cada etapa.
-- `Skills e Agentes - Lancamento Notas EP (rascunho)/` — pipeline de lançamento de
-  notas fiscais da EP Engenharia (revisão do `supervisor-lancamento-ep` que já
-  existia no Cowork): skills de leitura/lançamento/pintura de notas + skill irmã de
-  busca de NF-e no Mercado Livre, com 2 agentes chequer (Leitura confere cobertura,
-  Classificação confere se os campos batem com a mensagem original). Ver o
-  `00-LEIA-ME-ordem-de-instalacao.md` dessa pasta.
-- `Guia de motores Claude.docx`, `Sequência de execução - próximos trabalhos.docx` —
-  planejamento de alto nível.
+**Reorganizado em 30/08/2026.** A raiz do Git é `D:\12- Claude - works\` (não mais a
+pasta `Planejamento WorkFlow Guilherme`), então todas as skills de todos os temas são
+versionadas e sincronizadas automaticamente. O guia completo da estrutura está em
+`_LEIA-ME - Estrutura de Pastas.md`, na raiz.
+
+**Padrão de organização** — uma pasta por linha de trabalho, uma subpasta por tema, e
+dentro de cada tema com skills desenvolvidas uma pasta `Skills/`:
+
+```
+<Linha de trabalho>\<Tema>\Skills\      ← definições de skills e agentes
+<Linha de trabalho>\<Tema>\<material>\  ← planilhas, projetos, fotos, testes
+```
+
+- `01 - EP Engenharia/` — `Orçamentos/Skills/` (6 skills + 2 agentes chequer +
+  orquestrador, desmembrados de `orcamento-obra`, `proposta-comercial-obra` e
+  `referencia-orcamento`); `Lançamento de Notas/Skills/` (3 skills + 2 agentes
+  chequer + supervisor); mais Instagram EP, Folha de Ponto, Cotações, Análises
+  Financeiras e as pastas dos temas ainda a desenvolver. Cada pasta `Skills/` tem seu
+  `00-LEIA-ME-ordem-de-instalacao.md` com a ordem de instalação no Cowork.
+- `02 - DG Revy/` — `Notas Fiscais Mercado Livre/Skills/` (`skill-notas-fiscais-ml`,
+  exclusiva do fluxo DG, nunca do EP); demais temas a desenvolver.
+- `03 - GAM Soluções/` — Identidade Visual (logo + briefing); Site, Instagram,
+  YouTube e Documentos-Base a desenvolver.
+- `04 - Pessoal/` — Investimentos e Contas a Pagar, a desenvolver.
+- `Planejamento WorkFlow Guilherme/` — este arquivo, `Mapa mental/` (imagens + pptx do
+  ecossistema) e os documentos de planejamento de alto nível.
+
+**Pastas com caminho travado por skill — nunca mover nem renomear**: `Base dados
+financeiros obras EP/` (skill global `base-de-dados-financeiros-EP`), `Darf MEI
+Equipe/` (skill `darf-mei-equipe`), `E-Mails - G-Mail e Yahoo/` (skill agendada de
+boletos), `Scheduled/` (agendador) e `Planejamento WorkFlow Guilherme/` (a memória
+deste projeto depende deste nome exato). Se um dia precisar mover: primeiro atualize
+o caminho dentro da skill, reinstale, e só então mova a pasta.
+
+**O que fica fora do Git** (ver `.gitignore` na raiz): base financeira das obras, DARF
+MEI, boletos, planilhas (`.xlsx`) e PDFs — contêm dados de cliente, CPF/CNPJ e
+valores. Versionamos só definições de skills e documentação.
 
 ## Projeto: Pipeline de Orçamentos EP
 
