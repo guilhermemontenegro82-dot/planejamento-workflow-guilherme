@@ -1,1 +1,44 @@
+# ============================================================
+# Estratégia: versionar as DEFINIÇÕES (skills, agentes, documentação)
+# e manter FORA do Git todos os dados reais de obra, financeiros e mídia.
+#
+# Motivo: o repositório sincroniza com o GitHub. Base financeira, boletos,
+# DARF de funcionários e planilhas de obra contêm dados de clientes, CPF/CNPJ
+# e valores — não devem sair daqui.
+# ============================================================
+
+# ---- 1. Ignora tudo por padrão ----
+*
+
+# ---- 2. Reabre as pastas para o Git conseguir descer na árvore ----
+!*/
+
+# ---- 3. Libera o que DEVE ser versionado ----
+!.gitignore
+!*.md
+
+# Mapa mental e documentos de planejamento
+!Planejamento WorkFlow Guilherme/**/*.jpg
+!Planejamento WorkFlow Guilherme/**/*.pptx
+!Planejamento WorkFlow Guilherme/**/*.docx
+
+# ---- 4. Nunca versionar: dados sensíveis e pesados ----
+# Base financeira das obras (892 MB, P&L real de clientes)
+/Base dados financeiros obras EP/
+# DARF MEI (CNPJs de 9 funcionários, comprovantes de pagamento)
+/Darf MEI Equipe/
+# Boletos e faturas pessoais (CPF/CNPJ, valores)
+/E-Mails - G-Mail e Yahoo/
+# Rotina agendada de e-mail (descreve regra de senha de fatura)
+/Scheduled/
+
+# Planilhas e material de trabalho com dados reais
+*.xlsx
+*.xls
+*.pdf
+
+# ---- 5. Temporários ----
+~$*
 .claude/settings.local.json
+Thumbs.db
+desktop.ini
