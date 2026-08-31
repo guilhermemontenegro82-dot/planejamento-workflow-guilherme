@@ -16,6 +16,9 @@
 # ---- 3. Libera o que DEVE ser versionado ----
 !.gitignore
 !*.md
+# Pacotes de skill exportados do Cowork (ZIP com o SKILL.md dentro).
+# São snapshot/backup: a fonte da verdade editável é sempre o .md ao lado.
+!*.skill
 
 # Mapa mental e documentos de planejamento
 !Planejamento WorkFlow Guilherme/**/*.jpg
