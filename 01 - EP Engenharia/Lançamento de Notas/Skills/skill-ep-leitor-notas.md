@@ -278,21 +278,49 @@ por aparecer perto do valor — é nome de titular de cartão, não de vendedor.
 desconhecido nesses casos → pergunte ao usuário ou use uma descrição genérica (ex.: "Padaria")
 se o usuário confirmar que não há nome de estabelecimento melhor.
 
-### 10.1. Ordem de prioridade para decidir "quem gastou" quando a legenda não é explícita
+### 10.1. Ordem de prioridade para decidir "quem gastou"
 
-**Confirmado 04/08/2026** — seguir nesta ordem, parar no primeiro critério que resolver:
+Seguir nesta ordem, parar no primeiro critério que resolver:
 
-1. **Nome citado explicitamente na legenda da própria mensagem** (item 6, terceiro bullet).
-2. **Contexto das mensagens imediatamente acima/abaixo, no chat, sobre o mesmo gasto** — releia
-   as linhas ao redor da nota antes de aplicar qualquer regra automática; muitas vezes o nome
-   está numa mensagem vizinha, não na legenda da própria foto.
-3. **Final do cartão no comprovante**, contra a tabela do item 10 — só se (1) e (2) não
-   resolverem.
-4. **Regra do remetente** (item 6, primeiros dois bullets) — último recurso, só quando nada
-   acima resolveu.
+**1. 🥇 RESPOSTA (reply) do Guilherme citando aquela nota — manda acima de tudo.**
 
-Se mesmo assim ficar incerto, é dúvida de verdade: pare e pergunte ao usuário, não force um dos
-quatro critérios.
+No WhatsApp, quando o Guilherme responde a uma imagem, a mensagem dele aparece com a foto
+citada num quadrinho logo acima do texto. **Essa é a correção definitiva daquele item** e
+sobrepõe qualquer outro critério — inclusive a legenda original de quem enviou.
+
+Por que ela vale mais que tudo: o Guilherme faz isso justamente quando o texto do
+funcionário ficou ruim ou ambíguo. É ele explicando, item a item, quem gastou e do que se
+trata. Não é dedução — é instrução direta, e está **estruturalmente amarrada àquela foto
+específica**, não solta no meio do chat.
+
+Procure ativamente por reply em cada item: ao ler cada nota, verifique se existe alguma
+mensagem posterior que cite aquela imagem. Se existir, leia primeiro. Se ela disser quem
+gastou, obra, ou do que se trata — **use o que ela diz e pare por aqui**, não continue
+descendo a lista.
+
+Confirmado com o Guilherme em 30/08/2026. É o equivalente, na EP, à tag "Encaminhada" que
+faz o fluxo do DG quase não errar: um sinal explícito e vinculado ao item, no lugar de
+inferência.
+
+**2. Nome citado explicitamente na legenda da própria mensagem** (item 6, terceiro bullet).
+
+**3. Contexto das mensagens imediatamente acima/abaixo**, no chat, sobre o mesmo gasto —
+releia as linhas ao redor da nota; às vezes o nome está numa mensagem vizinha que **não** é
+um reply formal. Menos confiável que o item 1 justamente por não ter vínculo explícito com
+a foto.
+
+**4. Final do cartão no comprovante**, contra a tabela do item 10 — só se 1, 2 e 3 não
+resolverem.
+
+**5. Regra do remetente** (item 6, primeiros dois bullets) — último recurso, só quando nada
+acima resolveu.
+
+Se mesmo assim ficar incerto, é dúvida de verdade: pare e pergunte ao usuário, não force um
+dos cinco critérios.
+
+**Ao reportar cada item, diga qual critério resolveu** (ex.: "resolvido pelo reply do
+Guilherme" / "resolvido pela regra do remetente"). Item resolvido pelos critérios 4 ou 5
+entra na lista de dúvidas — são inferência, não informação.
 
 ### 11. Não presuma técnico fixo por fornecedor/loja
 
@@ -385,3 +413,13 @@ usuário. Não entregue um item como "Confirmado: sim" se você mesmo não tem c
   também as imagens (nota sumindo era erro recorrente); (4) conferência por contagem
   (N mensagens = M itens) no lugar de "confirme que leu tudo"; (5) zoom obrigatório
   antes de marcar SN.
+- **30/08/2026 (3ª rodada) — resposta (reply) vira critério nº 1**: o Guilherme já
+  responde à imagem no WhatsApp quando o texto do funcionário fica ruim, explicando quem
+  gastou e do que se trata. Esse reply passa a ter prioridade máxima na decisão de "quem
+  gastou" — acima da legenda, do contexto vizinho, do final do cartão e da regra do
+  remetente. É o equivalente, na EP, à tag "Encaminhada" que faz o DG quase não errar:
+  um sinal explícito e amarrado ao item específico, no lugar de inferência. A skill passa
+  a procurar reply ativamente em cada nota, e a reportar qual critério resolveu cada item
+  (resolvidos por cartão ou remetente entram como dúvida, por serem inferência).
+  Decidido não mexer ainda no texto padrão pedido aos funcionários — primeiro rodar com o
+  reply e medir quanto erro sobra.

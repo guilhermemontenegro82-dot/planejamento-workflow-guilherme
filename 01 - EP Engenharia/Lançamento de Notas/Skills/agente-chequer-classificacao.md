@@ -82,8 +82,9 @@ do conteúdo da própria mensagem e das referências embutidas abaixo:
 
 - **Obra** (tabela de apelidos)
 - **Fornecedor** (com as substituições fixas)
-- **Quem gastou** (ordem de prioridade: legenda explícita → contexto de mensagens
-  vizinhas → final do cartão → regra do remetente)
+- **Quem gastou** (ordem de prioridade: **resposta/reply do Guilherme citando aquela
+  nota** → legenda explícita → contexto de mensagens vizinhas → final do cartão →
+  regra do remetente)
 - **REEMB** (sim/não, se o contexto indicar reembolso do cliente)
 - **Forma de pagamento** — dinheiro/Pix pessoal do técnico (gasto de caixa,
   nomenclatura "$Nome", obra de quem controla o caixa) vs. cartão da empresa
@@ -155,9 +156,19 @@ a **forma de pagamento** (dinheiro/Pix pessoal do técnico), não a palavra
 **Final do cartão**: 1678→Matheus · 8900→Jonathan. Contexto escrito da mensagem
 sempre tem prioridade sobre o final do cartão.
 
-**Ordem de prioridade para "quem gastou"**: (1) nome citado explicitamente na
-legenda → (2) contexto de mensagens vizinhas no chat → (3) final do cartão → (4)
-regra do remetente (Renato ou Guilherme, quem enviou, se ninguém mais foi citado).
+**Ordem de prioridade para "quem gastou"**:
+
+1. **🥇 Resposta (reply) do Guilherme citando aquela nota** — no WhatsApp aparece com a
+   foto citada num quadrinho acima do texto. Manda acima de tudo, inclusive da legenda
+   original: é o Guilherme corrigindo aquele item específico, amarrado à foto. Procure
+   ativamente por reply em cada item antes de aplicar qualquer outro critério.
+2. Nome citado explicitamente na legenda da própria mensagem.
+3. Contexto de mensagens vizinhas no chat (sem vínculo formal com a foto).
+4. Final do cartão.
+5. Regra do remetente (Renato ou Guilherme, quem enviou, se ninguém mais foi citado).
+
+Itens resolvidos pelos critérios 4 ou 5 são **inferência** — sinalize como tal ao
+comparar, mesmo quando a sua conclusão bater com a do Leitor.
 
 ## Troubleshooting
 
@@ -203,3 +214,13 @@ regra do remetente (Renato ou Guilherme, quem enviou, se ninguém mais foi citad
   também as imagens (nota sumindo era erro recorrente); (4) conferência por contagem
   (N mensagens = M itens) no lugar de "confirme que leu tudo"; (5) zoom obrigatório
   antes de marcar SN.
+- **30/08/2026 (3ª rodada) — resposta (reply) vira critério nº 1**: o Guilherme já
+  responde à imagem no WhatsApp quando o texto do funcionário fica ruim, explicando quem
+  gastou e do que se trata. Esse reply passa a ter prioridade máxima na decisão de "quem
+  gastou" — acima da legenda, do contexto vizinho, do final do cartão e da regra do
+  remetente. É o equivalente, na EP, à tag "Encaminhada" que faz o DG quase não errar:
+  um sinal explícito e amarrado ao item específico, no lugar de inferência. A skill passa
+  a procurar reply ativamente em cada nota, e a reportar qual critério resolveu cada item
+  (resolvidos por cartão ou remetente entram como dúvida, por serem inferência).
+  Decidido não mexer ainda no texto padrão pedido aos funcionários — primeiro rodar com o
+  reply e medir quanto erro sobra.
