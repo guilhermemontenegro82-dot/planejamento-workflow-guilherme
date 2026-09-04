@@ -27,8 +27,8 @@ arquivo, lê o dado **do arquivo**, e relê o arquivo antes de fechar cada linha
 
 Então, a partir de agora:
 
-- **Baixe** cada nota/comprovante para a pasta Downloads do usuário (ver passo 2.1).
-- **Extraia os dados lendo o arquivo salvo**, não a tela.
+- **Baixe** cada nota/comprovante para a pasta Downloads do usuário (fase 2.A).
+- **Extraia os dados lendo o arquivo salvo**, não a tela (fase 2.C).
 - **Não arquive, não numere, não crie pasta "Notas"** — diferente do DG, a EP não precisa
   guardar o arquivo. Ele é temporário, só serve de âncora de leitura.
 - No fim do ciclo, os arquivos usados vão para `Downloads/Deletar` (ver o passo de
@@ -58,48 +58,31 @@ a escrita na planilha são os chequers, não você — entregue ao Supervisor e 
 - Grupo do WhatsApp "EP - Notas fiscais" → abra o WhatsApp Web, localize o grupo, procure a
   última mensagem "Atualizado até aqui" (só as notas depois dela são novas).
 
-### 2. Varrer tudo sem pular nada (fonte WhatsApp)
+### 2. Colher primeiro, ler depois — nunca ao mesmo tempo
 
-São **duas passadas obrigatórias**, e a segunda é conferência da primeira — não é só
-complemento:
+**Esta é a mudança que mais afeta tempo e erro (30/08/2026).** Até aqui a EP fazia tudo numa
+passada só: navegar no lightbox → screenshot → zoom → screenshot → ler → decidir → próxima.
+Isso é lento (cada screenshot custa segundos) e frágil (screenshot que dá timeout ou lightbox
+que pula fazem o item **sumir sem avisar**). Lentidão e bloco pulado têm a mesma causa.
 
-- **1ª passada — filminho de mídia**: abra qualquer imagem ("Abrir imagem") e use as setas
-  ◄ ► do rodapé do lightbox para passar por todas as mídias em ordem cronológica, baixando
-  cada uma (passo 2.1 abaixo).
-- **2ª passada — rolagem normal do chat, como CONFERÊNCIA**: role o histórico inteiro do
-  chat (não o lightbox) entre o ponto de corte e a mensagem mais recente. Serve para duas
-  coisas ao mesmo tempo:
-  1. **Reconferir as imagens** — mensagens muito próximas no tempo (três comprovantes
-     seguidos às 16:49, por exemplo) são fáceis de pular no lightbox. Confira que toda
-     imagem que aparece na rolagem está na sua lista.
-  2. **Pegar o texto puro** — pagamento avisado só por escrito, sem foto nem print, é comum
-     e o filminho não mostra. Leia toda mensagem de texto, não só legendas de foto.
+O fluxo DG não faz assim, e é por isso que é mais rápido apesar de ter mais etapas: **baixa
+tudo primeiro, sem ler nada, e só depois lê os arquivos no disco.**
 
-  Essa segunda passada é o que faltava: até 30/08/2026 a EP só relia o **texto**, nunca as
-  imagens — e nota sumindo foi um erro real recorrente.
+Separe em três fases. Não misture:
 
-- **Zoom antes de desistir**: sempre que um número ou texto estiver difícil de ler, dê mais
-  zoom. **Não adivinhe e não marque "SN" sem ter dado zoom antes.** Se ainda assim não
-  resolver, leia pelo arquivo já baixado.
-- **Pagamento avisado só por texto** (caso clássico): dinheiro dado a um porteiro ou
-  funcionário por um favor avulso (ex.: "paguei 150 pro porteiro por causa da caçamba").
-  Trate cada menção dessas como um item de lançamento: identifique obra e "quem gastou"
-  (pergunte se não estiver claro) — ver "Pagamentos avulsos sem foto" abaixo.
-- **Identifique a obra pela legenda** da mensagem (ex.: "LC Xerém", "Gu-Urca", "M12-CURICICA
-  (reembolso)"). Use a tabela de apelidos abaixo. Se a legenda não deixar claro, pare e
-  pergunte ao usuário — não adivinhe.
-- **CNPJ de holding não indica a obra**: compras faturadas para "FLXY Solutions Patrimonial e
-  Investimentos LTDA" aparecem em várias obras diferentes — a obra real vem da legenda da
-  mensagem ou de outro contexto, nunca do CNPJ do destinatário.
+| Fase | O que faz | O que NÃO faz |
+|---|---|---|
+| **A. Colheita** | baixa todas as imagens | não lê, não classifica, não decide |
+| **B. Inventário** | conta e confere cobertura | não classifica |
+| **C. Leitura** | lê os arquivos no disco e classifica | não volta pro WhatsApp |
 
-### 2.1. Baixar cada nota — o arquivo é a âncora da leitura
+### 2.A. Colheita — baixar tudo, sem ler nada
 
-Antes de tudo, se ainda não estiver conectada nesta conta, chame
-`mcp__cowork__request_cowork_directory(path="~/Downloads")` para conectar a pasta Downloads
-real do usuário.
+Se ainda não estiver conectada nesta conta, chame
+`mcp__cowork__request_cowork_directory(path="~/Downloads")`.
 
-Para cada imagem no lightbox, dispare o download via JavaScript na própria página (mesmo
-método que o fluxo DG usa, já validado):
+Percorra do ponto de corte até a mensagem mais recente **baixando cada imagem, sem parar
+para ler**. Use JavaScript, não clique nem screenshot:
 
 ```javascript
 const imgs = Array.from(document.querySelectorAll('img'))
@@ -113,39 +96,72 @@ a.click();
 a.remove();
 ```
 
-- Nomeie sequencialmente com prefixo temporário: `ep_tmp_01.jpg`, `ep_tmp_02.jpg`… Não é
-  numeração de arquivo (a EP não arquiva) — é só para você conseguir voltar no arquivo certo.
-- **PDFs** abertos no visualizador do WhatsApp (iframe cross-origin) não baixam por JS — use
-  o ícone de download do próprio visualizador.
-- Depois de baixar, **leia o dado pelo arquivo** (`Read` em
-  `C:\Users\<usuario>\Downloads\ep_tmp_NN.jpg`), não pela tela.
+- Nomeie sequencialmente: `ep_tmp_01.jpg`, `ep_tmp_02.jpg`… É só para você conseguir voltar
+  no arquivo certo (a EP não arquiva nada).
+- **Não dê zoom nesta fase. Não leia valor, não decida obra, não decida quem gastou.** Só
+  baixe. Ler agora é o que torna a etapa lenta.
+- **Anote o horário de cada mensagem** junto do nome do arquivo — vai servir no inventário.
+- **PDFs** no visualizador do WhatsApp (iframe cross-origin) não baixam por JS: use o ícone
+  de download do próprio visualizador.
+- **Screenshot com timeout não trava a colheita.** A página costuma continuar respondendo a
+  JS normalmente — siga baixando; você vai ler pelo arquivo depois, não pela tela.
 
-### 2.2. 🔒 Regra anti-memória — releia o arquivo antes de fechar cada linha
+### 2.B. Inventário — conferir cobertura antes de ler qualquer coisa
+
+Agora, com tudo no disco, confira se **faltou bloco** — antes de gastar tempo lendo:
+
+1. **Conte os arquivos** baixados na pasta Downloads (`ep_tmp_*`). → **A**
+2. **Role o chat inteiro** (rolagem normal, não lightbox) do ponto de corte até o fim e
+   conte quantas mensagens têm imagem. → **B**
+3. **A e B têm que bater.** Não bateram? Você pulou bloco na colheita — volte e baixe o que
+   faltou antes de seguir.
+4. **Continuidade no tempo**: olhe os horários anotados. Um salto grande sem nenhuma
+   mensagem no meio (ex.: nada entre 10:12 e 16:49 num dia útil) é suspeito — role de novo
+   aquele intervalo específico para confirmar que realmente não havia nada ali, em vez de
+   assumir. É assim que um bloco inteiro some sem ninguém notar.
+5. **Texto puro**: nessa mesma rolagem, anote as mensagens de texto com sinal financeiro
+   (pagamento avisado por escrito, sem foto). Elas não geram arquivo, mas viram item.
+   - **Caso clássico**: dinheiro dado a porteiro ou funcionário por favor avulso (ex.:
+     "paguei 150 pro porteiro por causa da caçamba") — ver "Pagamentos avulsos sem foto".
+6. **Replies**: anote quais mensagens são **resposta do Guilherme citando uma nota** e a qual
+   arquivo cada uma se refere. São o critério nº 1 de "quem gastou" (seção 10.1) — ter esse
+   mapa pronto agora evita procurar item a item depois.
+
+### 2.C. Leitura — ler os arquivos, não a tela
+
+Só agora leia. Para cada arquivo baixado (`Read` em
+`C:\Users\<usuario>\Downloads\ep_tmp_NN.jpg`), extraia fornecedor, valor, data e número da
+nota. **Não volte para o WhatsApp para isso** — o arquivo tem tudo, e ler do disco é muito
+mais rápido que zoom na tela.
+
+- **Zoom só como exceção**: se o arquivo baixado estiver ilegível, aí sim volte à tela e dê
+  zoom. **Não adivinhe e não marque "SN" sem ter tentado antes.**
+- **Identifique a obra pela legenda** da mensagem (ex.: "LC Xerém", "Gu-Urca", "M12-CURICICA
+  (reembolso)"), usando a tabela de apelidos abaixo. Legenda que não deixa claro → pergunte,
+  não adivinhe.
+- **CNPJ de holding não indica a obra**: compras faturadas para "FLXY Solutions Patrimonial e
+  Investimentos LTDA" aparecem em várias obras — a obra real vem da legenda ou do contexto,
+  nunca do CNPJ do destinatário.
+
+### 2.D. 🔒 Regra anti-memória — releia o arquivo antes de fechar cada linha
 
 **Ao montar a tabela final, releia o arquivo específico de cada item antes de preencher
-fornecedor, valor e quem gastou. Não confie na memória do que você viu durante a varredura.**
+fornecedor, valor e quem gastou. Não confie na memória do que você viu na fase de leitura.**
 
-Por que essa regra existe: numa mesma leitura é comum aparecerem vários comprovantes
-parecidos (mesmo layout, valores próximos, mesma loja). Atribuir os dados de um comprovante
-ao item errado é um erro real e recorrente — aconteceu na EP em **27/08/2026** ("quem gastou"
-trocado entre itens) e já tinha acontecido no DG antes, que resolveu exatamente assim.
+Numa mesma rodada é comum aparecerem vários comprovantes parecidos (mesmo layout, valores
+próximos, mesma loja). Atribuir os dados de um ao item errado é erro real e recorrente —
+aconteceu na EP em **27/08/2026** ("quem gastou" trocado) e já tinha acontecido no DG antes,
+que resolveu exatamente assim. Reabrir o arquivo custa segundos; refazer o lançamento, não.
 
-Fechar a linha de memória é o modo mais comum de trocar item. Reabrir o arquivo custa
-segundos.
+### 2.E. Conferência final de contagem
 
-### 2.3. Conferência de contagem antes de fechar a leitura
+- **A** = arquivos baixados · **T** = mensagens de texto com sinal financeiro (fase 2.B)
+- **M** = itens na sua lista (lançamentos + aportes de caixa)
+- **A + T deve bater com M.** Não bateu, você pulou ou duplicou algo — resolva antes de
+  entregar.
 
-Não basta "confirmar que leu tudo" — **conte**:
-
-- Quantas mensagens com sinal financeiro você viu entre o ponto de corte e a mensagem mais
-  recente? → **N**
-- Quantos itens estão na sua lista (lançamentos + aportes de caixa)? → **M**
-- **N e M têm que bater.** Se não baterem, você pulou alguma coisa: volte à 2ª passada
-  (rolagem do chat) antes de entregar.
-- Quantos arquivos você baixou? Confira que existe um arquivo para cada item com foto.
-
-Reporte os três números ao Supervisor — eles alimentam o Certificado de Verificação que os
-chequers vão emitir.
+Reporte **A, T e M** ao Supervisor: são esses números que alimentam o Certificado de
+Verificação que os chequers vão emitir.
 
 ### 3. Apelidos de obra conhecidos
 
@@ -423,3 +439,13 @@ usuário. Não entregue um item como "Confirmado: sim" se você mesmo não tem c
   (resolvidos por cartão ou remetente entram como dúvida, por serem inferência).
   Decidido não mexer ainda no texto padrão pedido aos funcionários — primeiro rodar com o
   reply e medir quanto erro sobra.
+- **30/08/2026 (4ª rodada) — colher e ler viraram fases separadas**: o Guilherme
+  reportou que a leitura das notas é a etapa mais lenta E é onde blocos são pulados. Mesma
+  causa: a EP navegava no lightbox tirando screenshot de cada imagem (caro em tempo, e
+  screenshot com timeout ou lightbox que pula faz o item sumir em silêncio). O DG não faz
+  assim — baixa tudo por JS sem ler, depois lê os arquivos no disco. Reestruturado igual:
+  fase A colhe (só baixa, sem zoom, sem decidir), fase B inventaria (conta arquivos ×
+  mensagens, confere continuidade de horário para pegar bloco pulado, mapeia os replies),
+  fase C lê os arquivos no disco. O Chequer de Leitura também parou de reabrir imagem por
+  imagem — confere existência na tela e conteúdo pelo arquivo — e ganhou checagem de
+  continuidade temporal.

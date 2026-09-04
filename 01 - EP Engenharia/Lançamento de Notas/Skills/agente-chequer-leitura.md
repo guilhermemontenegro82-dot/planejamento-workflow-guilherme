@@ -31,6 +31,11 @@ lista bruta contra a lista estruturada que o `ep-leitor-notas` entregou.
 - O ponto de corte usado (texto e horário da mensagem "Atualizado até aqui" ou equivalente).
 - A lista de itens que o `ep-leitor-notas` entregou (obra, descrição, fornecedor, valor, data,
   quem gastou), mais a lista de aportes de caixa separada.
+- **Os três números do inventário do Leitor**: `A` (arquivos baixados), `T` (mensagens de
+  texto com sinal financeiro) e `M` (itens na lista). Sua contagem independente tem que
+  chegar nos mesmos valores — divergência aqui é o sinal mais barato de bloco pulado.
+- **A lista de arquivos baixados** (`ep_tmp_*` na pasta Downloads), para você conferir
+  existência sem precisar reabrir cada imagem no WhatsApp.
 
 ## Passo a passo
 
@@ -46,6 +51,13 @@ Serve para o Guilherme conferir no chat que esta etapa realmente rodou. Se essa 
 não aparece no histórico, a etapa foi pulada.
 
 ### 1. Reler do zero, em modo normal — não só o filminho de mídia
+
+**Não reabra imagem por imagem no lightbox.** O Leitor já baixou tudo para a pasta Downloads
+(`ep_tmp_*`); sua conferência é entre **o que está no chat** e **o que está no disco + na
+lista**. Reabrir cada foto com zoom é o que tornava esta etapa lenta, e não acrescenta nada:
+o arquivo tem o mesmo conteúdo da tela.
+
+O que você precisa da tela é só a **existência** de cada mensagem — não o conteúdo dela.
 
 - Abra o grupo "EP - Notas fiscais" no WhatsApp Web e vá até o ponto de corte.
 - **Role o histórico normal do chat**, mensagem por mensagem, até o fim — não confie só no
@@ -63,6 +75,16 @@ avulso ao porteiro"). Não decida obra, fornecedor exato ou quem gastou aqui —
 a mensagem existe. Inclua também menções a "aporte caixa" ou "abater caixa", mesmo sabendo que
 essas não viram item de lançamento — elas também precisam bater com a lista separada de aportes
 que o Leitor entregou.
+
+### 2.1. Conferir a continuidade no tempo — é assim que bloco inteiro some
+
+Antes de cruzar, olhe os horários da sua lista bruta. **Um salto grande sem nenhuma mensagem
+no meio é suspeito** (ex.: nada entre 10:12 e 16:49 num dia de obra). Pode ser real, mas pode
+ser bloco pulado na rolagem.
+
+Role de novo aquele intervalo específico para confirmar que não havia nada ali, em vez de
+assumir. Foi essa a forma como notas sumiram sem ninguém perceber — não é a mensagem isolada
+que escapa, é o bloco.
 
 ### 3. Cruzar contra a lista do Leitor
 
@@ -135,3 +157,13 @@ mesmo assim — é mais barato revisar um item que não era nada do que deixar p
   sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
   e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
   obrigatória, listando etapa por etapa se foi realmente invocada.
+- **30/08/2026 (4ª rodada) — colher e ler viraram fases separadas**: o Guilherme
+  reportou que a leitura das notas é a etapa mais lenta E é onde blocos são pulados. Mesma
+  causa: a EP navegava no lightbox tirando screenshot de cada imagem (caro em tempo, e
+  screenshot com timeout ou lightbox que pula faz o item sumir em silêncio). O DG não faz
+  assim — baixa tudo por JS sem ler, depois lê os arquivos no disco. Reestruturado igual:
+  fase A colhe (só baixa, sem zoom, sem decidir), fase B inventaria (conta arquivos ×
+  mensagens, confere continuidade de horário para pegar bloco pulado, mapeia os replies),
+  fase C lê os arquivos no disco. O Chequer de Leitura também parou de reabrir imagem por
+  imagem — confere existência na tela e conteúdo pelo arquivo — e ganhou checagem de
+  continuidade temporal.
