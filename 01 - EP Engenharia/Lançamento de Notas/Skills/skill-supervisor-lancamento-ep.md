@@ -95,6 +95,37 @@ mostre os itens em questão e o que está incerto (obra? fornecedor? quem gastou
 vier do Chequer de Classificação, as duas classificações candidatas lado a lado). Só avance
 para a Etapa 2 com a lista 100% confirmada e a cobertura já validada pela Etapa 1.5.
 
+### 4.1. Montar o Certificado de Verificação
+
+**É este bloco que autoriza a escrita na planilha.** Monte-o juntando os vereditos que os
+dois chequers emitiram (não reescreva os números — copie o que eles reportaram):
+
+```
+=== CERTIFICADO DE VERIFICAÇÃO — LANÇAMENTO EP ===
+Obra(s): <lista das obras da leitura>
+
+[1.5] CHEQUER DE LEITURA ......... APROVADO
+      Ponto de corte: <texto e horário>
+      Mensagens financeiras no período: <N>
+      Itens na lista do Leitor: <N>   |   Aportes de caixa: <N>
+      Divergências: nenhuma
+
+[1.6] CHEQUER DE CLASSIFICAÇÃO ... APROVADO
+      Itens reclassificados de forma independente: <N>
+      Divergências de campo: nenhuma
+
+[Checkpoint] Dúvidas confirmadas pelo Guilherme em: <data/hora>
+=== FIM DO CERTIFICADO ===
+```
+
+**Só monte o certificado se os dois chequers realmente rodaram e emitiram veredito.** Se
+algum não rodou, ou emitiu `REPROVADO`, ou você não tem os números dele — **não monte
+nada**. Volte e faça a etapa que faltou. Um certificado montado sem os chequers é pior
+que certificado nenhum: dá aparência de verificado ao que não foi.
+
+Passe o certificado para o `ep-lancador-notas` junto com a lista confirmada. Ele foi
+instruído a recusar a escrita sem esse bloco.
+
 ### 5. Agrupar por obra antes de lançar
 
 **A lista confirmada normalmente cobre mais de uma obra numa única leitura** — o grupo do
@@ -119,9 +150,37 @@ Para o mesmo grupo: invoque a skill `ep-pintor-notas`, passando o arquivo devolv
 2 (Lançamento) + a lista de itens **dessa obra** (para conferência de soma). Ela pinta, confere
 e devolve a planilha ao computador do usuário, com o relatório final daquela obra.
 
-### 8. Fechamento
+### 8. Fechamento — prestação de contas obrigatória
 
 Depois de repetir os passos 6 e 7 para todas as obras da lista, apresente ao usuário:
+
+**8.1. Primeiro, a prestação de contas do pipeline.** Antes de qualquer tabela, esta
+lista — dizendo, etapa por etapa, se a skill/agente foi **realmente invocada**:
+
+```
+=== PRESTAÇÃO DE CONTAS DO PIPELINE ===
+[1]   ep-leitor-notas ................... invocada / NÃO invocada
+[1.5] Agente Chequer de Leitura .......... invocado / NÃO invocado  → APROVADO/REPROVADO
+[1.6] Agente Chequer de Classificação .... invocado / NÃO invocado  → APROVADO/REPROVADO
+[ck]  Checkpoint com o Guilherme .......... feito / NÃO feito
+[2]   ep-lancador-notas (por obra) ....... invocada / NÃO invocada
+[3]   ep-pintor-notas (por obra) ......... invocada / NÃO invocada
+=== FIM DA PRESTAÇÃO DE CONTAS ===
+```
+
+Regras que valem aqui, e não são negociáveis:
+
+- **Fazer o trabalho "à mão" ou por script, replicando o que a skill pede sem invocá-la,
+  conta como `NÃO invocada`.** Não é atalho, é etapa pulada — e tem que aparecer assim.
+  Em 27/08/2026 a Etapa 3 foi executada exatamente assim e o relatório não disse nada;
+  o Guilherme só descobriu perguntando semanas depois.
+- Qualquer `NÃO invocada` ou `REPROVADO` na lista → **avise em destaque, no topo da
+  resposta**, que o lançamento saiu sem verificação completa e precisa ser revisado
+  manualmente. Nunca entregue um lançamento incompleto com aparência de concluído.
+- Não preencher esta lista "por dedução". Se você não tem certeza se uma etapa rodou,
+  o valor é `NÃO invocada`.
+
+**8.2. Depois, os resultados:**
 
 - A tabela final de lançamentos de **cada obra** (vinda do `ep-pintor-notas`), separadas por
   obra, não misturadas numa tabela só.
@@ -158,3 +217,11 @@ de escrever ou pintar. Isso vale em qualquer uma das etapas.
   "Pendente" (sugeria pendência a resolver) para **"ML"** (valor final, sem ação seguinte).
   Removida do fechamento (passo 8) a menção a itens pendentes de ML — não existe mais nada
   pendente por definição.
+- **30/08/2026 — encadeamento por certificado**: um lançamento real de 27/08 rodou
+  sem nenhum dos dois chequers e com a Etapa 3 executada "por script" em vez de
+  invocada — e o relatório final não denunciou nada. Correção em 3 camadas: (1) toda
+  skill/agente se anuncia ao iniciar, para o pulo ficar visível no chat; (2) os
+  chequers passaram a emitir veredito formal, e o `ep-lancador-notas` recusa escrever
+  sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
+  e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
+  obrigatória, listando etapa por etapa se foi realmente invocada.

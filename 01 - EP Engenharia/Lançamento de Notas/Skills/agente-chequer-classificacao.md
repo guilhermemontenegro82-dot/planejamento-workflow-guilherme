@@ -56,6 +56,17 @@ pelo Guilherme, não de um arquivo que dá pra reler. Ver "O que ainda falta dec
 
 ## Passo a passo
 
+### 0. Anunciar-se
+
+Comece a resposta com esta linha, literal:
+
+```
+▶ Agente Chequer de Classificação — Etapa 1.6 iniciada
+```
+
+Serve para o Guilherme conferir no chat que esta etapa realmente rodou. Se essa linha
+não aparece no histórico, a etapa foi pulada.
+
 ### 1. Classificar cada item de forma independente, sem olhar a lista do Leitor
 
 Para cada mensagem com sinal financeiro no período, decidir **do zero**, só a partir
@@ -82,15 +93,30 @@ Para cada item, cruzar a própria classificação contra a do Leitor:
   classificações lado a lado (a do Leitor e a própria) + o critério usado por cada
   uma. Não tentar decidir sozinho qual das duas está certa.
 
-### 3. Reportar ao Supervisor
+### 3. Emitir o veredito — você é quem libera a próxima etapa
 
-- **Tudo bateu**: "Reclassifiquei todos os itens de forma independente, todos batem
-  com o `ep-leitor-notas`. Nada a ajustar."
-- **Alguma divergência**: listar item a item, campo divergente, as duas
-  classificações e o critério de cada uma. O Supervisor trata **toda divergência
-  como dúvida automática** — vai para o checkpoint com o usuário mostrando as duas
-  opções, mesmo que o `ep-leitor-notas` tivesse marcado esse item como "Confirmado:
-  sim". Nunca decidir sozinho qual dos dois chequers estava certo.
+Este agente **não é consultivo**: nenhum item pode ser escrito na planilha sem o
+veredito dele. Terminar sempre com este bloco, literal, preenchido com os números
+reais desta execução:
+
+```
+[1.6] CHEQUER DE CLASSIFICAÇÃO ... APROVADO
+      Itens reclassificados de forma independente: <N>
+      Divergências de campo: nenhuma
+```
+
+- **Tudo bateu** → emitir o bloco acima com `APROVADO`. É essa linha que o
+  `ep-lancador-notas` vai exigir mais adiante para poder escrever.
+- **Alguma divergência** → emitir o bloco com **`REPROVADO`** e, no campo
+  Divergências, listar item a item: campo divergente, as duas classificações e o
+  critério usado por cada uma. O Supervisor trata toda divergência como **dúvida
+  automática** — vai para o checkpoint com o usuário mostrando as duas opções, mesmo
+  que o `ep-leitor-notas` tivesse marcado o item como "Confirmado: sim". Nunca decidir
+  sozinho qual dos dois estava certo.
+
+**Nunca preencher os números "de cabeça" nem estimar.** Se você não reclassificou os
+itens de verdade, não existe veredito para emitir — diga isso em vez de assinar um
+APROVADO vazio.
 
 ## Regra de ouro
 
@@ -151,3 +177,11 @@ regra do remetente (Renato ou Guilherme, quem enviou, se ninguém mais foi citad
   Pintor). Mesmo tipo de buraco já corrigido em Orçamentos com o Chequer de
   Conteúdo, adaptado aqui pro formato de classificação item a item em vez de
   julgamento de descrição/escopo.
+- **30/08/2026 — encadeamento por certificado**: um lançamento real de 27/08 rodou
+  sem nenhum dos dois chequers e com a Etapa 3 executada "por script" em vez de
+  invocada — e o relatório final não denunciou nada. Correção em 3 camadas: (1) toda
+  skill/agente se anuncia ao iniciar, para o pulo ficar visível no chat; (2) os
+  chequers passaram a emitir veredito formal, e o `ep-lancador-notas` recusa escrever
+  sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
+  e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
+  obrigatória, listando etapa por etapa se foi realmente invocada.

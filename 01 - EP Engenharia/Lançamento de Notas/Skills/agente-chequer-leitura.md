@@ -34,6 +34,17 @@ lista bruta contra a lista estruturada que o `ep-leitor-notas` entregou.
 
 ## Passo a passo
 
+### 0. Anunciar-se
+
+Comece a resposta com esta linha, literal:
+
+```
+▶ Agente Chequer de Leitura — Etapa 1.5 iniciada
+```
+
+Serve para o Guilherme conferir no chat que esta etapa realmente rodou. Se essa linha
+não aparece no histórico, a etapa foi pulada.
+
 ### 1. Reler do zero, em modo normal — não só o filminho de mídia
 
 - Abra o grupo "EP - Notas fiscais" no WhatsApp Web e vá até o ponto de corte.
@@ -64,14 +75,31 @@ que o Leitor entregou.
 - Mensagens claramente não financeiras (figurinha, "bom dia", assunto de obra sem valor
   envolvido) não entram na lista bruta e não geram divergência.
 
-### 4. Reportar ao Supervisor
+### 4. Emitir o veredito — você é quem libera a próxima etapa
 
-- **Cobertura 100%**: "Reli o grupo do zero, todas as mensagens do período batem com a lista do
-  Leitor. Nada a ajustar."
-- **Divergência encontrada**: liste cada mensagem sem correspondência (horário + descrição
-  breve) e devolva ao Supervisor. O Supervisor decide se manda de volta ao `ep-leitor-notas`
-  para extrair os dados completos daquele item **antes** de levar qualquer coisa ao checkpoint
-  com o usuário — nunca deixe passar para a Etapa 2 com uma divergência em aberto.
+Este agente **não é consultivo**: nenhum item pode ser escrito na planilha sem o veredito
+dele. Terminar sempre com este bloco, literal, preenchido com os números reais desta
+execução:
+
+```
+[1.5] CHEQUER DE LEITURA ......... APROVADO
+      Ponto de corte: <texto e horário da mensagem "Atualizado até aqui">
+      Mensagens financeiras no período: <N>
+      Itens na lista do Leitor: <N>   |   Aportes de caixa: <N>
+      Divergências: nenhuma
+```
+
+- **Cobertura 100%** → emitir o bloco acima com `APROVADO`. É essa linha que o
+  `ep-lancador-notas` vai exigir mais adiante para poder escrever.
+- **Divergência encontrada** → emitir o mesmo bloco com **`REPROVADO`** no lugar de
+  `APROVADO` e, no campo Divergências, a lista de cada mensagem sem correspondência
+  (horário + descrição breve). Devolver ao Supervisor, que manda de volta ao
+  `ep-leitor-notas` para extrair os dados que faltaram. **Nunca** passar para a Etapa 2
+  com um `REPROVADO` em aberto.
+
+**Nunca preencher os números "de cabeça" nem estimar.** Cada número do bloco vem da
+contagem real que você fez nesta execução. Se você não releu o grupo de verdade, não
+existe veredito para emitir — diga isso em vez de assinar um APROVADO vazio.
 
 ## Regra de ouro
 
@@ -99,3 +127,11 @@ mesmo assim — é mais barato revisar um item que não era nada do que deixar p
   "finja que não viu" por instrução, sem garantia estrutural de contexto isolado (mesmo
   problema que motivou os chequers de Orçamentos virarem agentes). Conteúdo da rubrica não
   mudou, só o mecanismo de execução — arquivo antigo era `ep-chequer-leitura` (skill).
+- **30/08/2026 — encadeamento por certificado**: um lançamento real de 27/08 rodou
+  sem nenhum dos dois chequers e com a Etapa 3 executada "por script" em vez de
+  invocada — e o relatório final não denunciou nada. Correção em 3 camadas: (1) toda
+  skill/agente se anuncia ao iniciar, para o pulo ficar visível no chat; (2) os
+  chequers passaram a emitir veredito formal, e o `ep-lancador-notas` recusa escrever
+  sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
+  e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
+  obrigatória, listando etapa por etapa se foi realmente invocada.

@@ -28,6 +28,18 @@ pergunte** — nunca chute e devolva o item como "confirmado" para a próxima et
 
 ## Passo a passo
 
+### 0. Anunciar-se
+
+Comece a resposta com esta linha, literal:
+
+```
+▶ ep-leitor-notas — Etapa 1 iniciada
+```
+
+**A sua lista não vai direto para o `ep-lancador-notas`.** Ela passa obrigatoriamente
+pelos dois Chequers (Etapas 1.5 e 1.6) e pelo checkpoint com o Guilherme. Quem autoriza
+a escrita na planilha são os chequers, não você — entregue ao Supervisor e pare.
+
 ### 1. Identificar a fonte
 
 - Pasta local "Notas" já com fotos → leia os arquivos direto (ordene por mtime).
@@ -280,3 +292,11 @@ usuário. Não entregue um item como "Confirmado: sim" se você mesmo não tem c
   é a **forma de pagamento**: qualquer valor pago em dinheiro/Pix pessoal do técnico é gasto de
   caixa por definição, independente da palavra "caixa"/"dinheiro" aparecer na legenda ou do
   tipo de despesa.
+- **30/08/2026 — encadeamento por certificado**: um lançamento real de 27/08 rodou
+  sem nenhum dos dois chequers e com a Etapa 3 executada "por script" em vez de
+  invocada — e o relatório final não denunciou nada. Correção em 3 camadas: (1) toda
+  skill/agente se anuncia ao iniciar, para o pulo ficar visível no chat; (2) os
+  chequers passaram a emitir veredito formal, e o `ep-lancador-notas` recusa escrever
+  sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
+  e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
+  obrigatória, listando etapa por etapa se foi realmente invocada.

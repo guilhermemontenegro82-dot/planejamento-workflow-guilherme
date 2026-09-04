@@ -9,6 +9,28 @@ Etapa 3 (final) do fluxo `supervisor-lancamento-ep`. Recebe do `ep-lancador-nota
 local já com as linhas escritas + a lista original de itens (com valores). Pinta cada linha na
 cor do técnico, confere tudo e devolve a planilha ao computador do usuário.
 
+## 🔒 Antes de qualquer coisa — comprovante de escrita
+
+Comece a resposta com esta linha, literal:
+
+```
+▶ ep-pintor-notas — Etapa 3 iniciada
+```
+
+Confirme que recebeu o **Comprovante de Escrita** emitido pelo `ep-lancador-notas`
+(arquivo editado, intervalo de linhas, soma dos valores, certificado dos chequers).
+**Sem o comprovante, pare** — não pinte, não confira, não devolva a planilha. Responda:
+
+> Não recebi o Comprovante de Escrita do `ep-lancador-notas`. Não sei em qual arquivo
+> nem em quais linhas devo trabalhar. Parando aqui.
+
+**Esta skill não pode ser substituída por execução manual.** Em **27/08/2026**, num
+lançamento real, a pintura e a conferência foram feitas "por script, replicando o que a
+skill pede, mas sem carregar as instruções dela" — resultado: as regras desta skill
+foram aplicadas de memória, sem garantia nenhuma. Fazer o trabalho à mão em vez de
+invocar esta skill **conta como etapa não executada** e tem que ser reportado como
+falha ao Guilherme, nunca apresentado como se a etapa tivesse rodado.
+
 ## Passo a passo
 
 ### 1. Pintar as linhas
@@ -77,3 +99,14 @@ valor. "ML" já é o valor final do campo Nota, não uma pendência. Não sugeri
 | Arquivo `~$*.xlsx` na pasta no momento de gravar | Planilha aberta no Excel — pedir para fechar (sem salvar) antes de continuar |
 | Escrita direta no arquivo montado do usuário corrompeu o .xlsx | Nunca escreva direto no arquivo do usuário — sempre a partir da cópia local do `ep-lancador-notas`. Se corromper, recupere a partir da última cópia local íntegra |
 | Releitura logo após a gravação mostra conteúdo antigo | Cache pode ficar defasado por alguns segundos — confie no tamanho/mtime reportado pela própria escrita, não numa releitura imediata |
+
+## Log de mudanças
+
+- **30/08/2026 — encadeamento por certificado**: um lançamento real de 27/08 rodou
+  sem nenhum dos dois chequers e com a Etapa 3 executada "por script" em vez de
+  invocada — e o relatório final não denunciou nada. Correção em 3 camadas: (1) toda
+  skill/agente se anuncia ao iniciar, para o pulo ficar visível no chat; (2) os
+  chequers passaram a emitir veredito formal, e o `ep-lancador-notas` recusa escrever
+  sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
+  e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
+  obrigatória, listando etapa por etapa se foi realmente invocada.

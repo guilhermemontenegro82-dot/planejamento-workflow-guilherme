@@ -10,7 +10,41 @@ Etapa 2 do fluxo `supervisor-lancamento-ep`. Recebe a lista de itens já extraí
 planilha. Não decide "quem gastou" nem identifica obra — isso já veio pronto da Etapa 1. Não
 pinta linha (isso é `ep-pintor-notas`).
 
-## Regra de ouro — de onde vêm os dados
+## 🔒 Regra de ouro nº 1 — sem certificado, não escreve
+
+**Esta skill é a que mexe na planilha. Por isso é ela que trava, não o Supervisor.**
+
+Antes de escrever **qualquer** linha, confirme que recebeu o **Certificado de
+Verificação** completo, com os dois vereditos `APROVADO`:
+
+```
+=== CERTIFICADO DE VERIFICAÇÃO — LANÇAMENTO EP ===
+[1.5] CHEQUER DE LEITURA ......... APROVADO
+      (ponto de corte, contagem de mensagens, itens, aportes)
+[1.6] CHEQUER DE CLASSIFICAÇÃO ... APROVADO
+      (itens reclassificados, divergências)
+[Checkpoint] Dúvidas confirmadas pelo Guilherme
+=== FIM DO CERTIFICADO ===
+```
+
+**Se faltar o certificado, ou se qualquer um dos dois vereditos estiver `REPROVADO`, ou
+se o checkpoint com o Guilherme não tiver acontecido — PARE.** Não escreva nada, não
+"adiante" nenhuma linha. Responda exatamente:
+
+> Não recebi o Certificado de Verificação com os dois chequers aprovados. Não vou
+> escrever na planilha. Falta: [diga o que falta — Chequer de Leitura, Chequer de
+> Classificação ou o checkpoint com o Guilherme].
+
+Por que essa trava existe: em **27/08/2026** um lançamento real rodou com o Supervisor,
+o Leitor e o Lançador, **sem nenhum dos dois chequers** — e ninguém percebeu, porque
+nada no fluxo denunciou a ausência. O Supervisor mandava invocá-los, mas mandar não é
+garantir. Agora a autorização de escrever vem dos chequers, e é verificável.
+
+**Não aceite certificado "reconstruído de memória"** pelo Supervisor ou por você mesmo.
+Os números do bloco (contagem de mensagens, de itens, ponto de corte) vêm do trabalho
+real dos chequers nesta execução. Se eles não rodaram, não há o que reconstruir.
+
+## Regra de ouro nº 2 — de onde vêm os dados
 
 **Só escreva a partir de uma lista gerada pelo `ep-leitor-notas` nesta mesma execução do
 Supervisor.** Se por qualquer motivo você receber uma lista de lançamentos vinda de uma
@@ -33,6 +67,18 @@ repita esse erro.
    Excel recalcula sozinho ao abrir.
 
 ## Passo a passo
+
+### 0. Anunciar-se e conferir o certificado
+
+Comece a resposta com esta linha, literal:
+
+```
+▶ ep-lancador-notas — Etapa 2 iniciada
+```
+
+Logo em seguida, **cole o Certificado de Verificação recebido** e confirme que os dois
+vereditos estão `APROVADO`. Só depois disso siga para o passo 1. Se o certificado não
+veio, aplique a Regra de ouro nº 1 e pare aqui.
 
 ### 1. Localizar e preparar os arquivos
 
@@ -77,11 +123,23 @@ Para cada item da lista confirmada, na próxima linha vazia:
   dados) — a conferência final disso é feita pelo `ep-pintor-notas` na etapa seguinte, mas
   evite introduzir a diferença aqui.
 
-### 4. Entregar para a próxima etapa
+### 4. Entregar para a próxima etapa — emitir o comprovante de escrita
 
-Ao terminar de escrever todos os itens, informe ao Supervisor: caminho do arquivo local
-editado, quantas linhas foram escritas (intervalo), e repasse a lista original (com valores)
-para o `ep-pintor-notas` conferir a soma.
+Ao terminar de escrever todos os itens, emita este bloco literal. É ele que autoriza o
+`ep-pintor-notas` a rodar:
+
+```
+=== COMPROVANTE DE ESCRITA — ETAPA 2 ===
+Obra: <nome da obra>
+Arquivo local editado: <caminho completo>
+Linhas escritas: <primeira>–<última>   |   Itens: <N>
+Soma dos valores escritos (coluna G): R$ <total>
+Certificado de Verificação recebido: SIM (Leitura APROVADO / Classificação APROVADO)
+=== FIM DO COMPROVANTE ===
+```
+
+Repasse junto a lista original (com valores) para o `ep-pintor-notas` conferir a soma
+contra o que foi escrito.
 
 ## Troubleshooting
 
@@ -106,3 +164,11 @@ para o `ep-pintor-notas` conferir a soma.
   leitura só (o grupo do WhatsApp cobre todas as obras). Adicionada regra explícita
   de que esta skill trabalha uma obra por vez — o agrupamento por obra passou a ser
   responsabilidade do Supervisor (novo passo 5 lá).
+- **30/08/2026 — encadeamento por certificado**: um lançamento real de 27/08 rodou
+  sem nenhum dos dois chequers e com a Etapa 3 executada "por script" em vez de
+  invocada — e o relatório final não denunciou nada. Correção em 3 camadas: (1) toda
+  skill/agente se anuncia ao iniciar, para o pulo ficar visível no chat; (2) os
+  chequers passaram a emitir veredito formal, e o `ep-lancador-notas` recusa escrever
+  sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
+  e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
+  obrigatória, listando etapa por etapa se foi realmente invocada.
