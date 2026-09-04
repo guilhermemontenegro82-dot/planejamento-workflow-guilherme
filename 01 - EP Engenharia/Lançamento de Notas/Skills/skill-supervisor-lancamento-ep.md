@@ -11,8 +11,10 @@ Versão modular, em teste, do fluxo de lançamento de notas da EP. Em vez de uma
 fazendo tudo, o trabalho é dividido em 5 etapas — 3 skills e 2 agentes — chamadas por este
 Supervisor:
 
-1. **`ep-leitor-notas`** (skill) — lê a fonte (WhatsApp ou pasta) e extrai os dados, sem
-   baixar nada.
+1. **`ep-leitor-notas`** (skill) — lê a fonte (WhatsApp ou pasta), baixa cada comprovante
+   para a Downloads como âncora de leitura e extrai os dados **do arquivo**, não da tela.
+   Não arquiva nem numera — os arquivos são temporários e vão para `Downloads/Deletar` no
+   fim do ciclo (passo 7.1).
 2. **Agente Chequer de Leitura** (agente, contexto isolado) — relê o grupo do zero, de forma
    independente, e confere se alguma mensagem com sinal financeiro ficou de fora da lista do
    Leitor. Roda em paralelo com o item 3 abaixo.
@@ -150,6 +152,21 @@ Para o mesmo grupo: invoque a skill `ep-pintor-notas`, passando o arquivo devolv
 2 (Lançamento) + a lista de itens **dessa obra** (para conferência de soma). Ela pinta, confere
 e devolve a planilha ao computador do usuário, com o relatório final daquela obra.
 
+### 7.1. Limpeza dos arquivos temporários
+
+**Só depois** de o `ep-pintor-notas` confirmar que a planilha foi salva com sucesso. Se o
+commit falhou, **não faça esta limpeza** — não mexa em nada enquanto a planilha final não
+estiver salva de verdade.
+
+O `ep-leitor-notas` baixou os arquivos (`ep_tmp_NN.jpg`) só como âncora de leitura — a EP não
+arquiva nota. Agora que os dados já estão na planilha:
+
+- Crie a pasta `Downloads/Deletar` se ela ainda não existir.
+- **Mova** para lá todos os `ep_tmp_*` desta rodada.
+- **Nunca apague nada de fato.** Mover é o máximo que este pipeline faz — a exclusão final é
+  decisão do Guilherme, no computador dele.
+- Reporte quantos arquivos foram movidos (entra na prestação de contas do passo 8).
+
 ### 8. Fechamento — prestação de contas obrigatória
 
 Depois de repetir os passos 6 e 7 para todas as obras da lista, apresente ao usuário:
@@ -165,6 +182,7 @@ lista — dizendo, etapa por etapa, se a skill/agente foi **realmente invocada**
 [ck]  Checkpoint com o Guilherme .......... feito / NÃO feito
 [2]   ep-lancador-notas (por obra) ....... invocada / NÃO invocada
 [3]   ep-pintor-notas (por obra) ......... invocada / NÃO invocada
+[7.1] Limpeza p/ Downloads/Deletar ....... N arquivos movidos / não executada
 === FIM DA PRESTAÇÃO DE CONTAS ===
 ```
 
@@ -225,3 +243,13 @@ de escrever ou pintar. Isso vale em qualquer uma das etapas.
   sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
   e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
   obrigatória, listando etapa por etapa se foi realmente invocada.
+- **30/08/2026 (2ª rodada) — amarrações trazidas do fluxo DG**: comparação lado a lado
+  mostrou que o DG erra muito menos apesar de ser mais complexo, e as diferenças estavam
+  no texto. Trazido para a EP: (1) baixar cada nota para a Downloads e **ler o dado do
+  arquivo, não da tela** — a EP continua sem arquivar, o arquivo é só âncora e vai pra
+  `Downloads/Deletar` no fim; (2) regra anti-memória: reler o arquivo do item antes de
+  fechar cada linha, porque comprovantes parecidos trocam de lugar (erro real de 27/08);
+  (3) a 2ª passada virou conferência completa — antes só relia texto, agora reconfere
+  também as imagens (nota sumindo era erro recorrente); (4) conferência por contagem
+  (N mensagens = M itens) no lugar de "confirme que leu tudo"; (5) zoom obrigatório
+  antes de marcar SN.

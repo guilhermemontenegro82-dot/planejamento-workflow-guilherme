@@ -1,6 +1,6 @@
 ---
 name: "ep-leitor-notas"
-description: "Etapa 1 do pipeline supervisor-lancamento-ep: lê notas fiscais, recibos, comprovantes e mensagens de texto do grupo WhatsApp \"EP - Notas fiscais\" (ou pasta local \"Notas\") e devolve uma lista estruturada de itens prontos para lançamento (obra, descrição, fornecedor, nota, data, valor, quem gastou, REEMB), mais lista de aportes de caixa e lista de dúvidas para o usuário confirmar antes de qualquer escrita. Não escreve na planilha nem baixa arquivo físico. Só deve ser chamada pelo supervisor-lancamento-ep."
+description: "Etapa 1 do pipeline supervisor-lancamento-ep: lê notas fiscais, recibos, comprovantes e mensagens de texto do grupo WhatsApp \"EP - Notas fiscais\" (ou pasta local \"Notas\") e devolve uma lista estruturada de itens prontos para lançamento (obra, descrição, fornecedor, nota, data, valor, quem gastou, REEMB), mais lista de aportes de caixa e lista de dúvidas para o usuário confirmar antes de qualquer escrita. Baixa cada comprovante para a pasta Downloads como âncora de leitura (lê o dado do arquivo, não da tela) — mas não arquiva nem numera: os arquivos são temporários e vão para Downloads/Deletar no fim do ciclo. Não escreve na planilha. Só deve ser chamada pelo supervisor-lancamento-ep."
 ---
 
 ## Papel nesta pipeline
@@ -18,10 +18,22 @@ uma **lista estruturada** de itens prontos para lançamento — com todos os cam
 lista separada de aportes de caixa (que não vão para a planilha) e uma lista de dúvidas para
 confirmar com o usuário antes de qualquer escrita.
 
-**Diferença chave em relação ao fluxo antigo**: a EP **não precisa de arquivo físico
-baixado/arquivado** — só dos dados. Não crie pasta "Notas", não baixe imagem nenhuma, não use
-o ícone de download do WhatsApp. Leia a nota (foto ou texto) na tela (lightbox, zoom, ou já na
-pasta se for esse o caso) e extraia os dados diretamente.
+**A EP não arquiva nota — mas baixa para ler.** Mudou em 30/08/2026, e o motivo importa:
+até então esta skill lia tudo na tela (lightbox/zoom) e montava a lista de memória. Dois
+erros reais apareceram assim — **nota que não foi lançada** e **"quem gastou" trocado entre
+itens**. O fluxo do DG, que é mais complexo e erra muito menos, faz diferente: baixa o
+arquivo, lê o dado **do arquivo**, e relê o arquivo antes de fechar cada linha. É essa
+âncora que a EP não tinha.
+
+Então, a partir de agora:
+
+- **Baixe** cada nota/comprovante para a pasta Downloads do usuário (ver passo 2.1).
+- **Extraia os dados lendo o arquivo salvo**, não a tela.
+- **Não arquive, não numere, não crie pasta "Notas"** — diferente do DG, a EP não precisa
+  guardar o arquivo. Ele é temporário, só serve de âncora de leitura.
+- No fim do ciclo, os arquivos usados vão para `Downloads/Deletar` (ver o passo de
+  encerramento no `supervisor-lancamento-ep`). **Nunca apague nada de fato** — mover para
+  `Deletar` é o máximo; a exclusão final é decisão do Guilherme, no computador dele.
 
 O usuário está sempre disponível: **na dúvida sobre obra, fornecedor ou quem gastou, pare e
 pergunte** — nunca chute e devolva o item como "confirmado" para a próxima etapa.
@@ -48,17 +60,31 @@ a escrita na planilha são os chequers, não você — entregue ao Supervisor e 
 
 ### 2. Varrer tudo sem pular nada (fonte WhatsApp)
 
-- **Filminho de mídia**: abra qualquer imagem ("Abrir imagem") e use as setas ◄ ► do rodapé do
-  lightbox para passar por todas as mídias em ordem cronológica — não baixe nada, só leia/zoom
-  na tela.
-- **Texto puro, numa passada separada**: o filminho só pega imagem. Role o histórico normal do
-  chat (não o lightbox) entre o checkpoint e a mensagem mais recente, lendo toda mensagem de
-  texto — não só legendas de foto. Pagamento avisado só por texto, sem nota nem print, é comum
-  e passa batido se você só olhar o filminho de mídia.
-  - **Caso clássico**: dinheiro dado a um porteiro ou funcionário por um favor avulso (ex.:
-    "paguei 150 pro porteiro por causa da caçamba"). Trate cada menção dessas como um item de
-    lançamento: identifique obra e "quem gastou" (pergunte se não estiver claro) — ver
-    "Pagamentos avulsos sem foto" abaixo.
+São **duas passadas obrigatórias**, e a segunda é conferência da primeira — não é só
+complemento:
+
+- **1ª passada — filminho de mídia**: abra qualquer imagem ("Abrir imagem") e use as setas
+  ◄ ► do rodapé do lightbox para passar por todas as mídias em ordem cronológica, baixando
+  cada uma (passo 2.1 abaixo).
+- **2ª passada — rolagem normal do chat, como CONFERÊNCIA**: role o histórico inteiro do
+  chat (não o lightbox) entre o ponto de corte e a mensagem mais recente. Serve para duas
+  coisas ao mesmo tempo:
+  1. **Reconferir as imagens** — mensagens muito próximas no tempo (três comprovantes
+     seguidos às 16:49, por exemplo) são fáceis de pular no lightbox. Confira que toda
+     imagem que aparece na rolagem está na sua lista.
+  2. **Pegar o texto puro** — pagamento avisado só por escrito, sem foto nem print, é comum
+     e o filminho não mostra. Leia toda mensagem de texto, não só legendas de foto.
+
+  Essa segunda passada é o que faltava: até 30/08/2026 a EP só relia o **texto**, nunca as
+  imagens — e nota sumindo foi um erro real recorrente.
+
+- **Zoom antes de desistir**: sempre que um número ou texto estiver difícil de ler, dê mais
+  zoom. **Não adivinhe e não marque "SN" sem ter dado zoom antes.** Se ainda assim não
+  resolver, leia pelo arquivo já baixado.
+- **Pagamento avisado só por texto** (caso clássico): dinheiro dado a um porteiro ou
+  funcionário por um favor avulso (ex.: "paguei 150 pro porteiro por causa da caçamba").
+  Trate cada menção dessas como um item de lançamento: identifique obra e "quem gastou"
+  (pergunte se não estiver claro) — ver "Pagamentos avulsos sem foto" abaixo.
 - **Identifique a obra pela legenda** da mensagem (ex.: "LC Xerém", "Gu-Urca", "M12-CURICICA
   (reembolso)"). Use a tabela de apelidos abaixo. Se a legenda não deixar claro, pare e
   pergunte ao usuário — não adivinhe.
@@ -66,11 +92,60 @@ a escrita na planilha são os chequers, não você — entregue ao Supervisor e 
   Investimentos LTDA" aparecem em várias obras diferentes — a obra real vem da legenda da
   mensagem ou de outro contexto, nunca do CNPJ do destinatário.
 
-#### Conferência antes de fechar a leitura
+### 2.1. Baixar cada nota — o arquivo é a âncora da leitura
 
-Confirme que leu TODAS as notas do período (do "Atualizado até aqui" até a mensagem mais
-recente) — revise o filminho mais uma vez e confirme que também releu o texto puro do chat
-atrás de pagamentos avisados sem foto. Nenhuma nota deve ficar de fora da lista.
+Antes de tudo, se ainda não estiver conectada nesta conta, chame
+`mcp__cowork__request_cowork_directory(path="~/Downloads")` para conectar a pasta Downloads
+real do usuário.
+
+Para cada imagem no lightbox, dispare o download via JavaScript na própria página (mesmo
+método que o fluxo DG usa, já validado):
+
+```javascript
+const imgs = Array.from(document.querySelectorAll('img'))
+  .filter(i => i.offsetWidth > 300 && i.offsetHeight > 300 && i.src.startsWith('blob:'));
+const img = imgs.sort((a,b) => (b.offsetWidth*b.offsetHeight)-(a.offsetWidth*a.offsetHeight))[0];
+const a = document.createElement('a');
+a.href = img.src;
+a.download = 'ep_tmp_01.jpg';
+document.body.appendChild(a);
+a.click();
+a.remove();
+```
+
+- Nomeie sequencialmente com prefixo temporário: `ep_tmp_01.jpg`, `ep_tmp_02.jpg`… Não é
+  numeração de arquivo (a EP não arquiva) — é só para você conseguir voltar no arquivo certo.
+- **PDFs** abertos no visualizador do WhatsApp (iframe cross-origin) não baixam por JS — use
+  o ícone de download do próprio visualizador.
+- Depois de baixar, **leia o dado pelo arquivo** (`Read` em
+  `C:\Users\<usuario>\Downloads\ep_tmp_NN.jpg`), não pela tela.
+
+### 2.2. 🔒 Regra anti-memória — releia o arquivo antes de fechar cada linha
+
+**Ao montar a tabela final, releia o arquivo específico de cada item antes de preencher
+fornecedor, valor e quem gastou. Não confie na memória do que você viu durante a varredura.**
+
+Por que essa regra existe: numa mesma leitura é comum aparecerem vários comprovantes
+parecidos (mesmo layout, valores próximos, mesma loja). Atribuir os dados de um comprovante
+ao item errado é um erro real e recorrente — aconteceu na EP em **27/08/2026** ("quem gastou"
+trocado entre itens) e já tinha acontecido no DG antes, que resolveu exatamente assim.
+
+Fechar a linha de memória é o modo mais comum de trocar item. Reabrir o arquivo custa
+segundos.
+
+### 2.3. Conferência de contagem antes de fechar a leitura
+
+Não basta "confirmar que leu tudo" — **conte**:
+
+- Quantas mensagens com sinal financeiro você viu entre o ponto de corte e a mensagem mais
+  recente? → **N**
+- Quantos itens estão na sua lista (lançamentos + aportes de caixa)? → **M**
+- **N e M têm que bater.** Se não baterem, você pulou alguma coisa: volte à 2ª passada
+  (rolagem do chat) antes de entregar.
+- Quantos arquivos você baixou? Confira que existe um arquivo para cada item com foto.
+
+Reporte os três números ao Supervisor — eles alimentam o Certificado de Verificação que os
+chequers vão emitir.
 
 ### 3. Apelidos de obra conhecidos
 
@@ -300,3 +375,13 @@ usuário. Não entregue um item como "Confirmado: sim" se você mesmo não tem c
   sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
   e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
   obrigatória, listando etapa por etapa se foi realmente invocada.
+- **30/08/2026 (2ª rodada) — amarrações trazidas do fluxo DG**: comparação lado a lado
+  mostrou que o DG erra muito menos apesar de ser mais complexo, e as diferenças estavam
+  no texto. Trazido para a EP: (1) baixar cada nota para a Downloads e **ler o dado do
+  arquivo, não da tela** — a EP continua sem arquivar, o arquivo é só âncora e vai pra
+  `Downloads/Deletar` no fim; (2) regra anti-memória: reler o arquivo do item antes de
+  fechar cada linha, porque comprovantes parecidos trocam de lugar (erro real de 27/08);
+  (3) a 2ª passada virou conferência completa — antes só relia texto, agora reconfere
+  também as imagens (nota sumindo era erro recorrente); (4) conferência por contagem
+  (N mensagens = M itens) no lugar de "confirme que leu tudo"; (5) zoom obrigatório
+  antes de marcar SN.

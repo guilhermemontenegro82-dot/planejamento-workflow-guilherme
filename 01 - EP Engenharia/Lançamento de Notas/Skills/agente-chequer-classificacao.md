@@ -51,8 +51,16 @@ pelo Guilherme, não de um arquivo que dá pra reler. Ver "O que ainda falta dec
 
 - As mensagens originais do período (mesma fonte que o `ep-leitor-notas` usou —
   WhatsApp do ponto de corte até a mais recente, ou pasta local "Notas").
+- **Os arquivos que o `ep-leitor-notas` baixou** (`ep_tmp_NN.jpg` na pasta Downloads),
+  com o mapeamento de qual arquivo corresponde a qual item.
 - A lista que o `ep-leitor-notas` entregou (obra, descrição, fornecedor, nota, data,
   valor, quem gastou, REEMB) — **usada só na Etapa 2 abaixo, nunca antes**.
+
+**Classifique lendo o arquivo, não a memória da mensagem.** Desde 30/08/2026 o Leitor
+baixa cada comprovante justamente para servir de âncora — abrir o arquivo do item que
+você está classificando é mais confiável do que reconstruir o que a mensagem dizia.
+Comprovantes parecidos entre si (mesmo layout, valores próximos, mesma loja) são a
+causa conhecida de troca de item entre linhas.
 
 ## Passo a passo
 
@@ -185,3 +193,13 @@ regra do remetente (Renato ou Guilherme, quem enviou, se ninguém mais foi citad
   sem o Certificado de Verificação com os dois APROVADO — a trava saiu do Supervisor
   e foi para a skill que mexe na planilha; (3) o fechamento virou prestação de contas
   obrigatória, listando etapa por etapa se foi realmente invocada.
+- **30/08/2026 (2ª rodada) — amarrações trazidas do fluxo DG**: comparação lado a lado
+  mostrou que o DG erra muito menos apesar de ser mais complexo, e as diferenças estavam
+  no texto. Trazido para a EP: (1) baixar cada nota para a Downloads e **ler o dado do
+  arquivo, não da tela** — a EP continua sem arquivar, o arquivo é só âncora e vai pra
+  `Downloads/Deletar` no fim; (2) regra anti-memória: reler o arquivo do item antes de
+  fechar cada linha, porque comprovantes parecidos trocam de lugar (erro real de 27/08);
+  (3) a 2ª passada virou conferência completa — antes só relia texto, agora reconfere
+  também as imagens (nota sumindo era erro recorrente); (4) conferência por contagem
+  (N mensagens = M itens) no lugar de "confirme que leu tudo"; (5) zoom obrigatório
+  antes de marcar SN.
