@@ -20,6 +20,12 @@
 # São snapshot/backup: a fonte da verdade editável é sempre o .md ao lado.
 !*.skill
 
+# Scripts de verificação/ferramenta (ex.: _verificar-corrente.pl, que checa
+# a integridade do encadeamento entre as skills antes de instalar no Cowork).
+!*.pl
+!*.py
+!*.sh
+
 # Mapa mental e documentos de planejamento
 !Planejamento WorkFlow Guilherme/**/*.jpg
 !Planejamento WorkFlow Guilherme/**/*.pptx
