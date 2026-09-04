@@ -17,8 +17,17 @@ Comece a resposta com esta linha, literal:
 ▶ ep-pintor-notas — Etapa 3 iniciada
 ```
 
-Confirme que recebeu o **Comprovante de Escrita** emitido pelo `ep-lancador-notas`
-(arquivo editado, intervalo de linhas, soma dos valores, certificado dos chequers).
+Confirme que recebeu o **Comprovante de Escrita** emitido pelo `ep-lancador-notas` — o
+bloco literal abaixo, com os campos preenchidos:
+
+```
+=== COMPROVANTE DE ESCRITA — ETAPA 2 ===
+Obra / Arquivo local editado / Linhas escritas / Itens
+Soma dos valores escritos (coluna G)
+Certificado de Verificação recebido: SIM
+=== FIM DO COMPROVANTE ===
+```
+
 **Sem o comprovante, pare** — não pinte, não confira, não devolva a planilha. Responda:
 
 > Não recebi o Comprovante de Escrita do `ep-lancador-notas`. Não sei em qual arquivo

@@ -141,16 +141,33 @@ Lançador. **Achado em revisão (04/08/2026)**: nem o `ep-lancador-notas` nem o
 
 ### 6. Etapa 2 — Lançamento (por obra)
 
-Para cada grupo de itens de uma mesma obra: invoque a skill `ep-lancador-notas`, passando só os
-itens dessa obra + o caminho da planilha de controle financeiro correspondente. Ela escreve as
-linhas na cópia local da planilha e devolve o caminho do arquivo + intervalo de linhas
-escritas.
+Para cada grupo de itens de uma mesma obra, invoque a skill `ep-lancador-notas` passando **três
+coisas** — as três são obrigatórias:
+
+1. **O Certificado de Verificação** (o bloco montado no passo 4.1, com os dois `APROVADO`).
+   O Lançador foi instruído a **recusar escrever sem ele** — se você não passar, ele para e o
+   lançamento não acontece. Passe o certificado **em toda invocação**, uma vez por obra, não
+   só na primeira.
+2. Os itens **dessa obra** (só dela, já agrupados).
+3. O caminho da planilha de controle financeiro correspondente.
+
+Ela escreve as linhas na cópia local da planilha e devolve o **Comprovante de Escrita**
+(caminho do arquivo, intervalo de linhas, soma dos valores) — guarde esse bloco, o passo 7
+precisa dele.
 
 ### 7. Etapa 3 — Pintura e conferência (por obra)
 
-Para o mesmo grupo: invoque a skill `ep-pintor-notas`, passando o arquivo devolvido pela Etapa
-2 (Lançamento) + a lista de itens **dessa obra** (para conferência de soma). Ela pinta, confere
-e devolve a planilha ao computador do usuário, com o relatório final daquela obra.
+Para o mesmo grupo, invoque a skill `ep-pintor-notas` passando **duas coisas** — as duas são
+obrigatórias:
+
+1. **O Comprovante de Escrita** que a Etapa 2 acabou de emitir (bloco
+   `=== COMPROVANTE DE ESCRITA — ETAPA 2 ===`, com arquivo, intervalo de linhas e soma). O
+   Pintor foi instruído a **parar sem ele** — sem o comprovante ele não sabe em qual arquivo
+   nem em quais linhas trabalhar.
+2. A lista de itens **dessa obra** (para conferência de soma).
+
+Ela pinta, confere e devolve a planilha ao computador do usuário, com o relatório final
+daquela obra.
 
 ### 7.1. Limpeza dos arquivos temporários
 
