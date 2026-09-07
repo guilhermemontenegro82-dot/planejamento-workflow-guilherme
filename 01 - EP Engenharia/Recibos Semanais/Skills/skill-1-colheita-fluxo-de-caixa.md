@@ -178,17 +178,41 @@ Ler o preenchimento (`fill`) da célula de `VALOR SAÍDA` e resolver para RGB:
 - Se for `fgColor theme=N tint=T` → resolver a cor do tema em `xl/theme/theme1.xml` e
   aplicar o tint (tint > 0 clareia, tint < 0 escurece).
 
-Com o RGB, converter para HSL e classificar pelo **matiz**:
+### 1º: tabela de códigos confirmados
 
-| Matiz (H)     | Saturação | Status                |
-|---------------|-----------|-----------------------|
-| 70°–170°      | > 20%     | **VERDE** — já pagou  |
-| 15°–50°       | > 20%     | **LARANJA** — ainda não pagou |
-| qualquer outro| —         | **DESCONHECIDO**      |
+Estes dois foram **lidos da planilha real da obra 848** e verificados em 06/09/2026:
 
-Classificar por faixa de matiz, e não por código exato, é deliberado: o verde forte da
-obra 848 é `FF00B050`, mas ele também usa `FF92D050`, e o laranja ainda não apareceu em
-nenhum arquivo lido. A faixa cobre as variações sem precisar catalogar cada tom.
+| RGB        | Status      | Onde apareceu                       |
+|------------|-------------|--------------------------------------|
+| `FF00B050` | **VERDE**   | linhas `Sinal` e `M01`, já pagas     |
+| `FFFFC000` | **LARANJA** | linha `M02`, pagamento previsto 11/09 |
+
+Código na tabela → usar direto, sem calcular nada.
+
+### 2º: fallback por matiz, para variações
+
+Código fora da tabela: converter o RGB para HSL e classificar pelo **matiz**.
+
+| Matiz (H)      | Saturação | Status                        |
+|----------------|-----------|-------------------------------|
+| 70°–170°       | > 20%     | **VERDE** — já pagou          |
+| 15°–50°        | > 20%     | **LARANJA** — ainda não pagou |
+| qualquer outro | —         | **DESCONHECIDO**              |
+
+Valores de referência conferidos: `FF00B050` → H 147,3° · `FFFFC000` → H 45,2° ·
+`FF92D050` (verde claro) → H 89,1° · `FFED7D31` (laranja alternativo) → H 24,3°.
+
+**Amarelo puro (`FFFFFF00`, H 60°) cai fora das duas faixas de propósito** — fica
+`DESCONHECIDO` e a skill pergunta, em vez de adivinhar que amarelo é laranja. Na
+planilha da obra 848 o amarelo é usado em outra coisa (linha de totais).
+
+### Armadilha de implementação
+
+Ao converter o canal para 0–1, **dividir por `255.0`, não por `255`**. Em linguagem que
+faz divisão inteira exata (PowerShell, Python 2), `0/255` devolve inteiro `0`, e aí a
+função de máximo pode resolver para a sobrecarga de inteiro e arredondar `0,69` para
+`1` — o matiz sai completamente errado e a cor vira `DESCONHECIDO` em silêncio. Esse bug
+foi pego no teste de mesa de 06/09/2026, justamente no verde `FF00B050`.
 
 **Cor DESCONHECIDA (inclusive célula sem preenchimento) → não classificar por conta
 própria.** Registrar no dossiê como `STATUS INDEFINIDO` com o RGB encontrado e

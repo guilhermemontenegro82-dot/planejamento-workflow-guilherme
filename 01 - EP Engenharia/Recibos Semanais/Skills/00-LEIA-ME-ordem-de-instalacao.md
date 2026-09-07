@@ -121,10 +121,9 @@ Estão escritas no topo das duas skills e são verificadas pelo Bloco D do chequ
    "Pagamento em espécie". Encaixada na frase do recibo virou
    `através de pagamento em espécie`, para não quebrar a gramática. Se ele preferir
    outra construção, trocar na Skill 2, seção 2.4 — não improvisar caso a caso.
-2. **Cor laranja.** Nenhum arquivo lido tinha célula laranja (a obra 848 só tem verde
-   `FF00B050`). A classificação é por faixa de matiz, não por código exato, então deve
-   funcionar — mas vale confirmar na primeira rodada real que uma linha prevista foi
-   classificada como LARANJA (e apareça como `aguardando pgto` na tabela).
+2. ~~**Cor laranja.**~~ **RESOLVIDO em 06/09/2026.** O laranja real é `FFFFC000`
+   (matiz 45,2°) e o verde real é `FF00B050` (matiz 147,3°). Ambos estão fixados na
+   Skill 1 como tabela de códigos confirmados, com o matiz só como fallback.
 3. **Tratamento do cliente.** O modelo diz "do Sr.". Para cliente mulher, casal ou
    empresa, a Skill 2 herda o tratamento do recibo anterior da obra; em obra sem recibo
    anterior, ela para e pergunta.
