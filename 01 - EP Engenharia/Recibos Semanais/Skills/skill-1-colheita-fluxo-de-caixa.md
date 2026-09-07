@@ -25,8 +25,11 @@ outra instrução deste arquivo.
    nunca `save()`.
 3. **Só emitir recibo de valor apurado desta semana em diante.** Lançamentos antigos já
    têm o recibo dele e ficam fora da varredura — ver "Data de corte".
-4. Assinaturas do Guilherme e do Renato, timbre, rodapé e contatos vêm do recibo
-   anterior e são preservados intactos.
+4. **Marca d'água, logo, rodapé e as assinaturas** do Guilherme e do Renato vêm do
+   recibo anterior da obra e são preservados intactos.
+5. **Todo recibo é redigido como pagamento já efetuado**, independente da cor da
+   célula. A cor nunca aparece no documento — só na tabela final, para dizer ao
+   Guilherme quais recibos já podem ser enviados.
 
 Se alguma etapa deste arquivo parecer pedir o contrário, **estas regras vencem**.
 
@@ -160,9 +163,14 @@ Para cada linha marcada, ler:
 Se a linha tem `ok` mas `VALOR ENTRADA` está vazio ou zero: registrar como
 INCONSISTENTE no dossiê, com obra e número da linha. Não emitir, não chutar.
 
-## Passo 6 — Classificar a cor (pago × previsto)
+## Passo 6 — Classificar a cor
 
-Regra do Guilherme: **`ok` verde = já pago. `ok` laranja = ainda não pago.**
+Regra do Guilherme: **`ok` verde = o cliente já pagou. `ok` laranja = ainda não pagou.**
+
+O rótulo gravado no dossiê é a **cor crua** — `VERDE` ou `LARANJA` — e não uma palavra
+como "previsto". Isso é deliberado: enquanto essa palavra existir em qualquer ponto da
+cadeia, existe o risco de ela vazar para dentro de um recibo. A tradução para linguagem
+humana (`pode enviar` / `aguardando pgto`) acontece só na tabela final da Skill 2.
 
 Ler o preenchimento (`fill`) da célula de `VALOR SAÍDA` e resolver para RGB:
 
@@ -174,8 +182,8 @@ Com o RGB, converter para HSL e classificar pelo **matiz**:
 
 | Matiz (H)     | Saturação | Status                |
 |---------------|-----------|-----------------------|
-| 70°–170°      | > 20%     | **PAGO** (verde)      |
-| 15°–50°       | > 20%     | **PREVISTO** (laranja)|
+| 70°–170°      | > 20%     | **VERDE** — já pagou  |
+| 15°–50°       | > 20%     | **LARANJA** — ainda não pagou |
 | qualquer outro| —         | **DESCONHECIDO**      |
 
 Classificar por faixa de matiz, e não por código exato, é deliberado: o verde forte da
@@ -186,10 +194,34 @@ nenhum arquivo lido. A faixa cobre as variações sem precisar catalogar cada to
 própria.** Registrar no dossiê como `STATUS INDEFINIDO` com o RGB encontrado e
 perguntar ao Guilherme.
 
-O status **não muda o texto do recibo** — por decisão dele em 06/09/2026, previsto e
-pago geram o mesmo documento; se o cliente não pagar na data prevista, o recibo é
-revisado com a data real. O status serve para (a) o rótulo na tabela de revisão e
-(b) o gatilho de reemissão do Passo 8.
+### A cor NÃO entra no recibo, em hipótese alguma
+
+Decisão do Guilherme em 06/09/2026, depois de descrever o fluxo real:
+
+> Na quinta ou sexta de manhã, quando a skill roda, ele ainda **não recebeu nada** —
+> a planilha inteira está laranja. A skill deixa **todos os recibos prontos, redigidos
+> como pagamento já efetuado**. Conforme cada cliente paga, ele pinta a célula de verde
+> e envia o recibo que já estava feito.
+
+Portanto **todo recibo é redigido como pago** (`pagos no dia {DATA}`), independente da
+cor. Nunca escrever "previsto", "previsão de pagamento", "a receber" ou qualquer
+variante no documento — nem no texto, nem no nome do arquivo, nem em subpasta.
+
+A razão é boa: um recibo "previsto" não serve **antes** (ele não manda recibo de coisa
+não paga) nem **depois** (o cliente pagou, o "previsto" virou mentira). Ele nunca teria
+uso.
+
+A cor sobrevive na skill por **um único motivo**: dizer a ele, na tabela final, quais
+recibos já podem ser enviados. Verde = cliente já pagou, pode mandar. Laranja =
+aguardando o pagamento, segurar. Isso espelha exatamente o trabalho dele durante a
+semana. É informação **para ele**, nunca para o cliente.
+
+### O efeito colateral que ele precisa saber
+
+Como o recibo é feito antes do pagamento, ele carrega a **data prevista**. Se o cliente
+pagar em outro dia e o Guilherme corrigir a data na planilha, o recibo pronto fica com
+a data errada. A skill detecta isso na varredura seguinte (Passo 8, `DIVERGENTE`) e
+**avisa** — mas não conserta sozinha, porque o recibo pode já ter sido enviado.
 
 ## Passo 7 — Ler a pasta `Recibos` da obra
 
@@ -257,11 +289,11 @@ Cauda (do recibo anterior): ", para serviços de reforma e criação do quarto d
   Francisco, na Rua João de Barros, 22, apartamento 601 – Leblon – Rio de Janeiro."
 Padrão de nome: "MS - Recibo - {REF} - Obra Quarto Francisco- Leblon.docx"
 
-| Linha | REFERENCIA | Valor      | Data       | Forma | Cor      | Status  | Emissão |
-|-------|------------|------------|------------|-------|----------|---------|---------|
-| 9     | Sinal      | 12.532,91  | 24/08/2026 | PIX   | verde    | PAGO    | JÁ EMITIDO |
-| 10    | M01        | 8.177,52   | 04/09/2026 | PIX   | verde    | PAGO    | JÁ EMITIDO |
-| 11    | M02        | 9.430,00   | 11/09/2026 | PIX   | laranja  | PREVISTO| NOVO    |
+| Linha | REFERENCIA | Valor      | Data       | Forma | Cor     | Emissão    |
+|-------|------------|------------|------------|-------|---------|------------|
+| 9     | Sinal      | 12.532,91  | 24/08/2026 | PIX   | VERDE   | JÁ EMITIDO |
+| 10    | M01        | 8.177,52   | 04/09/2026 | PIX   | VERDE   | JÁ EMITIDO |
+| 11    | M02        | 9.430,00   | 11/09/2026 | PIX   | LARANJA | NOVO       |
 ```
 
 Ao final, um bloco de fechamento com: obras varridas, obras puladas (com motivo),
@@ -284,15 +316,65 @@ cabeça" contra o que a colheita já disse:
       marcada como INCONSISTENTE.
 - [ ] Todo valor colhido está entre R$ 100 e R$ 500.000 (faixa de sanidade para aporte
       ou medição da EP). Fora disso, sinalizar para conferência — não descartar.
-- [ ] Toda cor caiu em PAGO ou PREVISTO — ou está como STATUS INDEFINIDO com o RGB.
+- [ ] Toda cor caiu em VERDE ou LARANJA — ou está como STATUS INDEFINIDO com o RGB.
+- [ ] O dossiê não contém a palavra "previsto" em lugar nenhum.
 - [ ] Nenhuma planilha foi salva. Nenhum arquivo foi criado dentro de
       `EP - Obras em Andamento`.
 
-## Próxima etapa
+## Passo 10 — Emitir o Certificado de Colheita
 
-Passar o dossiê para a **Skill 2 — Emissão de Recibos**. Se houver qualquer pendência
-(`STATUS INDEFINIDO`, `INCONSISTENTE`, `SEM MODELO`), apresentá-las ao Guilherme junto
-com o dossiê — ele decide se resolve agora ou se a Skill 2 segue com o resto.
+Só depois que **toda** a autoverificação acima passar. Imprimir na conversa,
+literalmente:
+
+```
+=== CERTIFICADO DE COLHEITA ===
+Varredura:        AAAA-MM-DD HH:MM
+Data de corte:    DD/MM/AAAA
+Obras varridas:   N        Obras puladas: N
+Linhas colhidas:  N
+  NOVO: N | JÁ EMITIDO: N | DIVERGENTE: N | ANTERIOR AO CORTE: N
+Soma dos NOVO:    R$ X.XXX,XX
+SELO: COLHEITA-<AAAAMMDD>-<obras>O-<novos>N-<soma em centavos, sem pontuação>
+===============================
+```
+
+Exemplo de selo: `COLHEITA-20260910-7O-3N-3343000`.
+
+O selo é uma **impressão digital mecânica** da colheita. A Skill 2 vai recalculá-lo a
+partir do dossiê que receber; se não bater, ela se recusa a rodar. Isso impede que a
+Skill 2 trabalhe sobre um dossiê editado, truncado ou de outra rodada.
+
+**Se a autoverificação falhar, NÃO emitir o certificado.** Relatar a falha e parar. Sem
+certificado, a Skill 2 não roda — é assim que se garante que uma colheita quebrada não
+vira recibo.
+
+## Passo 11 — Passar adiante, obrigatoriamente
+
+Terminado o certificado, **invocar imediatamente a Skill 2 —
+`recibos-ep-emissao`**, passando o dossiê e o certificado.
+
+Não perguntar "quer que eu siga?". Não parar para o Guilherme escolher. Não concluir a
+tarefa aqui. A Etapa 1 **não é entregável**: um dossiê sozinho não serve para nada. O
+único fim de execução aceitável desta skill é ter invocado a Skill 2 ou ter falhado
+explicitamente.
+
+Se houver pendências (`STATUS INDEFINIDO`, `INCONSISTENTE`, `SEM MODELO`), elas vão
+listadas no certificado e seguem junto — a Skill 2 emite o que dá e reporta o resto. Uma
+pendência numa obra **nunca** trava as outras.
+
+## Prestação de contas
+
+Ao final da execução completa do pipeline (depois que a Skill 2 e o chequer voltarem),
+imprimir:
+
+```
+Etapa 1 — colheita     invocada   selo COLHEITA-...
+Etapa 2 — emissão      invocada   selo ...
+Chequer                invocado   selo CONFERENCIA-...
+```
+
+Qualquer linha com `NÃO invocada` é uma falha do pipeline e tem que ser dita ao
+Guilherme em voz alta, não escondida no meio do relatório.
 
 ## Log de mudanças
 

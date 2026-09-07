@@ -9,6 +9,28 @@ Verificador do pipeline de Recibos Semanais. É documento com valor financeiro i
 o cliente: um dígito errado no valor, ou o extenso divergindo do número, é o pior
 defeito possível.
 
+## TRAVA DE ENTRADA
+
+Antes de conferir qualquer coisa:
+
+1. Exigir o **Certificado de Colheita** da Skill 1 (com `SELO: COLHEITA-...`) e a lista
+   dos `.docx` gerados pela Skill 2.
+2. **Faltou o certificado?** Não conferir e não certificar. Dizer:
+
+   > Não recebi o Certificado de Colheita — não posso conferir contra uma colheita que
+   > não existe.
+
+   Um chequer que confere sem a origem só consegue comparar a saída consigo mesma —
+   isso é eco, não verificação.
+3. **Não há `.docx` para conferir?** Dizer isso explicitamente e não emitir certificado.
+   "Nada a conferir" nunca vira PASS.
+
+Anunciar, ao iniciar:
+
+```
+▶ chequer-recibos-ep — conferência iniciada
+```
+
 ## Princípio: só PASS com evidência mecânica
 
 Este agente **não** avalia se o recibo "parece certo". Ele:
@@ -75,11 +97,22 @@ Comparar cada recibo gerado com o recibo-modelo **da mesma obra**.
       não aparecem em nenhum recibo de outra obra desta rodada. Evidência: a checagem
       cruzada.
 - [ ] **Pacote completo** — o `.docx` gerado tem o mesmo número de arquivos internos que
-      o modelo. Evidência: as duas contagens. Se caiu, sumiu timbre, rodapé ou
-      assinatura.
-- [ ] **Timbre e assinaturas presentes** — `word/header1.xml`, `word/footer1.xml` e
-      todos os `word/media/*.png` continuam no pacote, com o mesmo tamanho em bytes do
-      modelo.
+      o modelo (27 no recibo da obra 848). Evidência: as duas contagens.
+- [ ] **Marca d'água intacta** — `word/header1.xml`, `header2.xml` e `header3.xml` são
+      **byte a byte idênticos** aos do modelo, e cada um ainda contém o `<v:shape>` com
+      `o:title="MARCA-D´ÁGUA"` apontando para `image3.png`. Evidência: o hash ou o
+      tamanho em bytes de cada header, e o trecho do `v:shape`.
+- [ ] **Logo e rodapé intactos** — `header2.xml` mantém o `<w:drawing>` do logo
+      (`image4.png`) e `footer1.xml` o do rodapé (`image5.png`). Evidência: os trechos.
+- [ ] **Mídia intacta** — `word/media/` tem os mesmos 5 arquivos do modelo
+      (`image1`…`image5.png`), com **os mesmos tamanhos em bytes**. Evidência: a tabela
+      dos 5 nomes e tamanhos, modelo × gerado.
+- [ ] **Assinaturas preservadas** — `<w:drawing>` e `<w:pict` aparecem no
+      `word/document.xml` gerado o **mesmo número de vezes** que no modelo. Evidência:
+      as duas contagens. Se caiu, uma assinatura foi destruída na reescrita.
+- [ ] **Nada de "previsto"** — o texto extraído não contém "previsto", "previsão" nem
+      "a receber", e o nome do arquivo também não. Todo recibo é redigido como pago,
+      independente da cor da célula. Evidência: a busca e seu resultado vazio.
 - [ ] **XML válido** — o `word/document.xml` remontado parseia sem erro, e as tags
       `<w:r>`/`</w:r>` e `<w:t`/`</w:t>` estão balanceadas.
 
@@ -131,6 +164,28 @@ FALHAS (se houver):
 **FAIL em qualquer item bloqueia a tabela de conferência.** O recibo com falha não vai
 para o Guilherme como pronto: ou é corrigido, ou aparece na tabela marcado como
 `✗ REPROVADO NO CHEQUER`, com o motivo — nunca omitido.
+
+## Certificado de Conferência
+
+Emitir **somente** com os quatro blocos em PASS:
+
+```
+=== CERTIFICADO DE CONFERÊNCIA ===
+Selo da colheita conferido: COLHEITA-...
+Recibos conferidos: N
+Bloco A (dossiê × planilha)         PASS
+Bloco B (docx × dossiê)             PASS
+Bloco C (docx × modelo)             PASS
+Bloco D (nada preexistente tocado)  PASS
+SELO: CONFERENCIA-<AAAAMMDD>-<N>R-<soma em centavos>
+==================================
+```
+
+Sem este certificado, a Skill 2 **não pode** apresentar a tabela como pronta nem gerar
+PDF nenhum. Se algum bloco falhar, emitir no lugar um **Laudo de Reprovação** com as
+falhas e os dois lados de cada divergência — nunca um certificado parcial, nunca um
+certificado "com ressalvas". O certificado é binário de propósito: uma ressalva vira
+interpretação, e interpretação é exatamente o que este pipeline não pode ter.
 
 ## Log de mudanças
 

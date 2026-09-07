@@ -22,10 +22,35 @@ arquivo.
    abri-las: trabalha só sobre o dossiê da Skill 1.
 3. **Só emitir recibo de valor apurado a partir da data de corte.** Quem filtra é a
    Skill 1; se um item anterior ao corte aparecer no dossiê, não emitir.
-4. **Preservar timbre, rodapé, contatos e as assinaturas do Guilherme e do Renato**,
-   exatamente como vêm do recibo anterior da obra.
+4. **Preservar marca d'água, logo, rodapé e as assinaturas do Guilherme e do Renato**,
+   exatamente como vêm do recibo anterior da obra — ver Passo 1b.
+5. **Todo recibo é redigido como pagamento já efetuado** (`pagos no dia {DATA}`),
+   independente da cor da célula. **Nunca** escrever "previsto", "previsão de
+   pagamento", "a receber" ou variante — não no texto, não no nome do arquivo, não em
+   subpasta.
 
 Se alguma etapa deste arquivo parecer pedir o contrário, **estas regras vencem**.
+
+## TRAVA DE ENTRADA — ler antes de qualquer outra coisa
+
+Esta skill **não roda sozinha**. Antes de fazer o que quer que seja:
+
+1. Procurar, nesta conversa, um **Certificado de Colheita** emitido pela Skill 1
+   (`recibos-ep-colheita-fluxo-de-caixa`), com um `SELO: COLHEITA-...`.
+2. **Não encontrou?** Parar imediatamente. Não ler planilha, não abrir pasta, não gerar
+   nada. Dizer exatamente:
+
+   > Não recebi o Certificado de Colheita — a Etapa 1 não rodou. Vou rodá-la agora.
+
+   E invocar a Skill 1. Voltar aqui só com o certificado em mãos.
+3. **Encontrou?** Recalcular o selo a partir do dossiê recebido (obras, itens `NOVO`,
+   soma em centavos) e comparar com o selo do certificado.
+   - **Bate** → seguir.
+   - **Não bate** → parar. Dizer qual selo foi recebido e qual foi recalculado, e pedir
+     que a Skill 1 rode de novo. O dossiê foi editado, truncado ou é de outra rodada.
+
+Nunca contornar esta trava. Se ela disparar, **isso é a trava funcionando** — não é um
+bug e não deve ser "resolvido" seguindo assim mesmo.
 
 ## Anúncio obrigatório
 
@@ -69,7 +94,38 @@ abertos para escrita em momento algum.
 
 1. Copiar o recibo-modelo da obra para a área de trabalho da sessão.
 2. Descompactar o `.docx` (é um ZIP). Mexer **apenas** em `word/document.xml`.
-   `word/header*.xml`, `word/footer1.xml`, `word/media/*` e todo o resto vão intactos.
+
+## Passo 1b — Marca d'água, logo e assinaturas: intocáveis
+
+O recibo da EP carrega cinco imagens. Inventário levantado do arquivo real da obra 848:
+
+| Arquivo | O que é | Onde vive | Como |
+|---|---|---|---|
+| `word/media/image3.png` | **marca d'água** | `header1`, `header2`, `header3` | `<w:pict>` / `<v:shape>` `o:title="MARCA-D´ÁGUA"` |
+| `word/media/image4.png` | **logo EP** | `header2` | `<w:drawing>` |
+| `word/media/image5.png` | rodapé (contatos, telefones, e-mails) | `footer1` | `<w:drawing>` |
+| `word/media/image1.png` | **assinatura Guilherme Montenegro** | `document.xml` | ⚠️ no corpo |
+| `word/media/image2.png` | **assinatura Renato Neves** | `document.xml` | ⚠️ no corpo |
+
+**Regra:** copiar `word/header1.xml`, `word/header2.xml`, `word/header3.xml`,
+`word/footer1.xml`, `word/theme/`, `word/styles.xml` e **todos** os `word/media/*.png`
+byte a byte, sem tocar. A marca d'água é uma VML no cabeçalho — ela **some sem aviso**
+se o header for reescrito ou se o `.docx` for reconstruído a partir de texto extraído.
+Por isso o método desta skill é sempre **clonar o arquivo e editar só o
+`word/document.xml`** — nunca gerar um `.docx` novo do zero.
+
+**As assinaturas moram dentro do `document.xml`**, que é justamente o arquivo editado.
+Elas estão em parágrafos próprios, separados dos dois que a skill reescreve — verificado
+no arquivo real: os parágrafos `Declaro para devidos fins…` e `Rio de Janeiro, …` não
+contêm nenhum `<w:drawing>` nem `<w:pict>`.
+
+Portanto: **substituir apenas os `<w:r>` dentro desses dois parágrafos.** Todo o resto
+do `document.xml` — inclusive os parágrafos com as assinaturas, o título "RECIBO", o
+"Atenciosamente," e as linhas de assinatura — permanece byte a byte.
+
+Antes de recompactar, contar no `document.xml` novo as ocorrências de `<w:drawing>` e
+`<w:pict`. Os números têm que ser **idênticos** aos do modelo. Se caiu, uma assinatura
+foi destruída — abortar aquele recibo e reportar.
 
 ## Passo 2 — Calcular os 5 campos
 
@@ -254,12 +310,22 @@ gravação falhar, **não forçar** — reportar o item como falho, com o erro.
 
 Apresentar na conversa, agrupado por obra:
 
+**Antes de montar a tabela, invocar obrigatoriamente o `chequer-recibos-ep`**, passando
+os `.docx` gerados e o Certificado de Colheita. Não perguntar se deve. Não pular porque
+"parece tudo certo". Sem o **Certificado de Conferência** de volta, a tabela não pode
+ser apresentada como pronta — no máximo como rascunho, e dizendo em voz alta que o
+chequer não rodou.
+
+Todos os recibos saem redigidos como pagos. A coluna final é só um lembrete do
+**trabalho dele durante a semana** — nunca aparece no documento:
+
 ```
 848 - MS - Quarto Francisco - Leblon
-  M02  R$  9.430,00  11/09/2026  transf. bancária      PREVISTO  ✓ gravado
+  M02   R$  9.430,00  11/09/2026  transf. bancária      ✓ gravado   aguardando pgto
+  M03   R$  4.100,00  11/09/2026  transf. bancária      ✓ gravado   pode enviar
 
 851 - AB - Cobertura Ipanema
-  Sinal R$ 24.000,00 09/09/2026  pagamento em espécie  PAGO      ✓ gravado
+  Sinal R$ 24.000,00  09/09/2026  pagamento em espécie  ✓ gravado   aguardando pgto
 
 Não emitidos (nenhum arquivo foi tocado):
   848/M01   — recibo já existe e a data da planilha mudou (04/09 → 15/09).
@@ -267,19 +333,23 @@ Não emitidos (nenhum arquivo foi tocado):
   853/Sinal — SEM MODELO: obra sem recibo anterior. Preciso do nome do cliente,
               tratamento, descrição do serviço e endereço.
 
-Total emitido: 2 recibos, R$ 33.430,00
+Total emitido: 3 recibos, R$ 37.530,00
+Certificado de Conferência: CONFERENCIA-20260910-3R-3753000  (Blocos A/B/C/D PASS)
 ```
+
+- `pode enviar` = célula verde, o cliente já pagou.
+- `aguardando pgto` = célula laranja. O recibo **está pronto e correto**; é só segurar
+  até o dinheiro entrar.
 
 A seção **"Não emitidos"** é obrigatória mesmo quando vazia — é ela que dá ao Guilherme
 a certeza de que nada foi tocado sem ele saber.
 
-Antes de mostrar a tabela, rodar o **Agente Chequer — Recibos** sobre os `.docx`
-gerados. A tabela só vai ao Guilherme depois que o chequer passar, ou com as falhas do
-chequer explicitamente listadas nela.
-
 Depois disso, **parar e esperar**. Silêncio não é aprovação.
 
 ## Passo 8 — Depois do ok
+
+**Trava:** não converter nada para PDF sem o Certificado de Conferência do chequer. O
+PDF é o arquivo que vai para o cliente — nenhum sai sem conferência mecânica.
 
 1. Converter os recibos aprovados para PDF, com o processo que o Guilherme
    usa: *salvar como → manter o nome do arquivo exatamente igual ao `.docx` → escolher
@@ -323,6 +393,26 @@ Depois disso, **parar e esperar**. Silêncio não é aprovação.
 - [ ] Nenhum recibo saiu com nome de cliente ou endereço de **outra obra**.
 - [ ] A data do corpo e a data do fecho são a mesma.
 - [ ] Nenhum arquivo foi criado fora da pasta `Recibos` das obras.
+- [ ] Nenhum recibo contém a palavra "previsto", "previsão" ou "a receber" — nem no
+      texto, nem no nome do arquivo.
+- [ ] `<w:drawing>` e `<w:pict` aparecem no `document.xml` novo o mesmo nº de vezes que
+      no modelo (assinaturas intactas).
+- [ ] `word/media/` do arquivo gerado tem os mesmos 5 arquivos, com os mesmos tamanhos
+      em bytes, que o modelo (marca d'água, logo, rodapé e as duas assinaturas).
+
+## Fechamento — prestação de contas
+
+Ao entregar, imprimir sempre, mesmo que tudo tenha corrido bem:
+
+```
+Etapa 1 — colheita     invocada / NÃO invocada    selo COLHEITA-...
+Etapa 2 — emissão      invocada                   (esta skill)
+Chequer                invocado / NÃO invocado    selo CONFERENCIA-...
+```
+
+Uma linha `NÃO invocada` é falha do pipeline e tem que ser dita em voz alta ao
+Guilherme, nunca escondida no meio do relatório. Um pipeline em que o chequer não rodou
+**não entregou** — entregou um rascunho.
 
 ---
 

@@ -23,19 +23,50 @@ Skill 2 e o gate do Guilherme.
   Skill 1 — Colheita            varre TODAS as obras, lê FLUXO DE CAIXA,
   (leitura pura)                colhe as linhas "ok" a partir da data
         │                       de corte → dossiê
+        │
+        ├──> emite CERTIFICADO DE COLHEITA (selo mecânico)
+        │    e invoca a Etapa 2 obrigatoriamente
         ▼
-  Skill 2 — Emissão             clona o último recibo de cada obra,
-                                troca valor/extenso/data/referência/forma
+  Skill 2 — Emissão             🔒 recusa rodar sem o selo da colheita
+                                clona o último recibo de cada obra,
+        │                       troca valor/extenso/data/referência/forma
         │                       SÓ itens NOVO. Já existe → não toca.
+        │
+        ├──> invoca o Chequer obrigatoriamente
         ▼
-  Chequer                       docx × dossiê × planilha × modelo,
+  Chequer                       🔒 recusa conferir sem o selo da colheita
+        │                       docx × dossiê × planilha × modelo
         │                       + prova que nada preexistente mudou
+        ├──> emite CERTIFICADO DE CONFERÊNCIA
         ▼
   ┌─ TABELA DE CONFERÊNCIA ─┐   ← Guilherme revisa. Silêncio ≠ aprovação.
   └─────────┬───────────────┘
             ▼
-  Skill 2 (continuação)         gera os PDFs
+  Skill 2 (continuação)         🔒 sem certificado do chequer, nenhum PDF sai
+                                gera os PDFs
 ```
+
+## Como as 3 skills ficam amarradas
+
+Cada etapa emite um **certificado com selo mecânico** e a seguinte **se recusa a rodar
+sem ele**:
+
+| Trava | Efeito |
+|---|---|
+| Skill 2 sem Certificado de Colheita | Para, avisa e invoca a Skill 1 |
+| Selo recalculado não bate com o recebido | Para — o dossiê foi editado ou é de outra rodada |
+| Chequer sem Certificado de Colheita | Não confere e não certifica |
+| Skill 2 sem Certificado de Conferência | Não apresenta tabela como pronta, não gera PDF |
+| Qualquer bloco do chequer em FAIL | Laudo de Reprovação — nunca certificado "com ressalvas" |
+
+A ida também é obrigatória: a Skill 1 termina **invocando** a Skill 2 (não pergunta se
+deve), e a Skill 2 **invoca** o chequer antes da tabela.
+
+**Por que travas em vez de um agente orquestrador:** um orquestrador é mais uma coisa
+que pode "decidir" não invocar alguém. Uma trava dentro da skill de baixo não tem essa
+margem — ela não roda, ponto. E o pipeline fecha com uma **prestação de contas** que
+lista as três etapas como `invocada` / `NÃO invocada`, para não depender de ninguém
+lembrar de conferir.
 
 ## Por que 2 skills e não 1
 
@@ -61,8 +92,12 @@ Estão escritas no topo das duas skills e são verificadas pelo Bloco D do chequ
 2. **Nunca alterar as planilhas de Controle Financeiro.** Leitura apenas.
 3. **Só emitir recibo de valor apurado a partir da data de corte** — desta semana em
    diante. Lançamento antigo já tem o recibo dele.
-4. **Preservar timbre, rodapé, contatos e as assinaturas do Guilherme e do Renato**,
-   herdados do recibo anterior da obra.
+4. **Preservar marca d'água, logo, rodapé e as assinaturas** do Guilherme e do Renato,
+   herdados do recibo anterior da obra. A skill clona o `.docx` e edita só o
+   `word/document.xml` — nunca reconstrói o arquivo, porque a marca d'água (uma VML no
+   cabeçalho) some sem aviso nesse caminho.
+5. **Todo recibo é redigido como pagamento já efetuado**, independente da cor. A palavra
+   "previsto" nunca aparece — nem no texto, nem no nome do arquivo.
 
 ## Decisões do Guilherme registradas nas skills (06/09/2026)
 
@@ -70,8 +105,9 @@ Estão escritas no topo das duas skills e são verificadas pelo Bloco D do chequ
 |---|---|
 | Gatilho | Toda linha com `ok` = valor apurado (medição, aporte, aditivo ou desconto) |
 | Data de corte | Só linhas desta semana em diante; a data é perguntada na 1ª execução |
-| Cor | Verde = pago · Laranja = ainda não pago |
-| Previsto | **Gera recibo com o mesmo texto do pago.** Se o cliente não pagar na data, o recibo é revisado — **por ele, à mão** |
+| Cor | Verde = já pagou · Laranja = ainda não pagou. **Só afeta a tabela final**, nunca o documento |
+| Fluxo real | Quinta/sexta ele lança tudo laranja (nada recebido). A skill deixa **todos os recibos prontos, redigidos como pagos**. Conforme cada cliente paga, ele pinta de verde e envia o recibo que já estava feito |
+| Tabela final | `pode enviar` (verde) × `aguardando pgto` (laranja) — lembrete do trabalho dele na semana |
 | Gate | `.docx` sai antes; tabela de conferência; PDF só depois do ok |
 | Forma de pgto | PIX/TED/DOC → `transferência bancária` · Dinheiro/Espécie → `pagamento em espécie` |
 | Referência | `M0x` → `Medição 0x` · resto literal |
@@ -88,7 +124,7 @@ Estão escritas no topo das duas skills e são verificadas pelo Bloco D do chequ
 2. **Cor laranja.** Nenhum arquivo lido tinha célula laranja (a obra 848 só tem verde
    `FF00B050`). A classificação é por faixa de matiz, não por código exato, então deve
    funcionar — mas vale confirmar na primeira rodada real que uma linha prevista foi
-   classificada como PREVISTO.
+   classificada como LARANJA (e apareça como `aguardando pgto` na tabela).
 3. **Tratamento do cliente.** O modelo diz "do Sr.". Para cliente mulher, casal ou
    empresa, a Skill 2 herda o tratamento do recibo anterior da obra; em obra sem recibo
    anterior, ela para e pergunta.
