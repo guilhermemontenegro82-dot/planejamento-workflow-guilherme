@@ -1,0 +1,353 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Organograma Instagram EP</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: hierarchical tree — Guilherme on top, Supervisor below, six stages as columns; each column pairs a skill (executes) with its checker agent(s) (verifies) and the certificate that gates the next stage. */
+:root{
+  --bg:#F4F7FA; --fg:#0B1F33; --muted:#4A5568; --line:#C9D4DF;
+  --navy:#0B1F33; --cyan:#00A3E0; --cyan-soft:#D9F1FB;
+  --skill-bg:#0B1F33; --skill-fg:#FFFFFF;
+  --agent-bg:#FFFFFF; --agent-border:#00A3E0;
+  --gate-bg:#FFF4D6; --gate-border:#D99A00; --gate-fg:#5C3D00;
+  --ok:#1A7F4B; --todo:#8A5A00; --ok-bg:#DDF3E6; --todo-bg:#FFF1D6;
+  --display:"Saira Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,Segoe UI,Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0B1623; --fg:#EAF1F7; --muted:#A9B8C7; --line:#2A3B4F;
+  --navy:#132A42; --cyan:#2CB8F0; --cyan-soft:#12324A;
+  --skill-bg:#1B3A5C; --skill-fg:#FFFFFF;
+  --agent-bg:#0F1E2E; --agent-border:#2CB8F0;
+  --gate-bg:#3A2E10; --gate-border:#E0B340; --gate-fg:#FFE6A3;
+  --ok:#7FD9A3; --todo:#F2C66B; --ok-bg:#153324; --todo-bg:#3A2E10;
+  color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0B1623; --fg:#EAF1F7; --muted:#A9B8C7; --line:#2A3B4F;
+  --navy:#132A42; --cyan:#2CB8F0; --cyan-soft:#12324A;
+  --skill-bg:#1B3A5C; --skill-fg:#FFFFFF;
+  --agent-bg:#0F1E2E; --agent-border:#2CB8F0;
+  --gate-bg:#3A2E10; --gate-border:#E0B340; --gate-fg:#FFE6A3;
+  --ok:#7FD9A3; --todo:#F2C66B; --ok-bg:#153324; --todo-bg:#3A2E10;
+  color-scheme:dark }
+
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:14px;line-height:1.45;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-block:28px 48px;padding-inline:16px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;margin:0;text-wrap:balance;letter-spacing:.01em}
+h1 em{color:var(--cyan);font-style:normal}
+.sub{color:var(--muted);margin:8px 0 0;max-width:68ch}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin:18px 0 26px;font-size:12.5px;color:var(--muted);align-items:center}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:22px;height:14px;border-radius:3px;display:inline-block}
+.sw.skill{background:var(--skill-bg)}
+.sw.agent{background:var(--agent-bg);border:2px dashed var(--agent-border)}
+.sw.gate{background:var(--gate-bg);border:1.5px solid var(--gate-border)}
+.sw.cert{width:26px;height:0;border-top:2px solid var(--cyan);position:relative}
+.sw.cert::after{content:"";position:absolute;right:-2px;top:-5px;border:4px solid transparent;border-left:7px solid var(--cyan)}
+
+/* tree */
+.top{display:flex;flex-direction:column;align-items:center;gap:0}
+.node{border-radius:8px;padding:12px 16px;min-width:0}
+.node .role{font-family:var(--display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.75}
+.node .name{font-family:var(--display);font-weight:700;font-size:19px;line-height:1.05;margin-top:2px}
+.node .fn{font-size:12.5px;margin-top:6px;line-height:1.4}
+.node .fn b{font-weight:600}
+.guilherme{background:var(--gate-bg);border:1.5px solid var(--gate-border);color:var(--gate-fg);max-width:640px;text-align:center}
+.guilherme .role{opacity:.85}
+.supervisor{background:var(--skill-bg);color:var(--skill-fg);max-width:720px;text-align:center}
+.vline{width:2px;height:26px;background:var(--line)}
+.bus{height:2px;background:var(--line);margin:0 6%}
+
+.stages{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:0}
+.stage{display:flex;flex-direction:column;gap:0;min-width:0}
+.stage .drop{width:2px;height:22px;background:var(--line);margin:0 auto}
+.stage .num{font-family:var(--display);font-weight:700;font-size:28px;line-height:1;color:var(--cyan);text-align:center;margin:0 0 8px}
+.skill{background:var(--skill-bg);color:var(--skill-fg)}
+.agent{background:var(--agent-bg);border:2px dashed var(--agent-border);color:var(--fg)}
+.gate{background:var(--gate-bg);border:1.5px solid var(--gate-border);color:var(--gate-fg)}
+.conn{display:flex;flex-direction:column;align-items:center;margin:4px 0}
+.conn .l{width:2px;height:12px;background:var(--line)}
+.cert{font-family:var(--display);font-weight:600;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan);background:var(--cyan-soft);border-radius:999px;padding:3px 10px;white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.status{display:inline-block;font-size:11px;font-weight:600;border-radius:4px;padding:1px 7px;margin-top:8px;letter-spacing:.02em}
+.st-ok{background:var(--ok-bg);color:var(--ok)}
+.st-todo{background:var(--todo-bg);color:var(--todo)}
+.node ul{margin:6px 0 0;padding-left:16px;font-size:12.5px;line-height:1.4}
+.node li{margin:2px 0}
+
+/* base docs */
+.base{margin-top:34px;border-top:1px solid var(--line);padding-top:18px}
+.base h2{font-family:var(--display);font-weight:700;font-size:18px;margin:0 0 4px;letter-spacing:.02em}
+.base p{color:var(--muted);margin:0 0 12px;max-width:72ch}
+.docs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.doc{border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--agent-bg)}
+.doc code{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--cyan)}
+.doc div{font-size:12.5px;color:var(--muted);margin-top:3px}
+
+.rules{margin-top:26px}
+.rules h2{font-family:var(--display);font-weight:700;font-size:18px;margin:0 0 8px}
+.rules ol{margin:0;padding-left:20px;max-width:78ch;line-height:1.5}
+.rules li{margin:4px 0}
+
+@media (max-width:1000px){ .stages{grid-template-columns:repeat(3,minmax(0,1fr))} .bus{display:none} .stage .drop{display:none} .stage{border-top:1px solid var(--line);padding-top:12px} }
+@media (max-width:600px){ .stages{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:no-preference){ .node{transition:transform .15s} }
+</style>
+<div style="background:#FFF4D6;border:1.5px solid #D99A00;color:#5C3D00;padding:10px 16px;margin:12px;border-radius:8px;font:14px system-ui">&#9888; Organograma de 04/10 (Cowork). Superado em 07/10: Metricool e Claude Design sairam; publicacao e manual no Business Suite; etapas viraram 5 (pesquisa, textos, imagens, arte final, relatorio) com dois modos de post. Fonte vigente: ROTINA.md.</div>
+
+<div class="wrap">
+  <h1>Organograma — rotina <em>Instagram EP</em></h1>
+  <p class="sub">Quem faz, quem confere e onde você entra. Skills executam. Agentes conferem em contexto isolado e emitem veredito. Nenhuma etapa começa sem o certificado da anterior.</p>
+
+  <div class="legend">
+    <span><i class="sw skill"></i> Skill (executa)</span>
+    <span><i class="sw agent"></i> Agente chequer (confere, não produz)</span>
+    <span><i class="sw gate"></i> Decisão do Guilherme</span>
+    <span><i class="sw cert"></i> Certificado que libera a etapa seguinte</span>
+    <span><b class="status st-ok">escrito</b> aguardando sua aprovação</span>
+    <span><b class="status st-todo">a construir</b> depois da aprovação</span>
+  </div>
+
+  <div class="top">
+    <div class="node guilherme">
+      <div class="role">Nível 0 · decisor</div>
+      <div class="name">Guilherme</div>
+      <div class="fn">Dispara a rotina com um comando. Decide em 3 pontos: <b>aprova os temas</b> (etapa 1), <b>aprova os textos</b> (etapa 2) e <b>dá o OK pra agendar</b> (etapa 5). Nada é publicado sem o terceiro OK.</div>
+    </div>
+    <div class="vline"></div>
+    <div class="node supervisor">
+      <div class="role">Nível 1 · orquestrador</div>
+      <div class="name">ep-insta-supervisor</div>
+      <div class="fn">Chama cada skill na ordem, dispara os agentes chequers, <b>monta os certificados</b> só quando os chequers aprovam, manda corrigir quando reprovam (máx. 2 rodadas, depois pergunta a você), para nos seus checkpoints e fecha com a <b>prestação de contas</b>: etapa por etapa, invocada ou não, aprovada ou não.</div>
+      <span class="status st-todo">a construir</span>
+    </div>
+    <div class="vline"></div>
+  </div>
+  <div class="bus"></div>
+
+  <div class="stages">
+
+    <div class="stage">
+      <div class="drop"></div>
+      <div class="num">1</div>
+      <div class="node skill">
+        <div class="role">Skill</div>
+        <div class="name">ep-insta-1-pesquisa-temas</div>
+        <ul>
+          <li>Busca na web, concorrentes e referências (últimos 30 dias)</li>
+          <li>Lê métricas dos nossos posts no Metricool</li>
+          <li>Entrega 5 temas com pilar, fonte, gancho e nota</li>
+          <li>Salva em <code>02-Pesquisa-temas/</code></li>
+        </ul>
+        <span class="status st-ok">escrito</span>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node agent">
+        <div class="role">Agente</div>
+        <div class="name">chequer-pesquisa</div>
+        <ul>
+          <li>Abre cada fonte e confirma que existe e é atual</li>
+          <li>Tema repetido no calendário? Pilar do rodízio presente?</li>
+          <li>Palavras proibidas, título ≤ 8 palavras</li>
+          <li>Faz 2 buscas próprias: ficou algo em alta de fora?</li>
+        </ul>
+        <span class="status st-ok">escrito</span>
+      </div>
+      <div class="conn"><div class="l"></div><span class="cert">Certificado de Pesquisa</span><div class="l"></div></div>
+      <div class="node gate">
+        <div class="role">Decisão</div>
+        <div class="name">Você aprova os temas</div>
+        <div class="fn">"Tema 2 pra quinta, tema 4 pra semana que vem"</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="drop"></div>
+      <div class="num">2</div>
+      <div class="node skill">
+        <div class="role">Skill</div>
+        <div class="name">ep-insta-2-producao-post</div>
+        <ul>
+          <li>Recusa iniciar sem o Certificado de Pesquisa + sua decisão</li>
+          <li>Cria a pasta <code>Pnn_data_tema</code> e o brief</li>
+          <li>Escreve carrossel/reels, legenda, stories</li>
+          <li>Escreve os prompts de imagem pro ChatGPT</li>
+        </ul>
+        <span class="status st-ok">escrito</span>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node agent">
+        <div class="role">Agente · por código</div>
+        <div class="name">chequer-texto-tecnico</div>
+        <ul>
+          <li>Nome da pasta, arquivos, placeholders</li>
+          <li>Limites de caracteres por slide e legenda</li>
+          <li>18–24 hashtags, telefone e site presentes</li>
+          <li>Prompts: proporção, "no text", "no logo"</li>
+        </ul>
+        <span class="status st-ok">escrito</span>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node agent">
+        <div class="role">Agente · por leitura</div>
+        <div class="name">chequer-texto-conteudo</div>
+        <ul>
+          <li>Entrega o tema que você aprovou?</li>
+          <li>Cada afirmação técnica: correta / imprecisa / errada</li>
+          <li>Tom EP, público alto padrão, sem promessa vazia</li>
+          <li>Imagem gerada nunca vendida como "obra nossa"</li>
+        </ul>
+        <span class="status st-ok">escrito</span>
+      </div>
+      <div class="conn"><div class="l"></div><span class="cert">Certificado de Textos</span><div class="l"></div></div>
+      <div class="node gate">
+        <div class="role">Decisão</div>
+        <div class="name">Você aprova os textos</div>
+        <div class="fn">Ou pede ajustes; a skill corrige e os chequers rodam de novo</div>
+      </div>
+    </div>
+
+    <div class="stage">
+      <div class="drop"></div>
+      <div class="num">3</div>
+      <div class="node skill">
+        <div class="role">Skill</div>
+        <div class="name">ep-insta-3-imagens</div>
+        <ul>
+          <li>Abre o ChatGPT no seu Chrome, cola prompt por prompt</li>
+          <li>Baixa cada imagem pra <code>04-imagens-brutas/</code></li>
+          <li>Se o ChatGPT travar, pede sua ajuda e continua</li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node agent">
+        <div class="role">Agente · olha a imagem</div>
+        <div class="name">chequer-imagens</div>
+        <ul>
+          <li>Todos os arquivos existem, proporção 4:5 / 9:16</li>
+          <li>Sem texto, logo ou marca d'água gerados</li>
+          <li>Cena bate com o prompt e com o slide</li>
+          <li>Área livre pra texto, paleta fria</li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div><span class="cert">Certificado de Imagens</span></div>
+    </div>
+
+    <div class="stage">
+      <div class="drop"></div>
+      <div class="num">4</div>
+      <div class="node skill">
+        <div class="role">Skill</div>
+        <div class="name">ep-insta-4-arte-final</div>
+        <ul>
+          <li>Monta no Claude Design: imagem + véu + logo + texto no padrão EP</li>
+          <li>Exporta 1080×1350 e 1080×1920 pra <code>05-arte-final/</code></li>
+          <li>Copia o pacote pronto pra <code>03-Fila-publicacao/</code></li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node agent">
+        <div class="role">Agente · olha a arte</div>
+        <div class="name">chequer-arte-final</div>
+        <ul>
+          <li>Dimensões exatas, ordem dos slides</li>
+          <li>Texto na arte idêntico ao <code>carrossel.md</code></li>
+          <li>Logo presente, sem efeito; contraste legível</li>
+          <li>Story deixa faixa livre pro sticker de link</li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div><span class="cert">Certificado de Arte</span></div>
+    </div>
+
+    <div class="stage">
+      <div class="drop"></div>
+      <div class="num">5</div>
+      <div class="node gate">
+        <div class="role">Decisão</div>
+        <div class="name">Você dá o OK pra agendar</div>
+        <div class="fn">Vê a prévia final (artes + legenda + data/hora) e responde "pode agendar"</div>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node skill">
+        <div class="role">Skill</div>
+        <div class="name">ep-insta-5-agendar</div>
+        <ul>
+          <li>Recusa sem Certificado de Arte + seu OK escrito</li>
+          <li>Agenda no Metricool → Instagram na data do calendário</li>
+          <li>Atualiza <code>CALENDARIO.md</code> → <code>agendado</code></li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node agent">
+        <div class="role">Agente · relê do Metricool</div>
+        <div class="name">chequer-agendamento</div>
+        <ul>
+          <li>Busca o post agendado de volta na plataforma</li>
+          <li>Data/hora, legenda idêntica, nº e ordem das imagens</li>
+          <li>Conta certa (@engenharia.ep), formato certo</li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div><span class="cert">Certificado de Agendamento</span></div>
+    </div>
+
+    <div class="stage">
+      <div class="drop"></div>
+      <div class="num">6</div>
+      <div class="node skill">
+        <div class="role">Skill · semanal</div>
+        <div class="name">ep-insta-6-relatorio</div>
+        <ul>
+          <li>Puxa alcance, salvamentos, compartilhamentos, cliques</li>
+          <li>Melhor horário e melhor pilar do período</li>
+          <li>Gráficos + 3 recomendações pra próxima pesquisa</li>
+          <li>Salva em <code>04-Relatorios/</code></li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div></div>
+      <div class="node agent">
+        <div class="role">Agente · por código</div>
+        <div class="name">chequer-dados</div>
+        <ul>
+          <li>Cada número do relatório = dado bruto do Metricool</li>
+          <li>Nenhuma métrica inventada ou estimada</li>
+          <li>Gráfico em escala, período correto</li>
+        </ul>
+        <span class="status st-todo">a construir</span>
+      </div>
+      <div class="conn"><div class="l"></div><span class="cert">Alimenta a etapa 1 seguinte</span></div>
+    </div>
+
+  </div>
+
+  <div class="base">
+    <h2>Fontes da verdade (todos leem, ninguém reescreve sem você)</h2>
+    <p>Arquivos na pasta <code>Instagram EP</code>. Skills e agentes consultam estes documentos em vez de "lembrar" regras; se uma regra mudar, muda aqui uma vez.</p>
+    <div class="docs">
+      <div class="doc"><code>00-Marca/voz-e-tom.md</code><div>Regras de texto, pilares, hashtags, "empresa" nunca "empreiteiro"</div></div>
+      <div class="doc"><code>00-Marca/identidade-visual.md</code><div>Cores, fontes, layout de capa, slides e stories</div></div>
+      <div class="doc"><code>CALENDARIO.md</code><div>Tabela-mestra: nº, data, tema, pilar, status, link</div></div>
+      <div class="doc"><code>ROTINA.md</code><div>Este desenho em texto, pra consulta</div></div>
+      <div class="doc"><code>01-Posts/_modelo-post/</code><div>Esqueleto de pasta copiado a cada post novo</div></div>
+      <div class="doc"><code>_skills/</code><div>Cópia em texto de cada skill e agente, pra abrir no VS Code</div></div>
+    </div>
+  </div>
+
+  <div class="rules">
+    <h2>Regras que valem pra todo mundo</h2>
+    <ol>
+      <li>Toda skill e todo agente se anuncia ao começar ("▶ … iniciado"), pra etapa pulada ficar visível.</li>
+      <li>Agente só confere. Nunca corrige, nunca reescreve. Aponta trecho + o que mudar; quem corrige é a skill da etapa.</li>
+      <li>Veredito é PASS/FAIL por item, com evidência citada ou número medido. Sem "parece ok". APROVADO só com tudo PASS.</li>
+      <li>Certificado só existe se o agente realmente rodou e aprovou. Sem certificado, a skill seguinte recusa iniciar.</li>
+      <li>Reprovou: a skill corrige só o que falhou e o mesmo agente roda de novo. Duas reprovações seguidas → o Supervisor para e pergunta a você.</li>
+      <li>Publicação nunca acontece sem seu OK escrito na etapa 5.</li>
+      <li>Fechamento sempre com prestação de contas: etapa por etapa, invocada ou NÃO invocada, aprovada ou reprovada. Trabalho feito "à mão" sem invocar a skill conta como NÃO invocada.</li>
+    </ol>
+  </div>
+</div>
+</html>

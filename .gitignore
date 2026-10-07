@@ -51,3 +51,15 @@
 .claude/settings.local.json
 Thumbs.db
 desktop.ini
+
+# ---- 6. Instagram EP (07/10/2026): textos, templates, scripts e marca entram; imagens ficam fora ----
+# Imagens dos posts (~15 MB por post) ficariam ~800 MB/ano: fora do Git, vivem só no disco D:.
+!01 - EP Engenharia/Instagram EP/**/*.txt
+!01 - EP Engenharia/Instagram EP/**/*.html
+!01 - EP Engenharia/Instagram EP/**/*.ps1
+!01 - EP Engenharia/Instagram EP/**/*.json
+!01 - EP Engenharia/Instagram EP/**/*.csv
+!01 - EP Engenharia/Instagram EP/00-Marca/logo/*.png
+!01 - EP Engenharia/Instagram EP/00-Marca/fontes/*.ttf
+# Renders de teste não entram
+01 - EP Engenharia/Instagram EP/_trabalho/*.png
