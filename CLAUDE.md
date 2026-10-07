@@ -14,6 +14,7 @@
 
 ## Como o Guilherme trabalha
 - Português do Brasil. Respostas curtas, resultado primeiro. Explicar simples, sem jargão.
+- **Perguntas de conceito: poucas e agrupadas.** Ele trabalha em outras coisas enquanto o Claude roda; cada interrupção custa caro aos dois. Perguntar só quando a resposta muda materialmente o trabalho. Juntar as dúvidas numa única rodada (uma caixa com até 4 perguntas, com a opção recomendada primeiro), nunca uma pergunta por vez ao longo da tarefa. Decisão rotineira: tomar, registrar a premissa adotada e seguir; ele corrige depois se discordar.
 - Scripts, testes e arquivos temporários ficam dentro do workspace (`_trabalho/` do projeto), nunca no diretório temporário da sessão. Assim ele e eu podemos abrir, inspecionar e apagar.
 - **Apagar é livre dentro do workspace** (decisão de 07/10/2026): arquivos temporários, de estudo, prints, renders de prova e scripts obsoletos, apago sem perguntar quando deixarem de servir. Conteúdo produzido por ele ou já entregue (posts publicados, planilhas e documentos de origem) só apago quando a tarefa pedir; `_apagar/` fica como opção de segurança, não obrigação.
 - **Zero caixas de permissão dentro do autódromo** (entrevista de 07/10/2026). Ler, editar, criar, mover, apagar, rodar Bash/PowerShell, pesquisar na web e publicar artefatos: tudo liberado em `permissions.allow` do settings do usuário, valendo para todas as conversas. As únicas perguntas que ele quer receber são **sobre conceito e direcionamento do trabalho** (temas, textos, decisões), nunca sobre permissão.
