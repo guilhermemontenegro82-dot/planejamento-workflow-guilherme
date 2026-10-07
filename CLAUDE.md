@@ -1,6 +1,11 @@
 # Espaço de trabalho do Guilherme — `D:\12- Claude - works`
 
-## Regra de acesso (definida pelo Guilherme em 07/10/2026, vale para toda sessão)
+## As três regras do Guilherme (07/10/2026, palavras dele)
+1. **Nunca mexa ou entre com arquivos no OneDrive. NUNCA.** Nada de criar, copiar, mover, renomear, alterar ou apagar qualquer coisa em `C:\Users\gamon\OneDrive\`, em nenhuma subpasta, por nenhum motivo. Ler a pasta de fotos que ele liberou é a única exceção, e é só leitura.
+2. **Não se esqueça da primeira regra.**
+3. **O espaço de trabalho é `D:\12- Claude - works`.**
+
+## Regra de acesso (detalhamento, vale para toda sessão)
 - **Dentro desta pasta: autonomia total.** Criar, renomear, mover, reorganizar e apagar arquivos e pastas, sem perguntar. É o espaço livre de trabalho para desenvolver e entregar resultados.
 - **Fora desta pasta, duas situações.** (1) O Guilherme libera uma pasta **apresentando o caminho durante a explicação da tarefa**: essa pasta está liberada para a tarefa, sem precisar perguntar de novo. (2) Qualquer outra pasta, inclusive caminhos conhecidos de outras sessões ou da memória: ler, listar, copiar, mover ou alterar exige pedir acesso e esperar o "sim".
 - Pastas liberadas de forma permanente (por ordem dele) ficam em `C:\Users\gamon\.claude\hooks\caminhos-liberados.txt` e em `permissions.additionalDirectories` do `settings.json`. Hoje: `C:\Users\gamon\OneDrive\Pasta compartilhada ADM\Relatórios Fotográficos Obras EP` (fotos das obras EP, usar só leitura).

@@ -9,7 +9,8 @@ Dono: Guilherme (diretor financeiro/comercial, iniciante em IA — explique simp
 - Dentro de `D:\12- Claude - works` (esta pasta inclusa): autonomia total, sem perguntar.
 - **Pasta de fotos das obras, liberada por ele para este projeto, só leitura:**
   `C:\Users\gamon\OneDrive\Pasta compartilhada ADM\Relatórios Fotográficos Obras EP\<obra>\<Sxx>\Fotos\`
-  (cada semana tem `Fotos\` com JPEGs e o PDF do relatório ao cliente). Listar e abrir fotos ali não exige pergunta. Nunca escrever, mover ou apagar nada ali.
+  (cada semana tem `Fotos\` com JPEGs e o PDF do relatório ao cliente). Listar e abrir fotos ali não exige pergunta.
+- **Regra 1 do Guilherme: NUNCA mexer ou entrar com arquivos no OneDrive.** Nenhuma escrita, cópia para lá, criação de pasta, renomeação ou exclusão em qualquer caminho do OneDrive. Copiar fotos DE lá PARA dentro do post (etapa 3) é permitido; o sentido inverso, nunca. O hook do Claude Code nega comandos de escrita que citem o OneDrive.
 - Qualquer outro caminho fora do workspace: pedir acesso antes.
 
 ## Regras do projeto
