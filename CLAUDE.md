@@ -16,7 +16,9 @@
 - Português do Brasil. Respostas curtas, resultado primeiro. Explicar simples, sem jargão.
 - Scripts, testes e arquivos temporários ficam dentro do workspace (`_trabalho/` do projeto), nunca no diretório temporário da sessão. Assim ele e eu podemos abrir, inspecionar e apagar.
 - **Apagar é livre dentro do workspace** (decisão de 07/10/2026): arquivos temporários, de estudo, prints, renders de prova e scripts obsoletos, apago sem perguntar quando deixarem de servir. Conteúdo produzido por ele ou já entregue (posts publicados, planilhas e documentos de origem) só apago quando a tarefa pedir; `_apagar/` fica como opção de segurança, não obrigação.
-- Instalar programas na máquina segue os critérios do modo Auto do Claude Code.
+- **Zero caixas de permissão dentro do autódromo** (entrevista de 07/10/2026). Ler, editar, criar, mover, apagar, rodar Bash/PowerShell, pesquisar na web e publicar artefatos: tudo liberado em `permissions.allow` do settings do usuário, valendo para todas as conversas. As únicas perguntas que ele quer receber são **sobre conceito e direcionamento do trabalho** (temas, textos, decisões), nunca sobre permissão.
+- Continuam pedindo confirmação (`permissions.ask`): instalar programas (winget, choco, pip, npm install, msiexec, Install-Module) e **enviar e-mail ou mensagem a alguém** (Gmail enviar/responder/encaminhar, Slack). Push no Git e publicação de página são livres.
+- O guarda de caminhos tem precedência sobre tudo isso: caminho fora do autódromo pergunta, escrita no OneDrive é negada.
 - **Git**: autorizado (07/10/2026) a fazer commit e push sozinho ao fechar cada etapa, com mensagem clara. O `.gitignore` é uma lista de permissão: entram definições, documentos, textos, scripts e templates; planilhas, PDFs, mídia e dados de clientes ficam fora (peso e sigilo). Antes de liberar um tipo novo no `.gitignore`, conferir tamanho e sensibilidade.
 - Pipelines de skills seguem o padrão: skill executa, chequer confere em contexto isolado, certificado em arquivo libera a etapa seguinte, prestação de contas no fim.
 
