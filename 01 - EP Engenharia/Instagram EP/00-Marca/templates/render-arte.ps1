@@ -51,8 +51,8 @@ function Render([string]$tipo, [hashtable]$vars, [string]$nome, [int]$w, [int]$h
   if (Test-Path -LiteralPath $png) { [System.IO.File]::Delete($png) }
   $uri = (New-Object System.Uri $hp).AbsoluteUri
   $errLog = Join-Path (Join-Path $OutDir '_html') 'edge-stderr.log'
-  $args = @('--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files', '--force-device-scale-factor=1', "--window-size=$w,$h", '--virtual-time-budget=5000', "--screenshot=`"$png`"", $uri)
-  Start-Process -FilePath $edge -ArgumentList $args -Wait -NoNewWindow -RedirectStandardError $errLog
+  $edgeArgs = @('--headless=new', '--disable-gpu', '--hide-scrollbars', '--allow-file-access-from-files', '--force-device-scale-factor=1', "--window-size=$w,$h", '--virtual-time-budget=5000', "--screenshot=`"$png`"", $uri)
+  Start-Process -FilePath $edge -ArgumentList $edgeArgs -Wait -NoNewWindow -RedirectStandardError $errLog
   $t = 0; while (-not (Test-Path -LiteralPath $png) -and $t -lt 40) { Start-Sleep -Milliseconds 500; $t++ }
   $resultados.Add(("{0,-12} {1}" -f $nome, $(if (Test-Path -LiteralPath $png) { "ok  ${w}x${h}" } else { 'FALHOU' })))
 }
@@ -76,8 +76,8 @@ foreach ($s in $data.slides) {
       Render 'interno-foto' @{ n = $s.n; total = $s.total; rotulo = (Esc $rotulo); titulo = (Rich $s.titulo 'em'); titulo_px = (Px $s.titulo @(84, 78, 68, 60)); corpo = (Rich $s.corpo 'b'); fundo = (Uri $s.fundo); legenda_foto = (Esc $s.legenda_foto); handle = (Esc $handle) } $nome 1080 1350
     }
     'cta' {
-      $px = Px $s.titulo @(104, 96, 84, 72)
-      Render 'cta' @{ titulo = (Rich $s.titulo 'em'); titulo_px = $px; titulo_top = 440; corpo = (Rich $s.corpo 'b'); contato = (Esc $s.contato); botao = (Esc $s.botao); fundo = (Uri $s.fundo) } $nome 1080 1350
+      $px = Px $s.titulo @(96, 84, 74, 66)
+      Render 'cta' @{ titulo = (Rich $s.titulo 'em'); titulo_px = $px; titulo_top = 430; corpo = (Rich $s.corpo 'b'); contato = (Rich $s.contato 'b'); botao = (Esc $s.botao); fundo = (Uri $s.fundo) } $nome 1080 1350
     }
     default { $resultados.Add("$nome  tipo desconhecido: $($s.tipo)") }
   }
