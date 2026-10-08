@@ -1,0 +1,6 @@
+{
+  "name": "barra-progresso",
+  "version": "0.1.0",
+  "description": "Barra de andamento da tarefa acima da caixa de texto: fundo preto, enche de verde de 0% a 100%.",
+  "types": "./types/index.d.ts"
+}

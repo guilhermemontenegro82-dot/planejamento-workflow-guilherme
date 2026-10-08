@@ -63,3 +63,10 @@ desktop.ini
 !01 - EP Engenharia/Instagram EP/00-Marca/fontes/*.ttf
 # Renders de teste não entram
 01 - EP Engenharia/Instagram EP/_trabalho/*.png
+
+# ---- 7. Mods do Claude Code (08/10/2026): código-fonte dos mods, sem dados de cliente ----
+# Os .wav ficam fora (mídia); são regenerados por sons/gerar-sons.ps1.
+!Planejamento WorkFlow Guilherme/Mods/**/*.ts
+!Planejamento WorkFlow Guilherme/Mods/**/*.tsx
+!Planejamento WorkFlow Guilherme/Mods/**/*.json
+!Planejamento WorkFlow Guilherme/Mods/**/*.ps1

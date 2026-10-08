@@ -1,0 +1,5 @@
+{
+  "name": "sino-avisos",
+  "version": "0.1.0",
+  "description": "Toca um sino quando o Claude pede decisão ou aprovação (ding-ding) e outro quando termina a tarefa (dó-mi-sol)."
+}
