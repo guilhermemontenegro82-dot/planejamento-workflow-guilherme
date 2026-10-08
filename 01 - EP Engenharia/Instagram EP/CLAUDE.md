@@ -10,7 +10,7 @@ Dono: Guilherme (diretor financeiro/comercial, iniciante em IA — explique simp
 - **Pasta de fotos das obras, liberada por ele para este projeto, só leitura:**
   `C:\Users\gamon\OneDrive\Pasta compartilhada ADM\Relatórios Fotográficos Obras EP\<obra>\<Sxx>\Fotos\`
   (cada semana tem `Fotos\` com JPEGs e o PDF do relatório ao cliente). Listar e abrir fotos ali não exige pergunta.
-- **Regra 1 do Guilherme: NUNCA mexer ou entrar com arquivos no OneDrive.** Nenhuma escrita, cópia para lá, criação de pasta, renomeação ou exclusão em qualquer caminho do OneDrive. Copiar fotos DE lá PARA dentro do post (etapa 3) é permitido; o sentido inverso, nunca. O hook do Claude Code nega comandos de escrita que citem o OneDrive.
+- **Regra 1 do Guilherme: NUNCA mexer ou entrar com arquivos no OneDrive.** Nenhuma escrita, cópia para lá, criação de pasta, renomeação ou exclusão em qualquer caminho do OneDrive. Copiar fotos DE lá PARA dentro do post (etapa 3) é permitido; o sentido inverso, nunca. Não há trava técnica (revertida em 08/10/2026): a regra é disciplina minha.
 - Qualquer outro caminho fora do workspace: pedir acesso antes.
 
 ## Regras do projeto
