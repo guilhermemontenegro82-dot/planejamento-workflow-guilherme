@@ -21,11 +21,11 @@ Raiz: `D:\12- Claude - works\01 - EP Engenharia\Instagram EP`. Não leia fora de
 |---|---|---|
 | 1 | Quantidade | nº de `slide-NN.png` = nº de `## Slide` no carrossel.md; `story-01.png` existe |
 | 2 | Dimensões | cada slide exatamente 1080×1350; story exatamente 1080×1920 |
-| 3 | Peso | cada PNG entre 150 KB e 8 MB (abaixo = peça vazia; acima = Instagram recusa) |
+| 3 | Peso | cada PNG entre 40 KB e 8 MB (abaixo = peça vazia ou branca; acima = Instagram recusa). Slides de fundo claro liso sem foto pesam ~65 KB e são normais |
 | 4 | Texto idêntico | para cada slide, extrair o texto do `_html/slide-NN.html` (tirar tags, `&amp;` etc., normalizar espaços) e verificar que título e corpo do carrossel.md (sem `**`) aparecem literalmente. Divergência → FAIL citando o trecho |
 | 5 | Placeholders | nenhum `{{` sobrou em nenhum HTML |
 | 6 | Capa | Read: logo visível, pílula do pilar, título em ≤ 3 linhas, `arraste →`, nada cortado |
-| 7 | Internos | Read: badge numerado, título ≤ 3 linhas, corpo ≤ 5 linhas, painel de foto inteiro quando houver, logo pequeno, barra de progresso coerente com n/total |
+| 7 | Internos | Read: badge numerado (o template mostra `1`, `2`… mesmo que o carrossel.md escreva `01`; não é divergência), título ≤ 3 linhas, corpo ≤ 5 linhas, painel de foto inteiro quando houver, logo pequeno. Barra de progresso só existe no `interno-claro` e deve bater com n/total; o `interno-foto` mostra `Rótulo n de total` em texto |
 | 8 | CTA | Read: contém `(21) 98355-0728` e `epengenharia.eng.br`; botão inteiro; nada cortado |
 | 9 | Story | Read: logo, pílula, título ≤ 3 linhas, `no feed`, círculo com mão, faixa inferior (últimos ~220 px) sem texto |
 | 10 | Legenda de foto | Modo B: todo slide com foto real mostra `Caso real · obra EP`. Modo A: **nenhum** slide mostra isso |
