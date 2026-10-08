@@ -5,25 +5,26 @@ import type { Andamento } from '../types'
 
 // A barra começa em 0% quando você manda a tarefa, o Claude informa o avanço
 // pela ferramenta "progresso" a cada etapa, e ela fecha em 100% quando o turno termina.
-// A barra não salta: anda de 5 em 5% até o valor informado, um degrau a cada PASSO_MS.
+// A barra não salta: anda de 1 em 1% até o valor informado, um degrau a cada PASSO_MS.
 
 const andamento = atom({ plugin: 'barra-progresso', key: 'andamento' } as const, null)
 
 const FERRAMENTA = 'mcp__barra-progresso__progresso'
 const VERDE = '#22c55e'
 const PRETO = '#000000'
-const DEGRAU = 5
-const PASSO_MS = 200
+const DEGRAU = 1
+const PASSO_MS = 40
 
 const INSTRUCAO = [
-  'Barra de andamento (mod barra-progresso): em toda tarefa com mais de um passo, chame a ferramenta',
-  `${FERRAMENTA} logo no início (percentual baixo, etapa = o que vai fazer) e de novo a cada avanço relevante,`,
-  'com o percentual estimado do trabalho já concluído (0 a 100) e a etapa atual em poucas palavras, em português.',
-  'Seja realista e nunca volte o percentual. Não é preciso chamar em respostas curtas de uma só etapa;',
+  'Barra de andamento (mod barra-progresso): em toda tarefa com mais de um passo, informe o andamento com',
+  `${FERRAMENTA}: percentual estimado do trabalho já concluído (0 a 100) e a etapa atual em poucas palavras, em português.`,
+  'Para economizar tokens: chame-a SEMPRE no mesmo bloco de outras ferramentas que você já ia usar (em paralelo),',
+  'nunca sozinha numa rodada própria, e no máximo 6 a 8 vezes por tarefa, nos marcos relevantes.',
+  'Seja realista e nunca volte o percentual. Não chame em respostas curtas de uma só etapa;',
   'ao fim do turno a barra vai a 100% sozinha.',
 ].join(' ')
 
-/** Arredonda para baixo no múltiplo de 5, entre 0 e 100 */
+/** Arredonda para baixo no inteiro, entre 0 e 100 */
 function emDegraus(n: number): number {
   const limitado = Math.max(0, Math.min(100, n))
   return Math.floor(limitado / DEGRAU) * DEGRAU
@@ -47,7 +48,7 @@ export const register: Register = on => {
       isDeferred: false,
     })
 
-    // Animação: a cada PASSO_MS, se a barra está abaixo do alvo, sobe um degrau de 5%
+    // Animação: a cada PASSO_MS, se a barra está abaixo do alvo, sobe um degrau de 1%
     $.clock.every(PASSO_MS, async () => {
       const a = await read($, andamento)
       if (a === null || a.percentual >= a.alvo) return
@@ -91,7 +92,7 @@ export const register: Register = on => {
     return { result: `Barra em ${atual.alvo}%.` }
   })
 
-  // Fim do turno principal: alvo 100% (a barra sobe até lá de 5 em 5) ou marca interrompida
+  // Fim do turno principal: alvo 100% (a barra sobe até lá de 1 em 1) ou marca interrompida
   on('turn.complete', async ($, e, next) => {
     if (e.agentId === undefined) {
       await update($, andamento, (a): Andamento | null =>

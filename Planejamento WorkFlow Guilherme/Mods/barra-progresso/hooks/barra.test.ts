@@ -20,5 +20,5 @@ test('a barra vai de 0 ao avanço informado, nunca volta e fecha em 100%', async
 
   await $.prompt.submit({ text: 'nova tarefa' } as never)
   expect((await informa(5)).result).toBe('Barra em 5%.')
-  expect((await informa(37)).result).toBe('Barra em 35%.')
+  expect((await informa(37.6)).result).toBe('Barra em 37%.')
 })
