@@ -1,0 +1,9 @@
+Certificados dos chequers e decisões do Guilherme. Gravados pelos agentes/skills, nunca à mão.
+Cada etapa seguinte lê daqui e recusa rodar sem o certificado anterior com VEREDITO: APROVADO.
+
+02-texto-tecnico.certificado.md     agente-insta-chequer-texto-tecnico
+02-texto-conteudo.certificado.md    agente-insta-chequer-texto-conteudo
+02-textos.decisao-guilherme.md      resposta literal do Guilherme aprovando os textos
+03-imagens.certificado.md           agente-insta-chequer-imagens
+04-arte-final.certificado.md        agente-insta-chequer-arte-final
+04-arte.decisao-guilherme.md        "pode agendar" + "agendado" (data/hora programada no Business Suite)
