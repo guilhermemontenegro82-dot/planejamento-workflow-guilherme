@@ -1,0 +1,69 @@
+{
+  "post": "P05 · Antes das chuvas: 5 checagens no seu apartamento",
+  "handle": "@ENGENHARIA.EP",
+  "rotulo": "Checagem",
+  "secao": "PREVENÇÃO",
+  "slides": [
+    {
+      "tipo": "capa",
+      "tag": "Guia",
+      "titulo": "Antes das **chuvas**:\n5 checagens no\nseu apartamento",
+      "titulo_px": 96,
+      "apoio": "O que olhar agora, enquanto ainda está seco",
+      "fundo": "../04-imagens-brutas/slide-01.png"
+    },
+    {
+      "tipo": "interno-claro", "n": 1, "total": 5,
+      "titulo": "Ralos e calhas da varanda",
+      "corpo": "Folha, terra e poeira entopem o ralo. A água acumula, forma uma lâmina sobre o piso e vai procurar caminho pela laje. Ralo livre é a checagem mais simples da lista."
+    },
+    {
+      "tipo": "interno-foto", "n": 2, "total": 5,
+      "titulo": "Rejuntes e selantes das áreas molhadas",
+      "corpo": "A água não passa pela cerâmica, passa pelo rejunte. Rejunte trincado no box, na bancada ou na varanda leva água ao contrapiso e ela aparece no teto do vizinho.",
+      "fundo": "../04-imagens-brutas/slide-03.png",
+      "legenda_foto": "Imagem ilustrativa"
+    },
+    {
+      "tipo": "interno-claro", "n": 3, "total": 5,
+      "titulo": "Drenos das janelas",
+      "corpo": "Janela de alumínio tem furos de dreno no trilho de baixo. Entupidos, a chuva com vento sobe pelo trilho e entra. Um palito e um jato de água resolvem em minutos."
+    },
+    {
+      "tipo": "interno-foto", "n": 4, "total": 5,
+      "titulo": "Jardineiras e floreiras",
+      "corpo": "Terra encharcada segura água por dias contra a laje. Jardineira sem impermeabilização, camada drenante e ralo é uma das origens mais comuns de infiltração em varanda.",
+      "fundo": "../04-imagens-brutas/slide-05.png",
+      "legenda_foto": "Imagem ilustrativa"
+    },
+    {
+      "tipo": "interno-claro", "n": 5, "total": 5,
+      "titulo": "Manchas e bolhas na pintura",
+      "corpo": "Mancha que volta e tinta que estufa são umidade ativa. Repintar por cima esconde, não resolve. Antes disso, é preciso achar a origem: tubulação ou água de fora."
+    },
+    {
+      "tipo": "interno-foto", "n": 6, "total": 5, "badge": "EP", "rotulo_linha": "Na prática",
+      "titulo": "Como a gente\nfaz na EP",
+      "corpo": "Área molhada começa pela impermeabilização e passa por teste de estanqueidade antes do revestimento. Antes de pintar uma mancha, a gente investiga a origem. Menos retrabalho.",
+      "fundo": "../04-imagens-brutas/slide-07.png",
+      "legenda_foto": "Imagem ilustrativa"
+    },
+    {
+      "tipo": "cta",
+      "titulo": "Viu algum desses pontos?\n**Chame a gente.**",
+      "titulo_px": 82,
+      "corpo": "A gente olha, explica o que está acontecendo e mostra as opções, sem compromisso.",
+      "contato": "**(21) 98355-0728** · epengenharia.eng.br\nPrimeira visita é gratuita.",
+      "botao": "Chame no direct · @engenharia.ep",
+      "fundo": "../04-imagens-brutas/slide-08.png"
+    }
+  ],
+  "story": {
+    "tag": "🌧️ Chuva chegando",
+    "titulo": "Ralo da varanda limpo?\nRejunte do box inteiro?\nMancha no teto **voltando?**",
+    "titulo_px": 70,
+    "apoio": "A água sempre acha um caminho.",
+    "ponte": "Expliquei tudo **no feed**",
+    "fundo": "../04-imagens-brutas/story-01.png"
+  }
+}

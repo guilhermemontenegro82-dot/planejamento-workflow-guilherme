@@ -10,4 +10,4 @@ P01 a P04 são anteriores ao padrão de pastas (feitos em julho/2026, antes da r
 | P02 | 2026-07-02 | 5 sinais de alerta na estrutura | Educativo | A (fotos reais nos slides internos) | Carrossel 7 + story | publicado | 01-Posts/P02_2026-07-02_sinais-estruturais | |
 | P03 | 2026-07-02 | A obra que virou pesadelo (empresa sumiu) | Vendas / Dor real | A | Carrossel 9 · campanha paga | publicado | 01-Posts/P03_2026-07-02_empresa-sumiu_campanha-paga | |
 | P04 | 2026-07-16 | Obra limpa, obra séria | Bastidores | B | Carrossel 6 | publicado | 01-Posts/P04_2026-07-16_obra-limpa-obra-seria | |
-| P05 | 2026-10-15 | Antes das chuvas: 5 checagens no seu apartamento | Educativo | A | Carrossel 8 + story | textos | 01-Posts/P05_2026-10-15_antes-das-chuvas | pesquisa 2026-S41, opção 5 |
+| P05 | 2026-10-15 | Antes das chuvas: 5 checagens no seu apartamento | Educativo | A | Carrossel 8 + story | arte-final | 01-Posts/P05_2026-10-15_antes-das-chuvas | pesquisa 2026-S41, opção 5 |

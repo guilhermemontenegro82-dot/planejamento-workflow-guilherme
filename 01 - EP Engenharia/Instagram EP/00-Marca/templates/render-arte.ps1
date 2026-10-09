@@ -28,7 +28,7 @@ function Esc([string]$s) { if ($null -eq $s) { return '' }; return [System.Net.W
 function Rich([string]$s, [string]$tag) {
   $s = Esc $s
   $s = [regex]::Replace($s, '\*\*(.+?)\*\*', ('<' + $tag + '>$1</' + $tag + '>'))
-  return $s.Replace("`n", '<br>')
+  return $s.Replace("`n", '<br> ')
 }
 # tamanho do titulo pelo comprimento (sem markup)
 function Px([string]$s, [int[]]$escala) {
@@ -65,18 +65,18 @@ foreach ($s in $data.slides) {
   $i++; $nome = 'slide-{0:00}' -f $i
   switch ($s.tipo) {
     'capa' {
-      $px = Px $s.titulo @(118, 104, 92, 80)
+      $px = $(if ($s.titulo_px) { [int]$s.titulo_px } else { Px $s.titulo @(118, 104, 92, 80) })
       Render 'capa' @{ tag = (Esc $s.tag); titulo = (Rich $s.titulo 'em'); titulo_px = $px; titulo_top = $(if ($px -ge 104) { 590 } else { 600 }); apoio = (Esc $s.apoio); fundo = (Uri $s.fundo); handle = (Esc $handle) } $nome 1080 1350
     }
     'interno-claro' {
       $foto = Uri $s.foto
-      Render 'interno-claro' @{ n = $s.n; total = $s.total; rotulo = (Esc $rotulo); secao = (Esc $secao); titulo = (Rich $s.titulo 'em'); titulo_px = (Px $s.titulo @(84, 78, 68, 60)); corpo = (Rich $s.corpo 'b'); foto = $foto; foto_display = $(if ($foto) { 'block' } else { 'none' }); legenda_foto = (Esc $s.legenda_foto); pct = [math]::Round(100 * $s.n / $s.total) } $nome 1080 1350
+      Render 'interno-claro' @{ n = $s.n; total = $s.total; badge = (Esc $(if ($s.badge) { $s.badge } else { $s.n })); rotulo_linha = (Esc $(if ($s.rotulo_linha) { $s.rotulo_linha } else { "$rotulo $($s.n) de $($s.total)" })); rotulo = (Esc $rotulo); secao = (Esc $secao); titulo = (Rich $s.titulo 'em'); titulo_px = $(if ($s.titulo_px) { [int]$s.titulo_px } else { Px $s.titulo @(84, 78, 68, 60) }); corpo = (Rich $s.corpo 'b'); foto = $foto; foto_display = $(if ($foto) { 'block' } else { 'none' }); legenda_foto = (Esc $s.legenda_foto); pct = [math]::Round(100 * $s.n / $s.total) } $nome 1080 1350
     }
     'interno-foto' {
-      Render 'interno-foto' @{ n = $s.n; total = $s.total; rotulo = (Esc $rotulo); titulo = (Rich $s.titulo 'em'); titulo_px = (Px $s.titulo @(84, 78, 68, 60)); corpo = (Rich $s.corpo 'b'); fundo = (Uri $s.fundo); legenda_foto = (Esc $s.legenda_foto); handle = (Esc $handle) } $nome 1080 1350
+      Render 'interno-foto' @{ n = $s.n; total = $s.total; badge = (Esc $(if ($s.badge) { $s.badge } else { $s.n })); rotulo_linha = (Esc $(if ($s.rotulo_linha) { $s.rotulo_linha } else { "$rotulo $($s.n) de $($s.total)" })); rotulo = (Esc $rotulo); titulo = (Rich $s.titulo 'em'); titulo_px = $(if ($s.titulo_px) { [int]$s.titulo_px } else { Px $s.titulo @(84, 78, 68, 60) }); corpo = (Rich $s.corpo 'b'); fundo = (Uri $s.fundo); legenda_foto = (Esc $s.legenda_foto); handle = (Esc $handle) } $nome 1080 1350
     }
     'cta' {
-      $px = Px $s.titulo @(96, 84, 74, 66)
+      $px = $(if ($s.titulo_px) { [int]$s.titulo_px } else { Px $s.titulo @(96, 84, 74, 66) })
       Render 'cta' @{ titulo = (Rich $s.titulo 'em'); titulo_px = $px; titulo_top = 430; corpo = (Rich $s.corpo 'b'); contato = (Rich $s.contato 'b'); botao = (Esc $s.botao); fundo = (Uri $s.fundo) } $nome 1080 1350
     }
     default { $resultados.Add("$nome  tipo desconhecido: $($s.tipo)") }
@@ -84,7 +84,7 @@ foreach ($s in $data.slides) {
 }
 if ($data.story) {
   $st = $data.story
-  $px = Px $st.titulo @(104, 96, 86, 76)
+  $px = $(if ($st.titulo_px) { [int]$st.titulo_px } else { Px $st.titulo @(104, 96, 86, 76) })
   $linhas = [math]::Ceiling(([regex]::Replace($st.titulo, '\*\*', '')).Length / 22)
   $apoioTop = 760 + [int]($linhas * $px * 1.08) + 50
   Render 'story' @{ tag = (Esc $st.tag); titulo = (Rich $st.titulo 'em'); titulo_px = $px; titulo_top = 760; apoio = (Esc $st.apoio); apoio_top = $apoioTop; ponte = (Rich $st.ponte 'em'); fundo = (Uri $st.fundo) } 'story-01' 1080 1920
