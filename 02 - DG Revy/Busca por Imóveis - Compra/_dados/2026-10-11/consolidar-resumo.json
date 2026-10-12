@@ -1,0 +1,33 @@
+﻿{
+    "rodada":  "2026-10-11",
+    "fontes":  {
+                   "CHAVESNAMAO":  {
+                                       "brutos":  581,
+                                       "fora_criterios":  18,
+                                       "duplicados_chave":  0,
+                                       "aceitos":  563
+                                   },
+                   "QUINTOANDAR":  {
+                                       "brutos":  101,
+                                       "fora_criterios":  6,
+                                       "duplicados_chave":  0,
+                                       "aceitos":  95
+                                   },
+                   "VIVAREAL":  {
+                                    "brutos":  5177,
+                                    "fora_criterios":  9,
+                                    "duplicados_chave":  0,
+                                    "aceitos":  5168
+                                }
+               },
+    "total_aceitos":  5826,
+    "area":  {
+                 "SIM":  787,
+                 "LIMITE":  169,
+                 "A CONFIRMAR":  65,
+                 "NAO":  4805
+             },
+    "para_planilha":  1021,
+    "grupos_duplicata":  83,
+    "gerado_em":  "2026-10-11 21:01"
+}

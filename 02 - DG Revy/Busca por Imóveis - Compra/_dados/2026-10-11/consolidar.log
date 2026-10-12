@@ -1,0 +1,98 @@
+﻿2026-10-11 20:57:59  ▶ consolidar.ps1 — pasta D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\_dados\2026-10-11
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_14143712 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_28270971 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_29759503 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_31311982 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_31353816 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_35594683 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_35644683 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_37796705 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_37866419 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_41254195 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_41254196 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_41254198 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_41320390 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_43542743 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_45138700 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_45265499 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_45902623 (tipo 'Flat' não incluído)
+2026-10-11 20:58:00    fora dos critérios: CHAVESNAMAO_45977731 (tipo 'Flat' não incluído)
+2026-10-11 20:58:01  bruto-chavesnamao.csv: 581 linhas, 18 fora dos critérios, 0 chave repetida, 563 aceitas
+2026-10-11 20:58:01    fora dos critérios: QUINTOANDAR_895693847 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:01    fora dos critérios: QUINTOANDAR_894973046 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:01    fora dos critérios: QUINTOANDAR_894717793 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:01    fora dos critérios: QUINTOANDAR_894972632 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:01    fora dos critérios: QUINTOANDAR_895392918 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:01    fora dos critérios: QUINTOANDAR_894972700 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:01  bruto-quintoandar.csv: 101 linhas, 6 fora dos critérios, 0 chave repetida, 95 aceitas
+2026-10-11 20:58:02    fora dos critérios: VIVAREAL_2884593179 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:05    fora dos critérios: VIVAREAL_2916293155 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:06    fora dos critérios: VIVAREAL_2807729123 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:06    fora dos critérios: VIVAREAL_2904051000 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:06    fora dos critérios: VIVAREAL_2905058650 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:06    fora dos critérios: VIVAREAL_2905086097 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:06    fora dos critérios: VIVAREAL_2914755679 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:06    fora dos critérios: VIVAREAL_2914844180 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:06    fora dos critérios: VIVAREAL_2914863282 (tipo 'Cobertura' não incluído)
+2026-10-11 20:58:07  bruto-vivareal.csv: 5177 linhas, 9 fora dos critérios, 0 chave repetida, 5168 aceitas
+2026-10-11 20:58:11    área: 100 de 5826
+2026-10-11 20:58:14    área: 200 de 5826
+2026-10-11 20:58:18    área: 300 de 5826
+2026-10-11 20:58:21    área: 400 de 5826
+2026-10-11 20:58:24    área: 500 de 5826
+2026-10-11 20:58:28    área: 600 de 5826
+2026-10-11 20:58:31    área: 700 de 5826
+2026-10-11 20:58:35    área: 800 de 5826
+2026-10-11 20:58:38    área: 900 de 5826
+2026-10-11 20:58:41    área: 1000 de 5826
+2026-10-11 20:58:44    área: 1100 de 5826
+2026-10-11 20:58:48    área: 1200 de 5826
+2026-10-11 20:58:51    área: 1300 de 5826
+2026-10-11 20:58:54    área: 1400 de 5826
+2026-10-11 20:58:57    área: 1500 de 5826
+2026-10-11 20:59:00    área: 1600 de 5826
+2026-10-11 20:59:04    área: 1700 de 5826
+2026-10-11 20:59:08    área: 1800 de 5826
+2026-10-11 20:59:11    área: 1900 de 5826
+2026-10-11 20:59:15    área: 2000 de 5826
+2026-10-11 20:59:19    área: 2100 de 5826
+2026-10-11 20:59:23    área: 2200 de 5826
+2026-10-11 20:59:26    área: 2300 de 5826
+2026-10-11 20:59:30    área: 2400 de 5826
+2026-10-11 20:59:33    área: 2500 de 5826
+2026-10-11 20:59:36    área: 2600 de 5826
+2026-10-11 20:59:40    área: 2700 de 5826
+2026-10-11 20:59:43    área: 2800 de 5826
+2026-10-11 20:59:47    área: 2900 de 5826
+2026-10-11 20:59:50    área: 3000 de 5826
+2026-10-11 20:59:53    área: 3100 de 5826
+2026-10-11 20:59:56    área: 3200 de 5826
+2026-10-11 21:00:00    área: 3300 de 5826
+2026-10-11 21:00:03    área: 3400 de 5826
+2026-10-11 21:00:06    área: 3500 de 5826
+2026-10-11 21:00:10    área: 3600 de 5826
+2026-10-11 21:00:14    área: 3700 de 5826
+2026-10-11 21:00:17    área: 3800 de 5826
+2026-10-11 21:00:22    área: 3900 de 5826
+2026-10-11 21:00:26    área: 4000 de 5826
+2026-10-11 21:00:29    área: 4100 de 5826
+2026-10-11 21:00:33    área: 4200 de 5826
+2026-10-11 21:00:36    área: 4300 de 5826
+2026-10-11 21:00:40    área: 4400 de 5826
+2026-10-11 21:00:43    área: 4500 de 5826
+2026-10-11 21:00:46    área: 4600 de 5826
+2026-10-11 21:00:50    área: 4700 de 5826
+2026-10-11 21:00:53    área: 4800 de 5826
+2026-10-11 21:00:56    área: 4900 de 5826
+2026-10-11 21:01:00    área: 5000 de 5826
+2026-10-11 21:01:04    área: 5100 de 5826
+2026-10-11 21:01:07    área: 5200 de 5826
+2026-10-11 21:01:10    área: 5300 de 5826
+2026-10-11 21:01:13    área: 5400 de 5826
+2026-10-11 21:01:16    área: 5500 de 5826
+2026-10-11 21:01:19    área: 5600 de 5826
+2026-10-11 21:01:22    área: 5700 de 5826
+2026-10-11 21:01:25    área: 5800 de 5826
+2026-10-11 21:01:26  Área: SIM 787 | LIMITE 169 | A CONFIRMAR 65 | NAO 4805
+2026-10-11 21:01:27  Duplicatas: 83 grupos por endereço+número (D) e 88 só por rua/CEP sem número (P)
+2026-10-11 21:01:28  coleta.csv: 5826 linhas (1021 vão para a planilha)

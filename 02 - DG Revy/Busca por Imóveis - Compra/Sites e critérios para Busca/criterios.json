@@ -1,0 +1,57 @@
+{
+  "_descricao": "Critérios de busca definidos pelo Guilherme em 'Locais e critérios para pesquisa dos imóveis.docx' (11/10/2026). Editar aqui para mudar a busca; os scripts leem este arquivo.",
+  "negocio": "VENDA",
+  "tipos_incluidos": ["Apartamento", "Kitnet/Studio"],
+  "uso": "RESIDENCIAL",
+  "preco_min": 500000,
+  "preco_max": 1100000,
+  "area_util_min": 35,
+  "area_util_max": 70,
+  "cidade": "Rio de Janeiro",
+  "uf": "RJ",
+  "bairros_busca": ["Ipanema", "Leblon", "Copacabana"],
+  "_bairros_nota": "Copacabana entra só pela fatia do Arpoador que o polígono de Ipanema cobre (Francisco Otaviano, Bulhões de Carvalho, Rainha Elizabeth, Raul Pompéia, Francisco Bhering, Joaquim Nabuco, Gomes Carneiro; pendentes: Francisco Sá e final da N. S. de Copacabana).",
+  "poligonos": {
+    "Ipanema": "Áreas de interesse/poligonos/ipanema.geojson",
+    "Leblon": "Áreas de interesse/poligonos/leblon.geojson"
+  },
+  "borda_limite_m": 50,
+  "borda_aproximada_dentro_m": 150,
+  "borda_aproximada_fora_m": 300,
+  "sites": {
+    "VIVAREAL": {
+      "nome": "VivaReal / Zap Imóveis",
+      "api": "https://glue-api.vivareal.com/v2/listings",
+      "x_domain": "www.vivareal.com.br",
+      "page_size": 30,
+      "offset_max": 1000,
+      "faixas_preco_fatiamento": [[500000, 650000], [650001, 800000], [800001, 950000], [950001, 1100000]],
+      "iptu_limite_mensal": 700,
+      "_iptu_nota": "11/10/2026: a API devolve o IPTU cru com rótulo iptuPeriod (MONTHLY/YEARLY/sem) pouco confiável (394 de 1.189 YEARLY com valor <= 300; 33 de 1.558 MONTHLY com valor > 700). Até iptu_limite_mensal o valor é lido como cota mensal, acima como anual (÷12), igual ao Chaves na Mão; o rótulo do site fica em iptu_informado. Com 0, vale só o rótulo (sem período = anual)."
+    },
+    "QUINTOANDAR": {
+      "nome": "QuintoAndar",
+      "api": "https://apigw.prod.quintoandar.com.br/house-listing-search/v2/search/list",
+      "_api_nota": "host real descoberto em 11/10/2026 no JS do site; o /api/yellow-pages/v2/search/list do www dá 404 e o /v2/search antigo ignora filtros. O coletor usa este host; pageSize aceito até 500.",
+      "pagina_anuncio": "https://www.quintoandar.com.br/imovel/{id}/comprar",
+      "viewport": { "north": -22.968, "south": -22.996, "east": -43.178, "west": -43.238 },
+      "house_types": ["Apartamento", "StudioOuKitchenette"]
+    },
+    "CHAVESNAMAO": {
+      "nome": "Chaves na Mão",
+      "api": "https://www.chavesnamao.com.br/api/realestate/listing/items/",
+      "api_mapa": "https://www.chavesnamao.com.br/api/realestate/search-map-items/",
+      "api_detalhes": "https://www.chavesnamao.com.br/api/realestate/details/",
+      "level1": "imoveis-a-venda",
+      "iptu_limite_mensal": 700,
+      "level3_complemento": ["ipanema", "leblon"],
+      "filtro": "pmin:{preco_min},pmax:{preco_max},amin:{area_min},amax:{area_max}",
+      "_nota": "api (listing/items, pg) trava em 25 páginas e depois devolve similares da cidade; api_mapa (cursor) é a principal. level1=imoveis-a-venda inclui kitnet/stúdio/flat/loft (filtrados por tipo no coletor). IPTU sem rótulo de base no site: até iptu_limite_mensal é lido como mensal, acima como anual (11/10/2026). Caixa Leblon ajustada em 11/10/2026 para cobrir o bairro inteiro (bbox OSM N -22.9767 S -22.9896 E -43.2142 W -43.2380, com margem). Caixa Ipanema_Arpoador: borda leste movida de -43.19071 para -43.18600 em 11/10/2026 (anúncio da Rua Francisco Otaviano ficava 36 m fora; Arpoador/Posto 6 inteiro agora dentro). level3_complemento: bairros buscados também por nome (endpoint listing/items) para pegar anúncios com lat/lon trocados no site, que nenhuma caixa alcança.",
+      "caixas": {
+        "Ipanema_Arpoador": { "mapNorth": -22.97439, "mapSouth": -22.99782, "mapEast": -43.18600, "mapWest": -43.22307 },
+        "Leblon": { "mapNorth": -22.9745, "mapSouth": -22.9925, "mapEast": -43.2125, "mapWest": -43.2390 }
+      }
+    }
+  },
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+}

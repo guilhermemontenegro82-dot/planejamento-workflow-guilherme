@@ -1,0 +1,29 @@
+﻿2026-10-11 19:17:48  == coletar-quintoandar: início ==
+2026-10-11 19:17:48  saída: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\_dados\2026-10-11
+2026-10-11 19:17:48  critérios: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\Sites e critérios para Busca\criterios.json
+2026-10-11 19:17:48  critérios: preço 500000-1100000, área 35-70 m², tipos Apartamento/StudioOuKitchenette, viewport N-22,968 S-22,996 E-43,178 W-43,238
+2026-10-11 19:17:49  busca relevance offset 0: HTTP 200, total 101, hits 101, novos 101, acumulado 101
+2026-10-11 19:17:49  busca concluída: total API 101, ids distintos 101, chamadas 1, falhas 0
+2026-10-11 19:17:49  anúncios a processar: 101
+2026-10-11 19:18:13  progresso: 10/101 anúncios (10 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:18:33  progresso: 20/101 anúncios (20 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:18:59  progresso: 30/101 anúncios (30 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:19:23  progresso: 40/101 anúncios (40 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:19:54  página 895708722: ok na rodada 2 (o site tinha respondido 'indisponível')
+2026-10-11 19:19:55  progresso: 50/101 anúncios (50 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:20:16  progresso: 60/101 anúncios (60 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:20:37  progresso: 70/101 anúncios (70 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:20:51  página 895726517: ok na rodada 2 (o site tinha respondido 'indisponível')
+2026-10-11 19:21:03  progresso: 80/101 anúncios (80 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:21:28  progresso: 90/101 anúncios (90 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:21:40  página 895698972: ok na rodada 2 (o site tinha respondido 'indisponível')
+2026-10-11 19:21:57  progresso: 100/101 anúncios (100 páginas ok, 0 falhas, 0 sem dados)
+2026-10-11 19:21:59  == resumo ==
+2026-10-11 19:21:59  total informado pela API (hits.total.value): 101
+2026-10-11 19:21:59  ids distintos obtidos na busca: 101; fora dos critérios localmente: 0
+2026-10-11 19:21:59  linhas gravadas em bruto-quintoandar.csv: 101
+2026-10-11 19:21:59  páginas de anúncio: ok 101, falha 0, sem dados 0, puladas 0
+2026-10-11 19:21:59  com número: 87; com CEP: 101; com coordenada exata: 101
+2026-10-11 19:21:59  tempo total: 251,5 s
+2026-10-11 19:21:59  CSV: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\_dados\2026-10-11\bruto-quintoandar.csv
+2026-10-11 19:21:59  RESULTADO: COMPLETO (exit 0)

@@ -1,0 +1,5 @@
+﻿2026-10-11 21:02:35  ▶ atualizar-base.ps1 — rodada 2026-10-11
+2026-10-11 21:02:36  coleta.csv: 5826 linhas
+2026-10-11 21:02:36  base.csv não existe ainda: primeira rodada
+2026-10-11 21:02:36  sem verificacao.csv (nada a verificar ou etapa pulada)
+2026-10-11 21:02:39  base.csv: 1021 linhas, 1021 ativas | novos 1021 | reativados 0 | removidos 0 | preço alterado 0 | fora dos critérios 0 | não verificados 0

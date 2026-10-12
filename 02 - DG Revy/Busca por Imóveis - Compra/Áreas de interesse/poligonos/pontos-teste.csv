@@ -1,0 +1,24 @@
+﻿rua;numero;bairro;lat;lon;esperado;observacao
+Rua Visconde de Pirajá;540;Ipanema;-22.9836897;-43.2110725;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 66-608 (43 pontos, mesma paridade, R2 1)
+Rua Garcia d'Ávila;60;Ipanema;-22.9846481;-43.2091372;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 25-173 (7 pontos, todos os números, R2 1)
+Rua Francisco Otaviano;61;Copacabana;-22.9871481;-43.1907873;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 55-177 (11 pontos, mesma paridade, R2 0.97)
+Avenida Rainha Elizabeth;200;Copacabana;-22.984988;-43.1916606;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 122-480 (4 pontos, mesma paridade, R2 1)
+Avenida Ataulfo de Paiva;900;Leblon;-22.9845577;-43.2244605;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 204-1240 (10 pontos, mesma paridade, R2 1)
+Rua Dias Ferreira;100;Leblon;-22.9852753;-43.2280213;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 78-636 (11 pontos, mesma paridade, R2 1)
+Rua Prudente de Morais;450;Ipanema;-22.9853119;-43.2011331;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 10-1620 (13 pontos, mesma paridade, R2 0.98)
+Rua Cupertino Durão;50;Leblon;-22.9854713;-43.2203145;SIM;geocode interpolado [consulta]: interpolado pelos nºs OSM 56-79 (2 pontos, todos os números, R2 1, extrapolado)
+Rua Bulhões de Carvalho;100;Copacabana;-22.9855234;-43.1928633;SIM;geocode rua [consulta]: ponto da via (Nominatim): Rua Bulhões de Carvalho, Arpoador, Copacabana, Rio de Janeiro, Região Sudeste, 22081-020, Brasil
+Rua Nascimento Silva;200;Ipanema;-22.9819867;-43.2071432;NAO;geocode rua [consulta]: ponto da via (Nominatim): Rua Nascimento Silva, Ipanema, Rio de Janeiro, Região Sudeste, 22410-002, Brasil
+Rua Alberto de Campos;25;Ipanema;-22.9811806;-43.1994954;NAO;geocode interpolado [consulta]: interpolado pelos nºs OSM 12-1405 (2 pontos, todos os números, R2 1)
+Rua Barão de Jaguaripe;100;Ipanema;-22.9814118;-43.2079885;NAO;geocode rua [consulta]: ponto da via (Nominatim): Rua Barão de Jaguaripe, Ipanema, Rio de Janeiro, Região Sudeste, 22410-002, Brasil
+Avenida Epitácio Pessoa;1000;Ipanema;-22.98191;-43.2136077;NAO;geocode interpolado [consulta]: interpolado pelos nºs OSM 204-5100 (65 pontos, mesma paridade, R2 0.74)
+Rua Redentor;100;Ipanema;-22.9823695;-43.2074674;NAO;geocode interpolado [consulta]: interpolado pelos nºs OSM 95-188 (2 pontos, todos os números, R2 1)
+Avenida Visconde de Albuquerque;300;Leblon;-22.9817766;-43.226831;NAO;geocode rua [consulta]: ponto da via (Nominatim): Avenida Visconde de Albuquerque, Leblon, Rio de Janeiro, Região Sudeste, 22450-000, Brasil
+Rua Gilberto Cardoso;50;Leblon;-22.9792404;-43.2197522;NAO;geocode rua [consulta]: ponto da via (Nominatim): Rua Gilberto Cardoso, Leblon, Rio de Janeiro, Região Sudeste, 22430-090, Brasil
+Rua Timóteo da Costa;100;Leblon;-22.9834636;-43.2314871;NAO;geocode interpolado [consulta]: interpolado pelos nºs OSM 297-1100 (2 pontos, todos os números, R2 1, extrapolado)
+Avenida Nossa Senhora de Copacabana;900;Copacabana;-22.9746988;-43.1896135;NAO;geocode interpolado [consulta]: interpolado pelos nºs OSM 22-1260 (33 pontos, mesma paridade, R2 1)
+Rua Barata Ribeiro;630;Copacabana;-22.9721578;-43.1903672;NAO;geocode interpolado [consulta]: interpolado pelos nºs OSM 6-752 (55 pontos, mesma paridade, R2 0.97)
+Rua Almirante Saddock de Sá;216;Ipanema;-22.9804816;-43.2032917;NAO;geocode rua [consulta]: nº OSM mais próximo: 266
+Rua Barão da Torre;300;Ipanema;-22.9831096;-43.2031176;SIM|LIMITE;geocode interpolado [consulta]: interpolado pelos nºs OSM 32-632 (15 pontos, mesma paridade, R2 0.83)
+Rua Humberto de Campos;100;Leblon;-22.9813458;-43.2169875;SIM|LIMITE;geocode interpolado [consulta]: interpolado pelos nºs OSM 97-802 (9 pontos, todos os números, R2 0.99)
+Rua Francisco Sá;30;Copacabana;-22.9829166;-43.1912042;LIMITE;geocode interpolado [consulta]: interpolado pelos nºs OSM 17-90 (3 pontos, todos os números, R2 1)

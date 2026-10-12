@@ -1,0 +1,71 @@
+﻿2026-10-11 19:17:47 === coletar-vivareal.ps1 ===
+2026-10-11 19:17:47 Saida: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\_dados\2026-10-11
+2026-10-11 19:17:47 Criterios: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\Sites e critérios para Busca\criterios.json
+2026-10-11 19:17:47 Criterios: preco R$ 500.000-1.100.000, area 35-70 m2, bairros: Ipanema, Leblon, Copacabana
+2026-10-11 19:17:48 Modo: padrao sem categoryPage (uma linha por anuncio, ids estaveis; links por lote de ids)
+2026-10-11 19:17:48 --- 1) Busca por bairro ---
+2026-10-11 19:17:49   [Ipanema] faixa R$ 500.000-1.100.000: totalCount 476
+2026-10-11 19:18:00     obtidos 476 (475 novos) de totalCount 476 em 16 pagina(s)
+2026-10-11 19:18:00   [Ipanema] anuncios unicos acumulados nesta busca: 475
+2026-10-11 19:18:01   [Leblon] faixa R$ 500.000-1.100.000: totalCount 182
+2026-10-11 19:18:05     obtidos 182 (182 novos) de totalCount 182 em 7 pagina(s)
+2026-10-11 19:18:05   [Leblon] anuncios unicos acumulados nesta busca: 182
+2026-10-11 19:18:06   [Copacabana] faixa R$ 500.000-1.100.000: totalCount 4520
+2026-10-11 19:18:06     acima de 900: fatiando pelas 4 faixas de preco do criterios.json
+2026-10-11 19:18:07   [Copacabana] faixa R$ 500.000-650.000: totalCount 1066
+2026-10-11 19:18:07     acima de 900: dividindo ao meio em 500000-575000 e 575001-650000
+2026-10-11 19:18:08   [Copacabana] faixa R$ 500.000-575.000: totalCount 305
+2026-10-11 19:18:16     obtidos 305 (305 novos) de totalCount 305 em 11 pagina(s)
+2026-10-11 19:18:16   [Copacabana] faixa R$ 575.001-650.000: totalCount 761
+2026-10-11 19:18:34     obtidos 761 (761 novos) de totalCount 761 em 26 pagina(s)
+2026-10-11 19:18:35   [Copacabana] faixa R$ 650.001-800.000: totalCount 1761
+2026-10-11 19:18:35     acima de 900: dividindo ao meio em 650001-725000 e 725001-800000
+2026-10-11 19:18:35   [Copacabana] faixa R$ 650.001-725.000: totalCount 768
+2026-10-11 19:18:53     obtidos 768 (768 novos) de totalCount 768 em 26 pagina(s)
+2026-10-11 19:18:54   [Copacabana] faixa R$ 725.001-800.000: totalCount 993
+2026-10-11 19:18:54     acima de 900: dividindo ao meio em 725001-762500 e 762501-800000
+2026-10-11 19:18:55   [Copacabana] faixa R$ 725.001-762.500: totalCount 458
+2026-10-11 19:19:07     obtidos 458 (458 novos) de totalCount 458 em 16 pagina(s)
+2026-10-11 19:19:07   [Copacabana] faixa R$ 762.501-800.000: totalCount 535
+2026-10-11 19:19:19     obtidos 535 (535 novos) de totalCount 535 em 18 pagina(s)
+2026-10-11 19:19:20   [Copacabana] faixa R$ 800.001-950.000: totalCount 1188
+2026-10-11 19:19:20     acima de 900: dividindo ao meio em 800001-875000 e 875001-950000
+2026-10-11 19:19:20   [Copacabana] faixa R$ 800.001-875.000: totalCount 565
+2026-10-11 19:19:33     obtidos 565 (565 novos) de totalCount 565 em 19 pagina(s)
+2026-10-11 19:19:34   [Copacabana] faixa R$ 875.001-950.000: totalCount 623
+2026-10-11 19:19:48     obtidos 623 (623 novos) de totalCount 623 em 21 pagina(s)
+2026-10-11 19:19:49   [Copacabana] faixa R$ 950.001-1.100.000: totalCount 505
+2026-10-11 19:20:00     obtidos 505 (505 novos) de totalCount 505 em 17 pagina(s)
+2026-10-11 19:20:00   [Copacabana] anuncios unicos acumulados nesta busca: 4520
+2026-10-11 19:20:00 Busca concluida: 5177 anuncios unicos, 0 links Zap, 133,0 s
+2026-10-11 19:20:00 --- 2) Detalhe por lote de ids ---
+2026-10-11 19:22:02 Detalhe concluido: 173 lotes, 5177 anuncios com detalhe, 254,8 s
+2026-10-11 19:22:02 --- 2b) Links por lote de ids (VivaReal e Zap) ---
+2026-10-11 19:25:58 Links concluidos: 173 lotes, 5177 links VivaReal, 5177 links Zap, 490,8 s
+2026-10-11 19:25:58 --- 3) Normalizacao ---
+2026-10-11 19:28:02 --- Resumo ---
+2026-10-11 19:28:02   Ipanema     R$    500000-  1100000: totalCount   476 | obtidos   476 | novos   475 | paginas  16
+2026-10-11 19:28:02   Leblon      R$    500000-  1100000: totalCount   182 | obtidos   182 | novos   182 | paginas   7
+2026-10-11 19:28:02   Copacabana  R$    500000-   575000: totalCount   305 | obtidos   305 | novos   305 | paginas  11
+2026-10-11 19:28:02   Copacabana  R$    575001-   650000: totalCount   761 | obtidos   761 | novos   761 | paginas  26
+2026-10-11 19:28:02   Copacabana  R$    650001-   725000: totalCount   768 | obtidos   768 | novos   768 | paginas  26
+2026-10-11 19:28:02   Copacabana  R$    725001-   762500: totalCount   458 | obtidos   458 | novos   458 | paginas  16
+2026-10-11 19:28:02   Copacabana  R$    762501-   800000: totalCount   535 | obtidos   535 | novos   535 | paginas  18
+2026-10-11 19:28:02   Copacabana  R$    800001-   875000: totalCount   565 | obtidos   565 | novos   565 | paginas  19
+2026-10-11 19:28:02   Copacabana  R$    875001-   950000: totalCount   623 | obtidos   623 | novos   623 | paginas  21
+2026-10-11 19:28:02   Copacabana  R$    950001-  1100000: totalCount   505 | obtidos   505 | novos   505 | paginas  17
+2026-10-11 19:28:02   linhas no CSV com bairro_site = Copacabana: 4520
+2026-10-11 19:28:02   linhas no CSV com bairro_site = Ipanema: 475
+2026-10-11 19:28:02   linhas no CSV com bairro_site = Leblon: 182
+2026-10-11 19:28:02   anuncios unicos obtidos na busca de Ipanema: 475
+2026-10-11 19:28:02   anuncios unicos obtidos na busca de Leblon: 182
+2026-10-11 19:28:02   anuncios unicos obtidos na busca de Copacabana: 4520
+2026-10-11 19:28:02   anuncios unicos: 5177 | descartados fora dos criterios: 0 | linhas gravadas: 5177
+2026-10-11 19:28:02   coordenada exata 3582 | aproximada 1595 | nenhuma 0
+2026-10-11 19:28:02   sem numero 1605 | sem rua 25 | sem link 0 | sem link Zap 0 | sem detalhe 0 | sem atualizado_em 0
+2026-10-11 19:28:02   IPTU (limite mensal 700): anual (rótulo do site)=894 | mensal (rótulo do site)=2713 | rótulo anual -> mensal pelo valor=912 | rótulo mensal -> anual pelo valor=65 | sem período -> anual=63 | sem período -> mensal=130 | vazio=400
+2026-10-11 19:28:02   tipo: Apartamento=5011, Cobertura=9, Kitnet/Studio=157
+2026-10-11 19:28:02   tipo_anunciante: Imobiliária=5165, Particular=12
+2026-10-11 19:28:02   chamadas HTTP: 711 | respostas reaproveitadas do disco: 0 | baixado: 44,6 MB | tempo total: 614,9 s
+2026-10-11 19:28:02   CSV: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\_dados\2026-10-11\bruto-vivareal.csv
+2026-10-11 19:28:02 Cobertura completa. exit 0

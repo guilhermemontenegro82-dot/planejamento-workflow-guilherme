@@ -1,0 +1,79 @@
+rua;poligono;bairro_cep;cep;faixa;lado;situacao;observacao
+Avenida Vieira Souto;Ipanema;Ipanema;22420-002;até 158;par;incluída;
+Avenida Vieira Souto;Ipanema;Ipanema;22420-004;160 a 376;par;incluída;
+Avenida Vieira Souto;Ipanema;Ipanema;22420-006;378 a 526;par;incluída;
+Avenida Vieira Souto;Ipanema;Ipanema;22420-008;528 a 670;par;incluída;
+Avenida Vieira Souto;Ipanema;Ipanema;22420-012;672 ao fim;par;incluída;
+Rua Visconde de Pirajá;Ipanema;Ipanema;22410-000;até 338;par;incluída;
+Rua Visconde de Pirajá;Ipanema;Ipanema;22410-001;até 331;ímpar;incluída;
+Rua Visconde de Pirajá;Ipanema;Ipanema;22410-002;340 ao fim;par;incluída;
+Rua Visconde de Pirajá;Ipanema;Ipanema;22410-003;333 ao fim;ímpar;incluída;
+Rua Prudente de Morais;Ipanema;Ipanema;22420-040;até 1080;par;incluída;
+Rua Prudente de Morais;Ipanema;Ipanema;22420-041;até 1123;ímpar;incluída;
+Rua Prudente de Morais;Ipanema;Ipanema;22420-042;1082 ao fim;par;incluída;
+Rua Prudente de Morais;Ipanema;Ipanema;22420-043;1125 ao fim;ímpar;incluída;
+Rua Barão da Torre;Ipanema;Ipanema;22411-000;até 414;par;incluída;próxima ao limite superior do polígono
+Rua Barão da Torre;Ipanema;Ipanema;22411-001;até 423;ímpar;incluída;próxima ao limite superior do polígono
+Rua Barão da Torre;Ipanema;Ipanema;22411-002;416 ao fim;par;incluída;próxima ao limite superior do polígono
+Rua Barão da Torre;Ipanema;Ipanema;22411-003;425 ao fim;ímpar;incluída;próxima ao limite superior do polígono
+Rua Francisco Otaviano;Ipanema;Copacabana;22080-040;até 97;ímpar;incluída;trecho do Arpoador
+Rua Francisco Otaviano;Ipanema;Copacabana;22080-041;até 74;par;incluída;trecho do Arpoador
+Rua Francisco Otaviano;Ipanema;Copacabana;22080-045;76 ao fim;par;incluída;trecho do Arpoador
+Rua Francisco Otaviano;Ipanema;Copacabana;22080-046;99 ao fim;ímpar;incluída;trecho do Arpoador
+Rua Bulhões de Carvalho;Ipanema;Copacabana;22081-000;;ímpar;incluída;trecho do Arpoador
+Rua Bulhões de Carvalho;Ipanema;Copacabana;22081-001;;par;incluída;trecho do Arpoador
+Avenida Henrique Dumont;Ipanema;Ipanema;22410-060;;;incluída;limite oeste do polígono
+Rua Aníbal de Mendonça;Ipanema;Ipanema;22410-050;;;incluída;
+Rua Garcia d'Ávila;Ipanema;Ipanema;22421-010;;;incluída;
+Rua Maria Quitéria;Ipanema;Ipanema;22410-040;;;incluída;
+Rua Joana Angélica;Ipanema;Ipanema;22420-030;;;incluída;
+Rua Vinícius de Moraes;Ipanema;Ipanema;22411-010;;;incluída;
+Rua Farme de Amoedo;Ipanema;Ipanema;22420-020;;;incluída;
+Rua Teixeira de Melo;Ipanema;Ipanema;22410-010;;;incluída;
+Rua Jangadeiros;Ipanema;Ipanema;22420-010;;;incluída;
+Rua Gomes Carneiro;Ipanema;Copacabana;22071-110;;;incluída;
+Rua Joaquim Nabuco;Ipanema;Copacabana;22080-030;até 125/126;;incluída;
+Rua Joaquim Nabuco;Ipanema;Copacabana;22080-060;127/128 ao fim;;incluída;
+Rua Raul Pompéia;Ipanema;Copacabana;22080-001;1 ao fim;ímpar;incluída;trecho do Arpoador
+Rua Raul Pompéia;Ipanema;Copacabana;22080-002;2 ao fim;par;incluída;trecho do Arpoador
+Avenida Rainha Elizabeth da Bélgica;Ipanema;Copacabana;22081-031;até 325;ímpar;incluída;
+Avenida Rainha Elizabeth da Bélgica;Ipanema;Copacabana;22081-032;até 324;par;incluída;
+Avenida Rainha Elizabeth da Bélgica;Ipanema;Copacabana;22081-041;327 ao fim;ímpar;incluída;
+Avenida Rainha Elizabeth da Bélgica;Ipanema;Copacabana;22081-042;326 ao fim;par;incluída;
+Rua Desembargador Renato Tavares;Ipanema;Ipanema;22411-060;;;incluída;
+Avenida Francisco Bhering;Ipanema;Copacabana;22080-050;;;incluída;Arpoador
+Rua Francisco Sá;Ipanema;Copacabana;22080-010;;;pendente;a marcação encobre cruzamentos no trecho de Copacabana; inclusão pendente de confirmação
+Avenida Nossa Senhora de Copacabana;Ipanema;Copacabana;22070-011;1109 ao fim;ímpar;pendente;trecho final, próximo à área marcada; inclusão pendente
+Avenida Nossa Senhora de Copacabana;Ipanema;Copacabana;22070-012;1170 ao fim;par;pendente;trecho final, próximo à área marcada; inclusão pendente
+Avenida Delfim Moreira;Leblon;Leblon;22441-000;;;incluída;
+Avenida General San Martin;Leblon;Leblon;22441-012;até 681;ímpar;incluída;
+Avenida General San Martin;Leblon;Leblon;22441-013;até 734;par;incluída;
+Avenida General San Martin;Leblon;Leblon;22441-014;736 ao fim;par;incluída;
+Avenida General San Martin;Leblon;Leblon;22441-015;683 ao fim;ímpar;incluída;
+Avenida Ataulfo de Paiva;Leblon;Leblon;22440-032;até 745;ímpar;incluída;
+Avenida Ataulfo de Paiva;Leblon;Leblon;22440-033;até 764;par;incluída;
+Avenida Ataulfo de Paiva;Leblon;Leblon;22440-034;747 ao fim;ímpar;incluída;
+Avenida Ataulfo de Paiva;Leblon;Leblon;22440-035;766 ao fim;par;incluída;
+Avenida Bartolomeu Mitre;Leblon;Leblon;22431-001;até 495;ímpar;incluída;
+Avenida Bartolomeu Mitre;Leblon;Leblon;22431-002;até 494;par;incluída;
+Avenida Bartolomeu Mitre;Leblon;Leblon;22431-003;497 a 1111;ímpar;incluída;
+Avenida Bartolomeu Mitre;Leblon;Leblon;22431-004;496 a 1110;par;incluída;
+Avenida Afrânio de Melo Franco;Leblon;Leblon;22430-060;;;incluída;
+Avenida Borges de Medeiros;Leblon;Leblon;22430-041;até 1111;ímpar;incluída;junto ao limite leste do polígono
+Avenida Borges de Medeiros;Leblon;Leblon;22430-042;até 1098;par;incluída;junto ao limite leste do polígono
+Rua Rita Ludolf;Leblon;Leblon;22440-060;;;incluída;
+Rua Professor Azevedo Marques;Leblon;Leblon;22450-030;;;incluída;
+Rua Aristides Espínola;Leblon;Leblon;22440-050;;;incluída;
+Rua Rainha Guilhermina;Leblon;Leblon;22441-120;;;incluída;
+Rua General Artigas;Leblon;Leblon;22441-140;;;incluída;
+Rua General Venâncio Flores;Leblon;Leblon;22441-090;;;incluída;
+Rua General Urquiza;Leblon;Leblon;22431-040;;;incluída;
+Rua João Lira;Leblon;Leblon;22430-210;;;incluída;no cadastro postal aparece como "Rua João Líra"
+Rua Professor Antônio Maria Teixeira;Leblon;Leblon;22430-050;;;incluída;
+Rua José Linhares;Leblon;Leblon;22430-220;;;incluída;
+Rua Cupertino Durão;Leblon;Leblon;22441-030;;;incluída;
+Rua Carlos Góes;Leblon;Leblon;22440-040;;;incluída;no cadastro postal aparece como "Rua Carlos Gois"
+Rua Leblon;Leblon;Leblon;22441-020;;;incluída;
+Rua Almirante Guilhem;Leblon;Leblon;22440-000;;;incluída;
+Rua Humberto de Campos;Leblon;Leblon;22430-190;;;incluída;próxima ao limite superior do polígono
+Rua Dias Ferreira;Leblon;Leblon;22431-050;;;incluída;trecho na extremidade oeste; conferir limite

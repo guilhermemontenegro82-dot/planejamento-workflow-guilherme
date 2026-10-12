@@ -1,0 +1,24 @@
+﻿rua;numero;bairro;lat;lon;precisao;consultado_em;detalhe
+Rua Visconde de Pirajá;540;Ipanema;-22.9837457;-43.2110964;interpolado;2026-10-11 19:03;interpolado pelos nºs OSM 66-608 (17 pontos, mesma paridade, R2 1)
+Rua Garcia d'Ávila;60;Ipanema;-22.9847381;-43.20917;interpolado;2026-10-11 19:03;interpolado pelos nºs OSM 99-173 (6 pontos, todos os números, R2 0.99, extrapolado)
+Rua Francisco Otaviano;61;Copacabana;-22.9871254;-43.190777;interpolado;2026-10-11 19:03;interpolado pelos nºs OSM 55-177 (8 pontos, mesma paridade, R2 0.98)
+Avenida Rainha Elizabeth;200;Copacabana;-22.9849754;-43.1916657;interpolado;2026-10-11 19:04;interpolado pelos nºs OSM 122-440 (3 pontos, mesma paridade, R2 1)
+Avenida Ataulfo de Paiva;900;Leblon;-22.983673;-43.216959;rua;2026-10-11 19:04;ponto da via (Nominatim): Avenida Ataulfo de Paiva, Leblon, Rio de Janeiro, Região Sudeste, 22440-060, Brasil [Overpass indisponível]
+Rua Dias Ferreira;100;Leblon;-22.9851073;-43.2281959;interpolado;2026-10-11 19:05;interpolado pelos nºs OSM 78-636 (10 pontos, mesma paridade, R2 1)
+Rua Prudente de Morais;450;Ipanema;-22.9854353;-43.2010069;interpolado;2026-10-11 19:06;interpolado pelos nºs OSM 10-824 (2 pontos, mesma paridade, R2 1)
+Rua Cupertino Durão;50;Leblon;-22.9854767;-43.2203429;interpolado;2026-10-11 19:06;interpolado pelos nºs OSM 56-79 (2 pontos, todos os números, R2 1, extrapolado)
+Rua Bulhões de Carvalho;100;Copacabana;-22.9855234;-43.1928633;rua;2026-10-11 19:06;ponto da via (Nominatim): Rua Bulhões de Carvalho, Arpoador, Copacabana, Rio de Janeiro, Região Sudeste, 22081-020, Brasil
+Rua Nascimento Silva;200;Ipanema;-22.9819867;-43.2071432;rua;2026-10-11 19:06;ponto da via (Nominatim): Rua Nascimento Silva, Ipanema, Rio de Janeiro, Região Sudeste, 22410-002, Brasil
+Rua Alberto de Campos;25;Ipanema;-22.981208;-43.2015728;rua;2026-10-11 19:07;ponto da via (Nominatim): Rua Alberto de Campos, Ipanema, Rio de Janeiro, Região Sudeste, 22420-020, Brasil [Overpass indisponível]
+Rua Barão de Jaguaripe;100;Ipanema;-22.9814118;-43.2079885;rua;2026-10-11 19:08;ponto da via (Nominatim): Rua Barão de Jaguaripe, Ipanema, Rio de Janeiro, Região Sudeste, 22410-002, Brasil
+Avenida Epitácio Pessoa;1000;Ipanema;-22.9804824;-43.2123579;interpolado;2026-10-11 19:08;interpolado pelos nºs OSM 204-3724 (6 pontos, mesma paridade, R2 0.93)
+Rua Redentor;100;Ipanema;-22.9824717;-43.2080462;rua;2026-10-11 19:09;ponto da via (Nominatim): Rua Redentor, Ipanema, Rio de Janeiro, Região Sudeste, 22410-002, Brasil
+Avenida Visconde de Albuquerque;300;Leblon;-22.9812404;-43.2264688;rua;2026-10-11 19:09;ponto da via (Nominatim): Avenida Visconde de Albuquerque, Leblon, Rio de Janeiro, Região Sudeste, 22431-050, Brasil
+Rua Gilberto Cardoso;50;Leblon;-22.9792404;-43.2197522;rua;2026-10-11 19:09;ponto da via (Nominatim): Rua Gilberto Cardoso, Leblon, Rio de Janeiro, Região Sudeste, 22430-090, Brasil [Overpass indisponível]
+Rua Timóteo da Costa;100;Leblon;-22.9857825;-43.2325102;rua;2026-10-11 19:10;ponto da via (Nominatim): Rua Timóteo da Costa, Jardim Pernambuco, Leblon, Rio de Janeiro, Região Sudeste, 22450-130, Brasil
+Avenida Nossa Senhora de Copacabana;900;Copacabana;-22.9747029;-43.1896397;interpolado;2026-10-11 19:11;interpolado pelos nºs OSM 22-1260 (28 pontos, mesma paridade, R2 1)
+Rua Barata Ribeiro;630;Copacabana;-22.9724995;-43.1903238;interpolado;2026-10-11 19:11;interpolado pelos nºs OSM 6-752 (32 pontos, mesma paridade, R2 0.98)
+Rua Almirante Saddock de Sá;216;Ipanema;-22.9804816;-43.2032917;rua;2026-10-11 19:11;nº OSM mais próximo: 266
+Rua Barão da Torre;300;Ipanema;-22.9831811;-43.2029886;interpolado;2026-10-11 19:11;interpolado pelos nºs OSM 79-632 (12 pontos, todos os números, R2 0.78)
+Rua Humberto de Campos;100;Leblon;-22.9814813;-43.2165826;rua;2026-10-11 19:12;ponto da via (Nominatim): Rua Humberto de Campos, Leblon, Rio de Janeiro, Região Sudeste, 22440-060, Brasil
+Rua Francisco Sá;30;Copacabana;-22.9829712;-43.1911912;interpolado;2026-10-11 19:12;interpolado pelos nºs OSM 17-90 (2 pontos, todos os números, R2 1)

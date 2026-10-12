@@ -64,6 +64,29 @@ desktop.ini
 # Renders de teste não entram
 01 - EP Engenharia/Instagram EP/_trabalho/*.png
 
+# ---- 8. Busca por Imóveis (11/10/2026): scripts, critérios, polígonos e CSVs de anúncios (dados públicos) ----
+# Fora: JSONs brutos das páginas (pesados), testes dos agentes e PNGs de conferência.
+!02 - DG Revy/Busca por Imóveis - Compra/**/*.ps1
+!02 - DG Revy/Busca por Imóveis - Compra/**/*.json
+!02 - DG Revy/Busca por Imóveis - Compra/**/*.csv
+!02 - DG Revy/Busca por Imóveis - Compra/**/*.geojson
+!02 - DG Revy/Busca por Imóveis - Compra/**/*.html
+!02 - DG Revy/Busca por Imóveis - Compra/_dados/**/*.log
+02 - DG Revy/Busca por Imóveis - Compra/_dados/**/json/
+# Coletas brutas e consolidadas de cada rodada (5-6 MB por rodada) ficam só no disco; a base.csv, os resumos,
+# certificados e logs de cada rodada entram.
+02 - DG Revy/Busca por Imóveis - Compra/_dados/*/bruto-*.csv
+02 - DG Revy/Busca por Imóveis - Compra/_dados/*/coleta.csv
+02 - DG Revy/Busca por Imóveis - Compra/_dados/*/base-anterior.csv
+02 - DG Revy/Busca por Imóveis - Compra/_dados/*/console-*.txt
+02 - DG Revy/Busca por Imóveis - Compra/_trabalho/testes-*/
+02 - DG Revy/Busca por Imóveis - Compra/_trabalho/teste-*/
+02 - DG Revy/Busca por Imóveis - Compra/_trabalho/verif-*/
+02 - DG Revy/Busca por Imóveis - Compra/_trabalho/extraido/
+02 - DG Revy/Busca por Imóveis - Compra/_trabalho/area/nominatim*/
+02 - DG Revy/Busca por Imóveis - Compra/_trabalho/area/overpass/
+02 - DG Revy/Busca por Imóveis - Compra/_trabalho/area/render/
+
 # ---- 7. Mods do Claude Code (08/10/2026): código-fonte dos mods, sem dados de cliente ----
 # Os .wav ficam fora (mídia); são regenerados por sons/gerar-sons.ps1.
 !Planejamento WorkFlow Guilherme/Mods/**/*.ts

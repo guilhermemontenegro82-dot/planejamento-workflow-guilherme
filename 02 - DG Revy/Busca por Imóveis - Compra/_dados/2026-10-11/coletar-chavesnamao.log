@@ -1,0 +1,49 @@
+﻿19:17:49 Coletor Chaves na Mão | endpoint=mapa | level1=imoveis-a-venda | filtro=pmin:500000,pmax:1100000,amin:35,amax:70
+19:17:49 Saída: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\_dados\2026-10-11
+19:17:49 Caixa Ipanema_Arpoador: N=-22.97439 S=-22.99782 E=-43.186 W=-43.22307
+19:17:49 Caixa Leblon: N=-22.9745 S=-22.9925 E=-43.2125 W=-43.239
+19:17:49 Complemento por bairro (level3, endpoint lista): ipanema, leblon
+19:17:49 --- 1) Busca ---
+19:18:17 Caixa Ipanema_Arpoador: totalResults(site)=603 | itens recebidos=603 | novos (não vistos antes)=603 | lotes ok=41 falha=0
+19:18:24 Caixa Leblon: totalResults(site)=132 | itens recebidos=132 | novos (não vistos antes)=110 | lotes ok=9 falha=0
+19:18:35   level3-ipanema pg=16 veio com 'similares' da cidade (pageBreak=[251,0,5097], totalListing=5348): fim dos resultados reais
+19:18:35 Escopo level3-ipanema: totalListing(site)=251 (reais=251) | itens recebidos=225 | fora da caixa=0 | novos=2 | páginas ok=15 falha=0 | pg=16 veio com 'similares' da cidade (pageBreak=[251,0,5097], totalListing=5348): fim dos resultados reais
+19:18:35   AVISO: recebidos < resultados reais declarados em level3-ipanema (o endpoint 'lista' mistura 'similares' nas últimas ~2 páginas e perde ~25 anúncios; use -Endpoint mapa)
+19:18:38   level3-leblon pg=5 veio com 'similares' da cidade (pageBreak=[76,0,5319], totalListing=5395): fim dos resultados reais
+19:18:38 Escopo level3-leblon: totalListing(site)=76 (reais=76) | itens recebidos=60 | fora da caixa=0 | novos=1 | páginas ok=4 falha=0 | pg=5 veio com 'similares' da cidade (pageBreak=[76,0,5319], totalListing=5395): fim dos resultados reais
+19:18:38   AVISO: recebidos < resultados reais declarados em level3-leblon (o endpoint 'lista' mistura 'similares' nas últimas ~2 páginas e perde ~25 anúncios; use -Endpoint mapa)
+19:18:38 Busca: 716 anúncios únicos em 50 s
+19:18:38 --- 2) Filtro local dos critérios ---
+19:18:39 Aceitos: 581 | excluídos: fora de área=0, fora de preço=0, não é venda=0, sem preço/área=0, tipo não residencial=135
+19:18:39 --- 3) Detalhes por anúncio (581) ---
+19:19:17   50/581 detalhes (38 s)
+19:19:53   100/581 detalhes (74 s)
+19:20:29   150/581 detalhes (110 s)
+19:21:07   200/581 detalhes (148 s)
+19:21:44   250/581 detalhes (185 s)
+19:22:19   300/581 detalhes (220 s)
+19:22:55   350/581 detalhes (256 s)
+19:23:32   400/581 detalhes (293 s)
+19:24:09   450/581 detalhes (330 s)
+19:24:45   500/581 detalhes (366 s)
+19:25:20   550/581 detalhes (401 s)
+19:25:43 Detalhes: ok=581 vazio=0 falha=0 inativos=0 em 424 s
+19:25:43 --- 4) Conferência de 3 página(s) HTML de anúncio ---
+19:25:44   página 46055090: dateModified=2026-08-25T11:30:01.000Z (API updatedAt=2026-08-25T11:30:01.000) | Condomínio='R$ 737/mês' (API 'R$ 737') | IPTU='R$ 97' (API 'R$ 97') | active true=12 false=0 | 404=False | título com o id=True
+19:25:46   página 42996251: dateModified=2026-10-02T20:57:58.000Z (API updatedAt=2026-10-02T20:57:58.000) | Condomínio='R$ 880/mês' (API 'R$ 880') | IPTU='R$ 174' (API 'R$ 174') | active true=12 false=0 | 404=False | título com o id=True
+19:25:48   página 20021472: dateModified=2026-07-29T08:17:19.000Z (API updatedAt=2026-07-29T08:17:19.000) | Condomínio='R$ 600/mês' (API 'R$ 600') | IPTU='R$ 1.298' (API 'R$ 1.298') | active true=12 false=0 | 404=False | título com o id=True
+19:25:48 --- 5) CSV ---
+19:25:55 --- Resumo ---
+19:25:55   Caixa Ipanema_Arpoador: totalResults(site)=603 | itens recebidos=603 | novos (não vistos antes)=603 | lotes ok=41 falha=0
+19:25:55   Caixa Leblon: totalResults(site)=132 | itens recebidos=132 | novos (não vistos antes)=110 | lotes ok=9 falha=0
+19:25:55   Escopo level3-ipanema: totalListing(site)=251 (reais=251) | itens recebidos=225 | fora da caixa=0 | novos=2 | páginas ok=15 falha=0 | pg=16 veio com 'similares' da cidade (pageBreak=[251,0,5097], totalListing=5348): fim dos resultados reais
+19:25:55   Escopo level3-leblon: totalListing(site)=76 (reais=76) | itens recebidos=60 | fora da caixa=0 | novos=1 | páginas ok=4 falha=0 | pg=5 veio com 'similares' da cidade (pageBreak=[76,0,5319], totalListing=5395): fim dos resultados reais
+19:25:55   Únicos na busca: 716 | aceitos (critérios): 581 | linhas no CSV: 581
+19:25:55   Tipos: Apartamento=535, Kitnet/Studio=28, Flat=18
+19:25:55   Bairros (site): Copacabana=308, Ipanema=164, Leblon=63, Gávea=45, Lagoa=1
+19:25:55   Com número: 75 | com coordenada: 560 | precisão: aproximada=485, exata=75, nenhuma=21 | lat/lon trocados corrigidos: 3
+19:25:55   IPTU: ano (descrição)=8, ano (descrição: cota mensal x 10 ou 12)=4, ano (estimado pelo valor)=231, mês (descrição)=4, mês (estimado pelo valor)=270, sem IPTU=64 (limite mensal = R$ 700)
+19:25:55   Falhas de rede após 3 tentativas: 0 | escopos com cobertura truncada: 0
+19:25:55   Tempo total: 487 s (busca 50 s, detalhes 424 s)
+19:25:55   CSV: D:\12- Claude - works\02 - DG Revy\Busca por Imóveis - Compra\_dados\2026-10-11\bruto-chavesnamao.csv
+19:25:55 RESULTADO: COMPLETO (exit 0)
